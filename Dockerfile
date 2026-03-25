@@ -22,6 +22,10 @@ FROM base as dev
 
 # Use development mode and install all dependencies once in the image.
 ENV NODE_ENV=development
+
+# Install git for version control in devcontainer.
+RUN apk add --no-cache git
+
 COPY package.json package-lock.json ./
 RUN npm ci
 

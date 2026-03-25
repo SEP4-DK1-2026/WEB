@@ -9,6 +9,25 @@ Your application will be available at http://localhost:5173.
 This setup mounts your local source code and keeps `node_modules` inside the container,
 which makes it a good base for a future `.devcontainer` configuration.
 
+### Devcontainer workflow (React + Vite)
+
+The project includes a compose-based devcontainer setup optimized for frontend work:
+
+- [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json)
+- [`.devcontainer/compose.devcontainer.yaml`](.devcontainer/compose.devcontainer.yaml)
+
+Behavior:
+
+- Container stays alive (`sleep infinity`) so VS Code can attach quickly.
+- Run `npm run dev` from the container terminal when you want the Vite server.
+- Port `5173` is forwarded automatically.
+- `/api` requests are proxied by Vite to `VITE_API_PROXY_TARGET`.
+
+Default API-related environment values in the devcontainer:
+
+- `VITE_API_BASE_URL=http://localhost:3000`
+- `VITE_API_PROXY_TARGET=http://host.docker.internal:3000`
+
 ### Production-like preview (optional)
 
 If you need to test the built app inside the image:
