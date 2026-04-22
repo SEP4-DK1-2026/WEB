@@ -2,11 +2,16 @@ import { defineConfig } from 'vite'
 import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 
+// Workaround for typing mismatch after swapping to TypeScript
+const reactCompilerBabelOptions = {
+  presets: [reactCompilerPreset()],
+} as Parameters<typeof babel>[0]
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    babel({ presets: [reactCompilerPreset()] }),
+    babel(reactCompilerBabelOptions),
   ],
   server: {
     host: '0.0.0.0',
