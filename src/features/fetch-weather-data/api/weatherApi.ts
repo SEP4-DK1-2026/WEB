@@ -1,6 +1,6 @@
 import { type WeatherData } from "../../../types/weatherData"
 
-const BASE_URL = "https://example.com/api/weather"
+export const BASE_URL = "https://example.com/api/weather"
 
 export async function getPrediction(hoursFromNow: number): Promise<WeatherData[]> {
     const result = await fetch(`${BASE_URL}/predict?hoursFromNow=${hoursFromNow}`)
