@@ -1,5 +1,5 @@
 import './App.css'
-import MyLineChart from './components/MyLineChart'
+import MyLineChart from '../components/MyLineChart'
 
 function App() {
 
