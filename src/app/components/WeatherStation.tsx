@@ -11,12 +11,19 @@ interface WeatherData {
 interface WeatherBoxProps {
   title: string;
   data: WeatherData;
+  variant?: 'current' | 'predicted';
 }
 
-const WeatherBox: React.FC<WeatherBoxProps> = ({ title, data }) => {
+const WeatherBox: React.FC<WeatherBoxProps> = ({ title, data, variant = 'current' }) => {
+  const isCurrentWeather = variant === 'current';
+  const gradientClass = isCurrentWeather 
+    ? 'bg-gradient-to-br from-blue-50 to-blue-100 border-blue-300' 
+    : 'bg-gradient-to-br from-purple-50 to-purple-100 border-purple-300';
+  const titleClass = isCurrentWeather ? 'text-blue-900' : 'text-purple-900';
+
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-lg p-8 border border-blue-200">
-      <h2 className="text-2xl font-bold text-blue-900 mb-6">{title}</h2>
+    <div className={`${gradientClass} rounded-lg shadow-lg p-8 border-2`}>
+      <h2 className={`text-2xl font-bold ${titleClass} mb-6`}>{title}</h2>
       
       <div className="grid grid-cols-2 gap-6">
         {/* Temperature */}
@@ -105,19 +112,23 @@ const WeatherStation: React.FC = () => {
     light: 45,
   };
 
-return (
-  <div className="min-h-screen w-full bg-gradient-to-b from-gray-50 to-blue-50 p-8">
-    <div className="mx-auto max-w-6xl">
-      <h1 className="mb-2 text-4xl font-bold text-gray-800">Weather Station</h1>
-      <p className="mb-12 text-gray-600">Real-time weather monitoring and forecast</p>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50 p-8">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-800 mb-2">Weather Station</h1>
+        <p className="text-gray-600 mb-12">Real-time weather monitoring and forecast</p>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <WeatherBox title="Current Weather" data={currentWeather} />
-        <WeatherBox title="Predicted Weather" data={predictedWeather} />
+        <div className="flex gap-8">
+          <div className="flex-1">
+            <WeatherBox title="Current Weather" data={currentWeather} variant="current" />
+          </div>
+          <div className="flex-1">
+            <WeatherBox title="Predicted Weather" data={predictedWeather} variant="predicted" />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default WeatherStation;
