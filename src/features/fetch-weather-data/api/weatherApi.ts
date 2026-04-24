@@ -44,6 +44,13 @@ export async function getHistoricalData(
   return data.map(toWeatherData)
 }
 
+export async function getLast24Hours(): Promise<WeatherData[]> {
+  const endDate = Math.floor(Date.now() / 1000)
+  const startDate = endDate - 24 * 60 * 60
+
+  return getHistoricalData(startDate, endDate)
+}
+
 export async function getCurrentWeather(): Promise<WeatherData> {
   const result = await fetch(`${BASE_URL}/current`)
   if (!result.ok) {
