@@ -12,6 +12,7 @@ export type WeatherDtoMock = {
 }
 
 export const currentWeatherMock: WeatherDtoMock = weatherMockData.currentWeather
+
 export const historicalDataLast7Days: WeatherDtoMock[] =
   weatherMockData.historicalDataLast7Days
 
