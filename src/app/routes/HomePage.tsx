@@ -1,4 +1,4 @@
-import WeatherStation from '../components/WeatherStation';
+import WeatherStation from '../../components/WeatherStation';
 
 export default function HomePage() {
   return <WeatherStation />;
