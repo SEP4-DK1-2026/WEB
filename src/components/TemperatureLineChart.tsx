@@ -11,15 +11,17 @@ import {
 } from "recharts"
 import type { WeatherData } from "../types/weatherData"
 
-type MyLineChartProps = {
+type TemperatureLineChartProps = {
   data?: WeatherData[]
   includeAxes?: boolean
+  includeLegend?: boolean
 }
 
-export default function MyLineChart({
+export default function TemperatureLineChart({
   data,
   includeAxes = true,
-}: MyLineChartProps) {
+  includeLegend = true,
+}: TemperatureLineChartProps) {
   return (
     <ResponsiveContainer width="100%" aspect={1.618} maxHeight={500}>
       <LineChart
@@ -32,7 +34,7 @@ export default function MyLineChart({
           left: 0,
         }}
       >
-        {includeAxes && <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />}
+        <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
         <Line
           type="monotone"
           dataKey="temperature"
@@ -40,14 +42,14 @@ export default function MyLineChart({
           strokeWidth={2}
           name="Temperatur"
         />
-        {includeAxes && <XAxis dataKey="date" />}
+        <XAxis dataKey="date" />
         {includeAxes && (
           <YAxis
             width={50}
             //label={{ value: "Temperature", position: "insideLeft", angle: -90 }}
           />
         )}
-        {includeAxes && <Legend align="right" />}
+        {includeLegend && <Legend align="right" />}
         <Tooltip />
         <RechartsDevtools />
       </LineChart>

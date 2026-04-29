@@ -45,7 +45,8 @@ export async function getHistoricalData(
 }
 
 export async function getLast24Hours(): Promise<WeatherData[]> {
-  const endDate = Math.floor(Date.now() / 1000)
+  //const endDate = Math.floor(Date.now() / 1000)
+  const endDate = Math.floor(1776816000) // USE THIS WHEN USING MOCK API, OTHERWISE USE ONE ABOVE
   const startDate = endDate - 24 * 60 * 60
 
   return getHistoricalData(startDate, endDate)
