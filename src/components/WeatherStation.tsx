@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
 import { BASE_URL } from '../features/fetch-weather-data/api/weatherApi';
 
+/* Weather icons */
+import Sun from '../assets/Sun.png';
+import Cloudy from '../assets/Cloudy.png';
+import Rain from '../assets/Rain.png';
+import HeavyRain from '../assets/Heavy rain.png';
+import HeavyCloudy from '../assets/Heavy cloudy.png';
+import SunAndRain from '../assets/Sun and rain.png';
+import Snow from '../assets/Snow.png';
+import Haze from '../assets/Haze.png';
+
 interface WeatherData {
   unixTime: number;
   temperature: number;
@@ -29,11 +39,57 @@ function formatDate(unixTime: number) {
   });
 }
 
+function getWeatherIcon(data: WeatherData) {
+  if (data.temperature <= 0 && data.precipitation > 0) {
+    return Snow;
+  }
+
+  if (data.precipitation > 8) {
+    return HeavyRain;
+  }
+
+  if (data.precipitation > 2 && data.light > 15000) {
+    return SunAndRain;
+  }
+
+  if (data.precipitation > 1) {
+    return Rain;
+  }
+
+  if (data.humidity > 85 && data.light < 5000) {
+    return Haze;
+  }
+
+  if (data.light > 25000) {
+    return Sun;
+  }
+
+  if (data.light < 8000) {
+    return HeavyCloudy;
+  }
+
+  return Cloudy;
+}
+
 const WeatherBox = ({ title, data }: WeatherBoxProps) => {
+  const weatherIcon = getWeatherIcon(data);
+
   return (
-    <div className="rounded-lg border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
-      <h2 className="mb-2 text-2xl font-bold text-blue-900">{title}</h2>
-      <p className="mb-6 text-sm text-gray-600">{formatDate(data.unixTime)}</p>
+    <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            {formatDate(data.unixTime)}
+          </p>
+        </div>
+
+        <img
+          src={weatherIcon}
+          alt="Weather icon"
+          className="h-20 w-20 object-contain"
+        />
+      </div>
 
       <div className="grid grid-cols-2 gap-6">
         <div className="rounded-lg bg-white p-4 shadow-md">
@@ -52,21 +108,21 @@ const WeatherBox = ({ title, data }: WeatherBoxProps) => {
 
         <div className="rounded-lg bg-white p-4 shadow-md">
           <p className="text-sm font-semibold text-gray-600">Nedbør</p>
-          <p className="mt-2 text-3xl font-bold text-blue-500">
+          <p className="mt-2 text-3xl font-bold text-cyan-500">
             {data.precipitation} mm
           </p>
         </div>
 
         <div className="rounded-lg bg-white p-4 shadow-md">
           <p className="text-sm font-semibold text-gray-600">Vindhastighed</p>
-          <p className="mt-2 text-3xl font-bold text-cyan-500">
+          <p className="mt-2 text-3xl font-bold text-indigo-500">
             {data.windSpeed} m/s
           </p>
         </div>
 
         <div className="rounded-lg bg-white p-4 shadow-md">
           <p className="text-sm font-semibold text-gray-600">Vindretning</p>
-          <p className="mt-2 text-3xl font-bold text-indigo-500">
+          <p className="mt-2 text-3xl font-bold text-purple-500">
             {formatWindDirection(data.windDirection)} ({data.windDirection}°)
           </p>
         </div>
@@ -84,9 +140,7 @@ const WeatherBox = ({ title, data }: WeatherBoxProps) => {
 
 export default function WeatherStation() {
   const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
-  const [predictedWeather, setPredictedWeather] = useState<WeatherData | null>(
-    null,
-  );
+  const [predictedWeather, setPredictedWeather] = useState<WeatherData | null>(null);
 
   useEffect(() => {
     async function loadWeather() {
@@ -95,8 +149,8 @@ export default function WeatherStation() {
         fetch(`${BASE_URL}/predict?hoursFromNow=1`),
       ]);
 
-      const currentData: WeatherData = await currentResponse.json();
-      const predictionData: WeatherData[] = await predictionResponse.json();
+      const currentData = await currentResponse.json();
+      const predictionData = await predictionResponse.json();
 
       setCurrentWeather(currentData);
       setPredictedWeather(predictionData[0] ?? null);
@@ -112,9 +166,11 @@ export default function WeatherStation() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="mb-2 text-4xl font-bold text-gray-800">Weather Station</h1>
+        <h1 className="mb-2 text-4xl font-bold text-gray-800">
+          Vejrudsigt
+        </h1>
         <p className="text-gray-600">
-          Real-time weather monitoring and forecast
+          Her ses nuværende og fremtidig vejrinformation
         </p>
       </div>
 
