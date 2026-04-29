@@ -1,0 +1,3207 @@
+{
+  "currentWeather": {
+    "unixTime": 1776819600,
+    "temperature": 16.8,
+    "humidity": 64,
+    "windSpeed": 4.2,
+    "windDirection": 235,
+    "precipitation": 0,
+    "light": 18500
+  },
+  "historicalDataLast7Days": [
+    {
+      "unixTime": 1776214800,
+      "temperature": 11.3,
+      "humidity": 60,
+      "windSpeed": 6.2,
+      "windDirection": 20,
+      "precipitation": 3.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776218400,
+      "temperature": 14,
+      "humidity": 73,
+      "windSpeed": 9.9,
+      "windDirection": 296,
+      "precipitation": 5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776222000,
+      "temperature": 8.5,
+      "humidity": 52,
+      "windSpeed": 1.8,
+      "windDirection": 13,
+      "precipitation": 3.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776225600,
+      "temperature": 9.9,
+      "humidity": 90,
+      "windSpeed": 7.9,
+      "windDirection": 121,
+      "precipitation": 3.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776229200,
+      "temperature": 10.4,
+      "humidity": 76,
+      "windSpeed": 7.4,
+      "windDirection": 37,
+      "precipitation": 0,
+      "light": 0
+    },
+    {
+      "unixTime": 1776232800,
+      "temperature": 19.5,
+      "humidity": 59,
+      "windSpeed": 8.7,
+      "windDirection": 309,
+      "precipitation": 1.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776236400,
+      "temperature": 11.8,
+      "humidity": 82,
+      "windSpeed": 7,
+      "windDirection": 77,
+      "precipitation": 1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776240000,
+      "temperature": 12.8,
+      "humidity": 94,
+      "windSpeed": 9.7,
+      "windDirection": 203,
+      "precipitation": 3.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776243600,
+      "temperature": 14.9,
+      "humidity": 65,
+      "windSpeed": 4.2,
+      "windDirection": 353,
+      "precipitation": 3.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776247200,
+      "temperature": 21.4,
+      "humidity": 89,
+      "windSpeed": 3,
+      "windDirection": 352,
+      "precipitation": 3.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776250800,
+      "temperature": 21.9,
+      "humidity": 87,
+      "windSpeed": 3.6,
+      "windDirection": 237,
+      "precipitation": 3.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776254400,
+      "temperature": 17.9,
+      "humidity": 51,
+      "windSpeed": 6.5,
+      "windDirection": 71,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776258000,
+      "temperature": 12.8,
+      "humidity": 76,
+      "windSpeed": 9.3,
+      "windDirection": 113,
+      "precipitation": 1.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776261600,
+      "temperature": 11.5,
+      "humidity": 73,
+      "windSpeed": 8.9,
+      "windDirection": 0,
+      "precipitation": 3.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776265200,
+      "temperature": 8.2,
+      "humidity": 56,
+      "windSpeed": 9.7,
+      "windDirection": 162,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776268800,
+      "temperature": 16.2,
+      "humidity": 88,
+      "windSpeed": 9.3,
+      "windDirection": 222,
+      "precipitation": 3.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776272400,
+      "temperature": 18.6,
+      "humidity": 58,
+      "windSpeed": 6.1,
+      "windDirection": 176,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776276000,
+      "temperature": 21.6,
+      "humidity": 94,
+      "windSpeed": 7.7,
+      "windDirection": 234,
+      "precipitation": 1.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776279600,
+      "temperature": 9.6,
+      "humidity": 86,
+      "windSpeed": 6.9,
+      "windDirection": 317,
+      "precipitation": 3.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776283200,
+      "temperature": 18.6,
+      "humidity": 53,
+      "windSpeed": 7.4,
+      "windDirection": 203,
+      "precipitation": 2.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776286800,
+      "temperature": 9.1,
+      "humidity": 57,
+      "windSpeed": 2.2,
+      "windDirection": 290,
+      "precipitation": 2.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776290400,
+      "temperature": 13.4,
+      "humidity": 85,
+      "windSpeed": 4.7,
+      "windDirection": 343,
+      "precipitation": 1.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776294000,
+      "temperature": 10.1,
+      "humidity": 55,
+      "windSpeed": 9.2,
+      "windDirection": 188,
+      "precipitation": 1.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776297600,
+      "temperature": 11.2,
+      "humidity": 78,
+      "windSpeed": 4.7,
+      "windDirection": 18,
+      "precipitation": 1.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776301200,
+      "temperature": 19.6,
+      "humidity": 84,
+      "windSpeed": 2.4,
+      "windDirection": 43,
+      "precipitation": 3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776304800,
+      "temperature": 8.6,
+      "humidity": 71,
+      "windSpeed": 4.5,
+      "windDirection": 266,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776308400,
+      "temperature": 10.3,
+      "humidity": 58,
+      "windSpeed": 1.8,
+      "windDirection": 89,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776312000,
+      "temperature": 11.3,
+      "humidity": 64,
+      "windSpeed": 4.3,
+      "windDirection": 319,
+      "precipitation": 1.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776315600,
+      "temperature": 18.9,
+      "humidity": 65,
+      "windSpeed": 6.7,
+      "windDirection": 314,
+      "precipitation": 1.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776319200,
+      "temperature": 13.5,
+      "humidity": 76,
+      "windSpeed": 3,
+      "windDirection": 220,
+      "precipitation": 3.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776322800,
+      "temperature": 13.5,
+      "humidity": 53,
+      "windSpeed": 5.3,
+      "windDirection": 97,
+      "precipitation": 3.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776326400,
+      "temperature": 14.8,
+      "humidity": 69,
+      "windSpeed": 1.1,
+      "windDirection": 313,
+      "precipitation": 4.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776330000,
+      "temperature": 19.7,
+      "humidity": 74,
+      "windSpeed": 1.9,
+      "windDirection": 105,
+      "precipitation": 0.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776333600,
+      "temperature": 20.7,
+      "humidity": 77,
+      "windSpeed": 1.7,
+      "windDirection": 80,
+      "precipitation": 4.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776337200,
+      "temperature": 12.5,
+      "humidity": 88,
+      "windSpeed": 2.6,
+      "windDirection": 273,
+      "precipitation": 3.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776340800,
+      "temperature": 11,
+      "humidity": 85,
+      "windSpeed": 1.8,
+      "windDirection": 359,
+      "precipitation": 0.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776344400,
+      "temperature": 17.1,
+      "humidity": 68,
+      "windSpeed": 9.9,
+      "windDirection": 315,
+      "precipitation": 3.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776348000,
+      "temperature": 10.9,
+      "humidity": 51,
+      "windSpeed": 9.3,
+      "windDirection": 206,
+      "precipitation": 1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776351600,
+      "temperature": 20.4,
+      "humidity": 53,
+      "windSpeed": 1.3,
+      "windDirection": 204,
+      "precipitation": 1.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776355200,
+      "temperature": 15.4,
+      "humidity": 95,
+      "windSpeed": 1.6,
+      "windDirection": 230,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776358800,
+      "temperature": 11.4,
+      "humidity": 68,
+      "windSpeed": 9,
+      "windDirection": 18,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776362400,
+      "temperature": 8.3,
+      "humidity": 58,
+      "windSpeed": 9,
+      "windDirection": 315,
+      "precipitation": 3.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776366000,
+      "temperature": 21.1,
+      "humidity": 70,
+      "windSpeed": 8.1,
+      "windDirection": 17,
+      "precipitation": 2.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776369600,
+      "temperature": 16.2,
+      "humidity": 81,
+      "windSpeed": 1.1,
+      "windDirection": 30,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776373200,
+      "temperature": 16.3,
+      "humidity": 60,
+      "windSpeed": 7.8,
+      "windDirection": 325,
+      "precipitation": 1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776376800,
+      "temperature": 21.6,
+      "humidity": 72,
+      "windSpeed": 9.6,
+      "windDirection": 296,
+      "precipitation": 0.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776380400,
+      "temperature": 15.9,
+      "humidity": 58,
+      "windSpeed": 3.1,
+      "windDirection": 175,
+      "precipitation": 0.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776384000,
+      "temperature": 17.4,
+      "humidity": 71,
+      "windSpeed": 6.3,
+      "windDirection": 70,
+      "precipitation": 2.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776387600,
+      "temperature": 14.3,
+      "humidity": 79,
+      "windSpeed": 2.2,
+      "windDirection": 203,
+      "precipitation": 3.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776391200,
+      "temperature": 18,
+      "humidity": 72,
+      "windSpeed": 7.3,
+      "windDirection": 165,
+      "precipitation": 2.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776394800,
+      "temperature": 15,
+      "humidity": 74,
+      "windSpeed": 4.8,
+      "windDirection": 265,
+      "precipitation": 2.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776398400,
+      "temperature": 13.1,
+      "humidity": 85,
+      "windSpeed": 1.6,
+      "windDirection": 326,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776402000,
+      "temperature": 15.4,
+      "humidity": 74,
+      "windSpeed": 2.7,
+      "windDirection": 134,
+      "precipitation": 4.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776405600,
+      "temperature": 11.6,
+      "humidity": 75,
+      "windSpeed": 1.7,
+      "windDirection": 181,
+      "precipitation": 1.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776409200,
+      "temperature": 14.2,
+      "humidity": 55,
+      "windSpeed": 1.4,
+      "windDirection": 282,
+      "precipitation": 0.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776412800,
+      "temperature": 18.4,
+      "humidity": 76,
+      "windSpeed": 8.5,
+      "windDirection": 179,
+      "precipitation": 4.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776416400,
+      "temperature": 10.1,
+      "humidity": 54,
+      "windSpeed": 2.3,
+      "windDirection": 279,
+      "precipitation": 4.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776420000,
+      "temperature": 13.4,
+      "humidity": 52,
+      "windSpeed": 2.2,
+      "windDirection": 141,
+      "precipitation": 3.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776423600,
+      "temperature": 12.1,
+      "humidity": 68,
+      "windSpeed": 9,
+      "windDirection": 221,
+      "precipitation": 4.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776427200,
+      "temperature": 12.5,
+      "humidity": 59,
+      "windSpeed": 3.6,
+      "windDirection": 250,
+      "precipitation": 4.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776430800,
+      "temperature": 13.3,
+      "humidity": 56,
+      "windSpeed": 6.3,
+      "windDirection": 317,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776434400,
+      "temperature": 12.6,
+      "humidity": 86,
+      "windSpeed": 7.6,
+      "windDirection": 228,
+      "precipitation": 3.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776438000,
+      "temperature": 11.5,
+      "humidity": 64,
+      "windSpeed": 5.1,
+      "windDirection": 51,
+      "precipitation": 0.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776441600,
+      "temperature": 12.8,
+      "humidity": 61,
+      "windSpeed": 9,
+      "windDirection": 293,
+      "precipitation": 3.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776445200,
+      "temperature": 13.2,
+      "humidity": 84,
+      "windSpeed": 6.6,
+      "windDirection": 84,
+      "precipitation": 0.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776448800,
+      "temperature": 10.1,
+      "humidity": 76,
+      "windSpeed": 5.3,
+      "windDirection": 43,
+      "precipitation": 4.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776452400,
+      "temperature": 17.2,
+      "humidity": 79,
+      "windSpeed": 4.8,
+      "windDirection": 285,
+      "precipitation": 3.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776456000,
+      "temperature": 15,
+      "humidity": 68,
+      "windSpeed": 7.3,
+      "windDirection": 49,
+      "precipitation": 2.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776459600,
+      "temperature": 16.3,
+      "humidity": 55,
+      "windSpeed": 8.4,
+      "windDirection": 135,
+      "precipitation": 1.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776463200,
+      "temperature": 8.4,
+      "humidity": 56,
+      "windSpeed": 2,
+      "windDirection": 262,
+      "precipitation": 2.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776466800,
+      "temperature": 17.9,
+      "humidity": 50,
+      "windSpeed": 3.3,
+      "windDirection": 226,
+      "precipitation": 1.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776470400,
+      "temperature": 21.6,
+      "humidity": 70,
+      "windSpeed": 6.2,
+      "windDirection": 27,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776474000,
+      "temperature": 13.5,
+      "humidity": 89,
+      "windSpeed": 3.2,
+      "windDirection": 319,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776477600,
+      "temperature": 20.1,
+      "humidity": 73,
+      "windSpeed": 2,
+      "windDirection": 68,
+      "precipitation": 0.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776481200,
+      "temperature": 18.1,
+      "humidity": 94,
+      "windSpeed": 5.4,
+      "windDirection": 336,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776484800,
+      "temperature": 14.4,
+      "humidity": 82,
+      "windSpeed": 1.7,
+      "windDirection": 344,
+      "precipitation": 1.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776488400,
+      "temperature": 15.7,
+      "humidity": 90,
+      "windSpeed": 3.1,
+      "windDirection": 12,
+      "precipitation": 4.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776492000,
+      "temperature": 16.8,
+      "humidity": 73,
+      "windSpeed": 1.9,
+      "windDirection": 187,
+      "precipitation": 3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776495600,
+      "temperature": 19.3,
+      "humidity": 82,
+      "windSpeed": 4.1,
+      "windDirection": 239,
+      "precipitation": 2.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776499200,
+      "temperature": 12.6,
+      "humidity": 60,
+      "windSpeed": 1.2,
+      "windDirection": 202,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776502800,
+      "temperature": 19.9,
+      "humidity": 68,
+      "windSpeed": 1.7,
+      "windDirection": 19,
+      "precipitation": 2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776506400,
+      "temperature": 21.4,
+      "humidity": 55,
+      "windSpeed": 4.6,
+      "windDirection": 117,
+      "precipitation": 3.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776510000,
+      "temperature": 18.5,
+      "humidity": 64,
+      "windSpeed": 9.7,
+      "windDirection": 113,
+      "precipitation": 2.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776513600,
+      "temperature": 21.9,
+      "humidity": 63,
+      "windSpeed": 1.8,
+      "windDirection": 252,
+      "precipitation": 1.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776517200,
+      "temperature": 17.8,
+      "humidity": 68,
+      "windSpeed": 1.6,
+      "windDirection": 276,
+      "precipitation": 4.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776520800,
+      "temperature": 13.4,
+      "humidity": 92,
+      "windSpeed": 8.2,
+      "windDirection": 258,
+      "precipitation": 4.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776524400,
+      "temperature": 17.5,
+      "humidity": 76,
+      "windSpeed": 3.4,
+      "windDirection": 112,
+      "precipitation": 3.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776528000,
+      "temperature": 8.5,
+      "humidity": 56,
+      "windSpeed": 9.4,
+      "windDirection": 191,
+      "precipitation": 4.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776531600,
+      "temperature": 17.3,
+      "humidity": 52,
+      "windSpeed": 4.8,
+      "windDirection": 232,
+      "precipitation": 2.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776535200,
+      "temperature": 14.4,
+      "humidity": 90,
+      "windSpeed": 6,
+      "windDirection": 1,
+      "precipitation": 4.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776538800,
+      "temperature": 10.4,
+      "humidity": 53,
+      "windSpeed": 7,
+      "windDirection": 346,
+      "precipitation": 1.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776542400,
+      "temperature": 12.9,
+      "humidity": 83,
+      "windSpeed": 8.1,
+      "windDirection": 205,
+      "precipitation": 0.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776546000,
+      "temperature": 18,
+      "humidity": 95,
+      "windSpeed": 2.7,
+      "windDirection": 180,
+      "precipitation": 3.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776549600,
+      "temperature": 16.7,
+      "humidity": 73,
+      "windSpeed": 5.7,
+      "windDirection": 179,
+      "precipitation": 1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776553200,
+      "temperature": 15.3,
+      "humidity": 79,
+      "windSpeed": 9.5,
+      "windDirection": 76,
+      "precipitation": 4.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776556800,
+      "temperature": 21.8,
+      "humidity": 53,
+      "windSpeed": 7.5,
+      "windDirection": 124,
+      "precipitation": 4.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776560400,
+      "temperature": 19.9,
+      "humidity": 91,
+      "windSpeed": 8.1,
+      "windDirection": 212,
+      "precipitation": 2.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776564000,
+      "temperature": 19,
+      "humidity": 70,
+      "windSpeed": 5.2,
+      "windDirection": 31,
+      "precipitation": 3.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776567600,
+      "temperature": 17.6,
+      "humidity": 94,
+      "windSpeed": 9.7,
+      "windDirection": 221,
+      "precipitation": 0.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776571200,
+      "temperature": 19.3,
+      "humidity": 91,
+      "windSpeed": 1.2,
+      "windDirection": 166,
+      "precipitation": 0.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776574800,
+      "temperature": 16,
+      "humidity": 58,
+      "windSpeed": 1.1,
+      "windDirection": 131,
+      "precipitation": 2.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776578400,
+      "temperature": 11.7,
+      "humidity": 69,
+      "windSpeed": 9.5,
+      "windDirection": 324,
+      "precipitation": 2.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776582000,
+      "temperature": 21.8,
+      "humidity": 51,
+      "windSpeed": 8.2,
+      "windDirection": 323,
+      "precipitation": 4.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776585600,
+      "temperature": 10.5,
+      "humidity": 57,
+      "windSpeed": 8.7,
+      "windDirection": 243,
+      "precipitation": 0.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776589200,
+      "temperature": 9.2,
+      "humidity": 77,
+      "windSpeed": 6.4,
+      "windDirection": 285,
+      "precipitation": 2.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776592800,
+      "temperature": 13.3,
+      "humidity": 71,
+      "windSpeed": 4.6,
+      "windDirection": 117,
+      "precipitation": 3.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776596400,
+      "temperature": 12.8,
+      "humidity": 78,
+      "windSpeed": 6,
+      "windDirection": 195,
+      "precipitation": 1.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776600000,
+      "temperature": 12.5,
+      "humidity": 94,
+      "windSpeed": 9.7,
+      "windDirection": 140,
+      "precipitation": 0.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776603600,
+      "temperature": 19.1,
+      "humidity": 95,
+      "windSpeed": 9.5,
+      "windDirection": 239,
+      "precipitation": 2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776607200,
+      "temperature": 14.5,
+      "humidity": 92,
+      "windSpeed": 4.6,
+      "windDirection": 83,
+      "precipitation": 4.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776610800,
+      "temperature": 20.2,
+      "humidity": 65,
+      "windSpeed": 4.4,
+      "windDirection": 251,
+      "precipitation": 5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776614400,
+      "temperature": 18.4,
+      "humidity": 81,
+      "windSpeed": 7.9,
+      "windDirection": 237,
+      "precipitation": 2.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776618000,
+      "temperature": 15.3,
+      "humidity": 56,
+      "windSpeed": 5.2,
+      "windDirection": 288,
+      "precipitation": 2.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776621600,
+      "temperature": 10.9,
+      "humidity": 55,
+      "windSpeed": 4.8,
+      "windDirection": 152,
+      "precipitation": 3.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776625200,
+      "temperature": 17.7,
+      "humidity": 77,
+      "windSpeed": 8.2,
+      "windDirection": 129,
+      "precipitation": 1.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776628800,
+      "temperature": 14.3,
+      "humidity": 78,
+      "windSpeed": 5.5,
+      "windDirection": 133,
+      "precipitation": 1.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776632400,
+      "temperature": 21,
+      "humidity": 50,
+      "windSpeed": 2.6,
+      "windDirection": 246,
+      "precipitation": 0.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776636000,
+      "temperature": 12.9,
+      "humidity": 72,
+      "windSpeed": 6.8,
+      "windDirection": 153,
+      "precipitation": 4.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776639600,
+      "temperature": 12.3,
+      "humidity": 64,
+      "windSpeed": 9.5,
+      "windDirection": 134,
+      "precipitation": 1.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776643200,
+      "temperature": 19.2,
+      "humidity": 77,
+      "windSpeed": 5.1,
+      "windDirection": 262,
+      "precipitation": 1.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776646800,
+      "temperature": 20.9,
+      "humidity": 57,
+      "windSpeed": 6.6,
+      "windDirection": 41,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776650400,
+      "temperature": 12.8,
+      "humidity": 50,
+      "windSpeed": 3,
+      "windDirection": 315,
+      "precipitation": 3.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776654000,
+      "temperature": 13.3,
+      "humidity": 72,
+      "windSpeed": 6.9,
+      "windDirection": 319,
+      "precipitation": 4.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776657600,
+      "temperature": 11.7,
+      "humidity": 61,
+      "windSpeed": 9.9,
+      "windDirection": 17,
+      "precipitation": 1.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776661200,
+      "temperature": 17.8,
+      "humidity": 88,
+      "windSpeed": 7.7,
+      "windDirection": 28,
+      "precipitation": 1.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776664800,
+      "temperature": 18.4,
+      "humidity": 59,
+      "windSpeed": 3.5,
+      "windDirection": 191,
+      "precipitation": 0.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776668400,
+      "temperature": 21.4,
+      "humidity": 95,
+      "windSpeed": 3.7,
+      "windDirection": 283,
+      "precipitation": 2.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776672000,
+      "temperature": 13.6,
+      "humidity": 61,
+      "windSpeed": 3.2,
+      "windDirection": 50,
+      "precipitation": 4.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776675600,
+      "temperature": 12.6,
+      "humidity": 77,
+      "windSpeed": 3.6,
+      "windDirection": 182,
+      "precipitation": 2.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776679200,
+      "temperature": 19.1,
+      "humidity": 71,
+      "windSpeed": 4.9,
+      "windDirection": 329,
+      "precipitation": 1.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776682800,
+      "temperature": 9.8,
+      "humidity": 95,
+      "windSpeed": 9.1,
+      "windDirection": 85,
+      "precipitation": 0.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776686400,
+      "temperature": 13.7,
+      "humidity": 68,
+      "windSpeed": 5.1,
+      "windDirection": 253,
+      "precipitation": 2.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776690000,
+      "temperature": 18.9,
+      "humidity": 90,
+      "windSpeed": 9.5,
+      "windDirection": 7,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776693600,
+      "temperature": 21.7,
+      "humidity": 90,
+      "windSpeed": 4.6,
+      "windDirection": 336,
+      "precipitation": 1.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776697200,
+      "temperature": 9.6,
+      "humidity": 70,
+      "windSpeed": 7.7,
+      "windDirection": 187,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776700800,
+      "temperature": 21.9,
+      "humidity": 55,
+      "windSpeed": 6.4,
+      "windDirection": 125,
+      "precipitation": 2.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776704400,
+      "temperature": 12.7,
+      "humidity": 71,
+      "windSpeed": 2.1,
+      "windDirection": 71,
+      "precipitation": 1.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776708000,
+      "temperature": 9.5,
+      "humidity": 88,
+      "windSpeed": 2.8,
+      "windDirection": 46,
+      "precipitation": 0.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776711600,
+      "temperature": 16.9,
+      "humidity": 86,
+      "windSpeed": 8,
+      "windDirection": 350,
+      "precipitation": 4.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776715200,
+      "temperature": 11.1,
+      "humidity": 64,
+      "windSpeed": 7.3,
+      "windDirection": 320,
+      "precipitation": 4.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776718800,
+      "temperature": 16.1,
+      "humidity": 95,
+      "windSpeed": 4.9,
+      "windDirection": 295,
+      "precipitation": 3.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776722400,
+      "temperature": 12.9,
+      "humidity": 76,
+      "windSpeed": 7.3,
+      "windDirection": 201,
+      "precipitation": 4.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776726000,
+      "temperature": 13.7,
+      "humidity": 63,
+      "windSpeed": 5.3,
+      "windDirection": 160,
+      "precipitation": 4.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776729600,
+      "temperature": 8.8,
+      "humidity": 73,
+      "windSpeed": 4,
+      "windDirection": 235,
+      "precipitation": 4.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776733200,
+      "temperature": 18.4,
+      "humidity": 78,
+      "windSpeed": 9.2,
+      "windDirection": 0,
+      "precipitation": 1.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776736800,
+      "temperature": 17.2,
+      "humidity": 92,
+      "windSpeed": 2.5,
+      "windDirection": 114,
+      "precipitation": 1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776740400,
+      "temperature": 22,
+      "humidity": 88,
+      "windSpeed": 5.9,
+      "windDirection": 83,
+      "precipitation": 1.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776744000,
+      "temperature": 18.6,
+      "humidity": 55,
+      "windSpeed": 5.2,
+      "windDirection": 200,
+      "precipitation": 0.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776747600,
+      "temperature": 11.8,
+      "humidity": 93,
+      "windSpeed": 7.1,
+      "windDirection": 264,
+      "precipitation": 2.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776751200,
+      "temperature": 10.4,
+      "humidity": 53,
+      "windSpeed": 6.5,
+      "windDirection": 5,
+      "precipitation": 0.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776754800,
+      "temperature": 13.3,
+      "humidity": 55,
+      "windSpeed": 5.3,
+      "windDirection": 255,
+      "precipitation": 4.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776758400,
+      "temperature": 8.3,
+      "humidity": 94,
+      "windSpeed": 2.9,
+      "windDirection": 278,
+      "precipitation": 0.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776762000,
+      "temperature": 17.2,
+      "humidity": 63,
+      "windSpeed": 9,
+      "windDirection": 61,
+      "precipitation": 3.9,
+      "light": 0
+    },
+    {
+      "unixTime": 1776765600,
+      "temperature": 18.8,
+      "humidity": 85,
+      "windSpeed": 6.7,
+      "windDirection": 125,
+      "precipitation": 4.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776769200,
+      "temperature": 18.9,
+      "humidity": 79,
+      "windSpeed": 3.8,
+      "windDirection": 228,
+      "precipitation": 3.7,
+      "light": 0
+    },
+    {
+      "unixTime": 1776772800,
+      "temperature": 18.5,
+      "humidity": 59,
+      "windSpeed": 10,
+      "windDirection": 302,
+      "precipitation": 3.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776776400,
+      "temperature": 8.1,
+      "humidity": 78,
+      "windSpeed": 1.7,
+      "windDirection": 209,
+      "precipitation": 1.2,
+      "light": 0
+    },
+    {
+      "unixTime": 1776780000,
+      "temperature": 9.7,
+      "humidity": 90,
+      "windSpeed": 3.6,
+      "windDirection": 167,
+      "precipitation": 2.4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776783600,
+      "temperature": 21.1,
+      "humidity": 53,
+      "windSpeed": 2.6,
+      "windDirection": 122,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776787200,
+      "temperature": 12.2,
+      "humidity": 81,
+      "windSpeed": 5.3,
+      "windDirection": 343,
+      "precipitation": 0.5,
+      "light": 0
+    },
+    {
+      "unixTime": 1776790800,
+      "temperature": 13.3,
+      "humidity": 62,
+      "windSpeed": 6.8,
+      "windDirection": 261,
+      "precipitation": 4,
+      "light": 0
+    },
+    {
+      "unixTime": 1776794400,
+      "temperature": 8.5,
+      "humidity": 51,
+      "windSpeed": 2.6,
+      "windDirection": 195,
+      "precipitation": 3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776798000,
+      "temperature": 15,
+      "humidity": 76,
+      "windSpeed": 7,
+      "windDirection": 280,
+      "precipitation": 0,
+      "light": 0
+    },
+    {
+      "unixTime": 1776801600,
+      "temperature": 19.8,
+      "humidity": 80,
+      "windSpeed": 9.9,
+      "windDirection": 53,
+      "precipitation": 4.6,
+      "light": 0
+    },
+    {
+      "unixTime": 1776805200,
+      "temperature": 15.7,
+      "humidity": 62,
+      "windSpeed": 6.1,
+      "windDirection": 333,
+      "precipitation": 2.3,
+      "light": 0
+    },
+    {
+      "unixTime": 1776808800,
+      "temperature": 21.5,
+      "humidity": 94,
+      "windSpeed": 9.4,
+      "windDirection": 321,
+      "precipitation": 1.8,
+      "light": 0
+    },
+    {
+      "unixTime": 1776812400,
+      "temperature": 20.6,
+      "humidity": 94,
+      "windSpeed": 8.6,
+      "windDirection": 286,
+      "precipitation": 2.1,
+      "light": 0
+    },
+    {
+      "unixTime": 1776816000,
+      "temperature": 14.8,
+      "humidity": 67,
+      "windSpeed": 1.4,
+      "windDirection": 133,
+      "precipitation": 1.4,
+      "light": 0
+    }
+  ],
+  "predictionDataNext7Days": [
+    {
+      "unixTime": 1776823200,
+      "temperature": 15.4,
+      "humidity": 84,
+      "windSpeed": 5.5,
+      "windDirection": 295,
+      "precipitation": 4.1,
+      "light": 0,
+      "leadTimeHours": 1
+    },
+    {
+      "unixTime": 1776826800,
+      "temperature": 13.7,
+      "humidity": 93,
+      "windSpeed": 6.6,
+      "windDirection": 257,
+      "precipitation": 4.8,
+      "light": 0,
+      "leadTimeHours": 2
+    },
+    {
+      "unixTime": 1776830400,
+      "temperature": 13.6,
+      "humidity": 92,
+      "windSpeed": 4.5,
+      "windDirection": 357,
+      "precipitation": 3.4,
+      "light": 0,
+      "leadTimeHours": 3
+    },
+    {
+      "unixTime": 1776834000,
+      "temperature": 12,
+      "humidity": 71,
+      "windSpeed": 3.8,
+      "windDirection": 110,
+      "precipitation": 4.6,
+      "light": 0,
+      "leadTimeHours": 4
+    },
+    {
+      "unixTime": 1776837600,
+      "temperature": 20,
+      "humidity": 68,
+      "windSpeed": 3.9,
+      "windDirection": 90,
+      "precipitation": 5,
+      "light": 0,
+      "leadTimeHours": 5
+    },
+    {
+      "unixTime": 1776841200,
+      "temperature": 11.1,
+      "humidity": 73,
+      "windSpeed": 4.5,
+      "windDirection": 198,
+      "precipitation": 1.3,
+      "light": 0,
+      "leadTimeHours": 6
+    },
+    {
+      "unixTime": 1776844800,
+      "temperature": 18.6,
+      "humidity": 81,
+      "windSpeed": 6.3,
+      "windDirection": 111,
+      "precipitation": 2.5,
+      "light": 0,
+      "leadTimeHours": 7
+    },
+    {
+      "unixTime": 1776848400,
+      "temperature": 8.8,
+      "humidity": 89,
+      "windSpeed": 9.6,
+      "windDirection": 105,
+      "precipitation": 3.7,
+      "light": 0,
+      "leadTimeHours": 8
+    },
+    {
+      "unixTime": 1776852000,
+      "temperature": 10.3,
+      "humidity": 67,
+      "windSpeed": 8,
+      "windDirection": 215,
+      "precipitation": 1.9,
+      "light": 0,
+      "leadTimeHours": 9
+    },
+    {
+      "unixTime": 1776855600,
+      "temperature": 16.6,
+      "humidity": 76,
+      "windSpeed": 1.1,
+      "windDirection": 260,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 10
+    },
+    {
+      "unixTime": 1776859200,
+      "temperature": 21.6,
+      "humidity": 85,
+      "windSpeed": 4.8,
+      "windDirection": 19,
+      "precipitation": 4.4,
+      "light": 0,
+      "leadTimeHours": 11
+    },
+    {
+      "unixTime": 1776862800,
+      "temperature": 8.9,
+      "humidity": 76,
+      "windSpeed": 8.3,
+      "windDirection": 158,
+      "precipitation": 4.9,
+      "light": 0,
+      "leadTimeHours": 12
+    },
+    {
+      "unixTime": 1776866400,
+      "temperature": 21.9,
+      "humidity": 87,
+      "windSpeed": 6.2,
+      "windDirection": 124,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 13
+    },
+    {
+      "unixTime": 1776870000,
+      "temperature": 13.3,
+      "humidity": 82,
+      "windSpeed": 3.5,
+      "windDirection": 178,
+      "precipitation": 3.7,
+      "light": 0,
+      "leadTimeHours": 14
+    },
+    {
+      "unixTime": 1776873600,
+      "temperature": 12.9,
+      "humidity": 89,
+      "windSpeed": 3.8,
+      "windDirection": 333,
+      "precipitation": 4.3,
+      "light": 0,
+      "leadTimeHours": 15
+    },
+    {
+      "unixTime": 1776877200,
+      "temperature": 9,
+      "humidity": 69,
+      "windSpeed": 4.2,
+      "windDirection": 342,
+      "precipitation": 3.4,
+      "light": 0,
+      "leadTimeHours": 16
+    },
+    {
+      "unixTime": 1776880800,
+      "temperature": 17.6,
+      "humidity": 77,
+      "windSpeed": 4.5,
+      "windDirection": 205,
+      "precipitation": 0.1,
+      "light": 0,
+      "leadTimeHours": 17
+    },
+    {
+      "unixTime": 1776884400,
+      "temperature": 9.9,
+      "humidity": 79,
+      "windSpeed": 1.1,
+      "windDirection": 115,
+      "precipitation": 2,
+      "light": 0,
+      "leadTimeHours": 18
+    },
+    {
+      "unixTime": 1776888000,
+      "temperature": 17.9,
+      "humidity": 85,
+      "windSpeed": 6.6,
+      "windDirection": 346,
+      "precipitation": 4.1,
+      "light": 0,
+      "leadTimeHours": 19
+    },
+    {
+      "unixTime": 1776891600,
+      "temperature": 20.4,
+      "humidity": 57,
+      "windSpeed": 1.9,
+      "windDirection": 310,
+      "precipitation": 2.4,
+      "light": 0,
+      "leadTimeHours": 20
+    },
+    {
+      "unixTime": 1776895200,
+      "temperature": 8.3,
+      "humidity": 70,
+      "windSpeed": 8.7,
+      "windDirection": 238,
+      "precipitation": 4.4,
+      "light": 0,
+      "leadTimeHours": 21
+    },
+    {
+      "unixTime": 1776898800,
+      "temperature": 17.4,
+      "humidity": 65,
+      "windSpeed": 1.5,
+      "windDirection": 212,
+      "precipitation": 1.3,
+      "light": 0,
+      "leadTimeHours": 22
+    },
+    {
+      "unixTime": 1776902400,
+      "temperature": 9.9,
+      "humidity": 59,
+      "windSpeed": 5.6,
+      "windDirection": 263,
+      "precipitation": 0.2,
+      "light": 0,
+      "leadTimeHours": 23
+    },
+    {
+      "unixTime": 1776906000,
+      "temperature": 9.9,
+      "humidity": 65,
+      "windSpeed": 3.9,
+      "windDirection": 107,
+      "precipitation": 0.8,
+      "light": 0,
+      "leadTimeHours": 24
+    },
+    {
+      "unixTime": 1776909600,
+      "temperature": 13.6,
+      "humidity": 53,
+      "windSpeed": 8.4,
+      "windDirection": 336,
+      "precipitation": 3.2,
+      "light": 0,
+      "leadTimeHours": 25
+    },
+    {
+      "unixTime": 1776913200,
+      "temperature": 18.5,
+      "humidity": 89,
+      "windSpeed": 3,
+      "windDirection": 337,
+      "precipitation": 2.3,
+      "light": 0,
+      "leadTimeHours": 26
+    },
+    {
+      "unixTime": 1776916800,
+      "temperature": 10.5,
+      "humidity": 66,
+      "windSpeed": 8.4,
+      "windDirection": 137,
+      "precipitation": 1,
+      "light": 0,
+      "leadTimeHours": 27
+    },
+    {
+      "unixTime": 1776920400,
+      "temperature": 15.4,
+      "humidity": 70,
+      "windSpeed": 2.6,
+      "windDirection": 313,
+      "precipitation": 0,
+      "light": 0,
+      "leadTimeHours": 28
+    },
+    {
+      "unixTime": 1776924000,
+      "temperature": 15.8,
+      "humidity": 67,
+      "windSpeed": 3,
+      "windDirection": 253,
+      "precipitation": 1.2,
+      "light": 0,
+      "leadTimeHours": 29
+    },
+    {
+      "unixTime": 1776927600,
+      "temperature": 15.5,
+      "humidity": 88,
+      "windSpeed": 4,
+      "windDirection": 276,
+      "precipitation": 3.3,
+      "light": 0,
+      "leadTimeHours": 30
+    },
+    {
+      "unixTime": 1776931200,
+      "temperature": 18.2,
+      "humidity": 76,
+      "windSpeed": 6.9,
+      "windDirection": 85,
+      "precipitation": 1.2,
+      "light": 0,
+      "leadTimeHours": 31
+    },
+    {
+      "unixTime": 1776934800,
+      "temperature": 8,
+      "humidity": 90,
+      "windSpeed": 8.2,
+      "windDirection": 130,
+      "precipitation": 0.6,
+      "light": 0,
+      "leadTimeHours": 32
+    },
+    {
+      "unixTime": 1776938400,
+      "temperature": 12.3,
+      "humidity": 87,
+      "windSpeed": 1.6,
+      "windDirection": 101,
+      "precipitation": 1.7,
+      "light": 0,
+      "leadTimeHours": 33
+    },
+    {
+      "unixTime": 1776942000,
+      "temperature": 17.6,
+      "humidity": 64,
+      "windSpeed": 6.3,
+      "windDirection": 198,
+      "precipitation": 0.5,
+      "light": 0,
+      "leadTimeHours": 34
+    },
+    {
+      "unixTime": 1776945600,
+      "temperature": 11.2,
+      "humidity": 87,
+      "windSpeed": 7.5,
+      "windDirection": 193,
+      "precipitation": 2,
+      "light": 0,
+      "leadTimeHours": 35
+    },
+    {
+      "unixTime": 1776949200,
+      "temperature": 15.6,
+      "humidity": 77,
+      "windSpeed": 4.4,
+      "windDirection": 330,
+      "precipitation": 1,
+      "light": 0,
+      "leadTimeHours": 36
+    },
+    {
+      "unixTime": 1776952800,
+      "temperature": 20.9,
+      "humidity": 85,
+      "windSpeed": 1.7,
+      "windDirection": 203,
+      "precipitation": 3.7,
+      "light": 0,
+      "leadTimeHours": 37
+    },
+    {
+      "unixTime": 1776956400,
+      "temperature": 9.9,
+      "humidity": 60,
+      "windSpeed": 7,
+      "windDirection": 168,
+      "precipitation": 1.4,
+      "light": 0,
+      "leadTimeHours": 38
+    },
+    {
+      "unixTime": 1776960000,
+      "temperature": 18.1,
+      "humidity": 61,
+      "windSpeed": 3.9,
+      "windDirection": 290,
+      "precipitation": 5,
+      "light": 0,
+      "leadTimeHours": 39
+    },
+    {
+      "unixTime": 1776963600,
+      "temperature": 14,
+      "humidity": 60,
+      "windSpeed": 7.3,
+      "windDirection": 104,
+      "precipitation": 4.2,
+      "light": 0,
+      "leadTimeHours": 40
+    },
+    {
+      "unixTime": 1776967200,
+      "temperature": 13.7,
+      "humidity": 53,
+      "windSpeed": 5.2,
+      "windDirection": 13,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 41
+    },
+    {
+      "unixTime": 1776970800,
+      "temperature": 19.6,
+      "humidity": 66,
+      "windSpeed": 5.1,
+      "windDirection": 63,
+      "precipitation": 0.5,
+      "light": 0,
+      "leadTimeHours": 42
+    },
+    {
+      "unixTime": 1776974400,
+      "temperature": 13.5,
+      "humidity": 52,
+      "windSpeed": 8,
+      "windDirection": 273,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 43
+    },
+    {
+      "unixTime": 1776978000,
+      "temperature": 19.6,
+      "humidity": 52,
+      "windSpeed": 9.4,
+      "windDirection": 144,
+      "precipitation": 3.5,
+      "light": 0,
+      "leadTimeHours": 44
+    },
+    {
+      "unixTime": 1776981600,
+      "temperature": 9,
+      "humidity": 56,
+      "windSpeed": 4.2,
+      "windDirection": 35,
+      "precipitation": 1,
+      "light": 0,
+      "leadTimeHours": 45
+    },
+    {
+      "unixTime": 1776985200,
+      "temperature": 11.6,
+      "humidity": 77,
+      "windSpeed": 6.2,
+      "windDirection": 79,
+      "precipitation": 1.3,
+      "light": 0,
+      "leadTimeHours": 46
+    },
+    {
+      "unixTime": 1776988800,
+      "temperature": 16.7,
+      "humidity": 64,
+      "windSpeed": 2.1,
+      "windDirection": 230,
+      "precipitation": 1.2,
+      "light": 0,
+      "leadTimeHours": 47
+    },
+    {
+      "unixTime": 1776992400,
+      "temperature": 20.9,
+      "humidity": 65,
+      "windSpeed": 2.2,
+      "windDirection": 231,
+      "precipitation": 3.4,
+      "light": 0,
+      "leadTimeHours": 48
+    },
+    {
+      "unixTime": 1776996000,
+      "temperature": 13.6,
+      "humidity": 89,
+      "windSpeed": 2.4,
+      "windDirection": 161,
+      "precipitation": 1.2,
+      "light": 0,
+      "leadTimeHours": 49
+    },
+    {
+      "unixTime": 1776999600,
+      "temperature": 18.9,
+      "humidity": 60,
+      "windSpeed": 7.3,
+      "windDirection": 267,
+      "precipitation": 1.6,
+      "light": 0,
+      "leadTimeHours": 50
+    },
+    {
+      "unixTime": 1777003200,
+      "temperature": 8.9,
+      "humidity": 85,
+      "windSpeed": 6.7,
+      "windDirection": 93,
+      "precipitation": 0.5,
+      "light": 0,
+      "leadTimeHours": 51
+    },
+    {
+      "unixTime": 1777006800,
+      "temperature": 12.2,
+      "humidity": 56,
+      "windSpeed": 1.1,
+      "windDirection": 220,
+      "precipitation": 3.7,
+      "light": 0,
+      "leadTimeHours": 52
+    },
+    {
+      "unixTime": 1777010400,
+      "temperature": 20.7,
+      "humidity": 57,
+      "windSpeed": 7.4,
+      "windDirection": 196,
+      "precipitation": 0.9,
+      "light": 0,
+      "leadTimeHours": 53
+    },
+    {
+      "unixTime": 1777014000,
+      "temperature": 16.8,
+      "humidity": 83,
+      "windSpeed": 8,
+      "windDirection": 8,
+      "precipitation": 3.5,
+      "light": 0,
+      "leadTimeHours": 54
+    },
+    {
+      "unixTime": 1777017600,
+      "temperature": 17.8,
+      "humidity": 51,
+      "windSpeed": 7.2,
+      "windDirection": 337,
+      "precipitation": 2.6,
+      "light": 0,
+      "leadTimeHours": 55
+    },
+    {
+      "unixTime": 1777021200,
+      "temperature": 17.2,
+      "humidity": 74,
+      "windSpeed": 1.3,
+      "windDirection": 296,
+      "precipitation": 1.9,
+      "light": 0,
+      "leadTimeHours": 56
+    },
+    {
+      "unixTime": 1777024800,
+      "temperature": 20.8,
+      "humidity": 87,
+      "windSpeed": 1.1,
+      "windDirection": 217,
+      "precipitation": 1.9,
+      "light": 0,
+      "leadTimeHours": 57
+    },
+    {
+      "unixTime": 1777028400,
+      "temperature": 18.2,
+      "humidity": 55,
+      "windSpeed": 4.4,
+      "windDirection": 135,
+      "precipitation": 3,
+      "light": 0,
+      "leadTimeHours": 58
+    },
+    {
+      "unixTime": 1777032000,
+      "temperature": 16.2,
+      "humidity": 54,
+      "windSpeed": 2.1,
+      "windDirection": 137,
+      "precipitation": 4.1,
+      "light": 0,
+      "leadTimeHours": 59
+    },
+    {
+      "unixTime": 1777035600,
+      "temperature": 14.4,
+      "humidity": 58,
+      "windSpeed": 5.4,
+      "windDirection": 169,
+      "precipitation": 4.7,
+      "light": 0,
+      "leadTimeHours": 60
+    },
+    {
+      "unixTime": 1777039200,
+      "temperature": 9.5,
+      "humidity": 89,
+      "windSpeed": 3.3,
+      "windDirection": 171,
+      "precipitation": 0.7,
+      "light": 0,
+      "leadTimeHours": 61
+    },
+    {
+      "unixTime": 1777042800,
+      "temperature": 13.3,
+      "humidity": 82,
+      "windSpeed": 9.4,
+      "windDirection": 171,
+      "precipitation": 1.5,
+      "light": 0,
+      "leadTimeHours": 62
+    },
+    {
+      "unixTime": 1777046400,
+      "temperature": 20.6,
+      "humidity": 57,
+      "windSpeed": 9.7,
+      "windDirection": 285,
+      "precipitation": 4.2,
+      "light": 0,
+      "leadTimeHours": 63
+    },
+    {
+      "unixTime": 1777050000,
+      "temperature": 19.2,
+      "humidity": 52,
+      "windSpeed": 1.5,
+      "windDirection": 212,
+      "precipitation": 3.4,
+      "light": 0,
+      "leadTimeHours": 64
+    },
+    {
+      "unixTime": 1777053600,
+      "temperature": 16.9,
+      "humidity": 61,
+      "windSpeed": 8.9,
+      "windDirection": 324,
+      "precipitation": 2.1,
+      "light": 0,
+      "leadTimeHours": 65
+    },
+    {
+      "unixTime": 1777057200,
+      "temperature": 14.3,
+      "humidity": 50,
+      "windSpeed": 10,
+      "windDirection": 154,
+      "precipitation": 0.5,
+      "light": 0,
+      "leadTimeHours": 66
+    },
+    {
+      "unixTime": 1777060800,
+      "temperature": 19.9,
+      "humidity": 72,
+      "windSpeed": 5.6,
+      "windDirection": 186,
+      "precipitation": 4.9,
+      "light": 0,
+      "leadTimeHours": 67
+    },
+    {
+      "unixTime": 1777064400,
+      "temperature": 11.7,
+      "humidity": 87,
+      "windSpeed": 3.3,
+      "windDirection": 348,
+      "precipitation": 1.5,
+      "light": 0,
+      "leadTimeHours": 68
+    },
+    {
+      "unixTime": 1777068000,
+      "temperature": 8.7,
+      "humidity": 73,
+      "windSpeed": 4.1,
+      "windDirection": 286,
+      "precipitation": 3.7,
+      "light": 0,
+      "leadTimeHours": 69
+    },
+    {
+      "unixTime": 1777071600,
+      "temperature": 11.1,
+      "humidity": 92,
+      "windSpeed": 5.6,
+      "windDirection": 345,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 70
+    },
+    {
+      "unixTime": 1777075200,
+      "temperature": 15.5,
+      "humidity": 65,
+      "windSpeed": 8.6,
+      "windDirection": 121,
+      "precipitation": 1.7,
+      "light": 0,
+      "leadTimeHours": 71
+    },
+    {
+      "unixTime": 1777078800,
+      "temperature": 13.7,
+      "humidity": 59,
+      "windSpeed": 2.3,
+      "windDirection": 57,
+      "precipitation": 4.2,
+      "light": 0,
+      "leadTimeHours": 72
+    },
+    {
+      "unixTime": 1777082400,
+      "temperature": 13.2,
+      "humidity": 62,
+      "windSpeed": 2.6,
+      "windDirection": 157,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 73
+    },
+    {
+      "unixTime": 1777086000,
+      "temperature": 14.3,
+      "humidity": 54,
+      "windSpeed": 3.2,
+      "windDirection": 355,
+      "precipitation": 1.8,
+      "light": 0,
+      "leadTimeHours": 74
+    },
+    {
+      "unixTime": 1777089600,
+      "temperature": 11.4,
+      "humidity": 92,
+      "windSpeed": 6.1,
+      "windDirection": 139,
+      "precipitation": 1.4,
+      "light": 0,
+      "leadTimeHours": 75
+    },
+    {
+      "unixTime": 1777093200,
+      "temperature": 14.7,
+      "humidity": 64,
+      "windSpeed": 9.9,
+      "windDirection": 359,
+      "precipitation": 2.7,
+      "light": 0,
+      "leadTimeHours": 76
+    },
+    {
+      "unixTime": 1777096800,
+      "temperature": 9.6,
+      "humidity": 80,
+      "windSpeed": 9.5,
+      "windDirection": 168,
+      "precipitation": 0,
+      "light": 0,
+      "leadTimeHours": 77
+    },
+    {
+      "unixTime": 1777100400,
+      "temperature": 19.6,
+      "humidity": 53,
+      "windSpeed": 8.1,
+      "windDirection": 174,
+      "precipitation": 3.7,
+      "light": 0,
+      "leadTimeHours": 78
+    },
+    {
+      "unixTime": 1777104000,
+      "temperature": 20.8,
+      "humidity": 54,
+      "windSpeed": 8.8,
+      "windDirection": 222,
+      "precipitation": 1.5,
+      "light": 0,
+      "leadTimeHours": 79
+    },
+    {
+      "unixTime": 1777107600,
+      "temperature": 9.9,
+      "humidity": 82,
+      "windSpeed": 6.1,
+      "windDirection": 1,
+      "precipitation": 2.4,
+      "light": 0,
+      "leadTimeHours": 80
+    },
+    {
+      "unixTime": 1777111200,
+      "temperature": 9.2,
+      "humidity": 94,
+      "windSpeed": 3,
+      "windDirection": 286,
+      "precipitation": 4.2,
+      "light": 0,
+      "leadTimeHours": 81
+    },
+    {
+      "unixTime": 1777114800,
+      "temperature": 8.5,
+      "humidity": 65,
+      "windSpeed": 8.4,
+      "windDirection": 135,
+      "precipitation": 2.9,
+      "light": 0,
+      "leadTimeHours": 82
+    },
+    {
+      "unixTime": 1777118400,
+      "temperature": 16.2,
+      "humidity": 74,
+      "windSpeed": 3.8,
+      "windDirection": 337,
+      "precipitation": 0.2,
+      "light": 0,
+      "leadTimeHours": 83
+    },
+    {
+      "unixTime": 1777122000,
+      "temperature": 13,
+      "humidity": 59,
+      "windSpeed": 5.8,
+      "windDirection": 234,
+      "precipitation": 4.8,
+      "light": 0,
+      "leadTimeHours": 84
+    },
+    {
+      "unixTime": 1777125600,
+      "temperature": 15.5,
+      "humidity": 62,
+      "windSpeed": 5.5,
+      "windDirection": 170,
+      "precipitation": 0.4,
+      "light": 0,
+      "leadTimeHours": 85
+    },
+    {
+      "unixTime": 1777129200,
+      "temperature": 14.6,
+      "humidity": 79,
+      "windSpeed": 7.7,
+      "windDirection": 143,
+      "precipitation": 4.8,
+      "light": 0,
+      "leadTimeHours": 86
+    },
+    {
+      "unixTime": 1777132800,
+      "temperature": 8.2,
+      "humidity": 67,
+      "windSpeed": 1.5,
+      "windDirection": 163,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 87
+    },
+    {
+      "unixTime": 1777136400,
+      "temperature": 19,
+      "humidity": 55,
+      "windSpeed": 2.9,
+      "windDirection": 358,
+      "precipitation": 2.9,
+      "light": 0,
+      "leadTimeHours": 88
+    },
+    {
+      "unixTime": 1777140000,
+      "temperature": 20.6,
+      "humidity": 74,
+      "windSpeed": 7.9,
+      "windDirection": 157,
+      "precipitation": 4.2,
+      "light": 0,
+      "leadTimeHours": 89
+    },
+    {
+      "unixTime": 1777143600,
+      "temperature": 18.7,
+      "humidity": 87,
+      "windSpeed": 6.6,
+      "windDirection": 79,
+      "precipitation": 2.7,
+      "light": 0,
+      "leadTimeHours": 90
+    },
+    {
+      "unixTime": 1777147200,
+      "temperature": 14.2,
+      "humidity": 74,
+      "windSpeed": 2.3,
+      "windDirection": 218,
+      "precipitation": 0.4,
+      "light": 0,
+      "leadTimeHours": 91
+    },
+    {
+      "unixTime": 1777150800,
+      "temperature": 14.4,
+      "humidity": 85,
+      "windSpeed": 8,
+      "windDirection": 216,
+      "precipitation": 2,
+      "light": 0,
+      "leadTimeHours": 92
+    },
+    {
+      "unixTime": 1777154400,
+      "temperature": 13.9,
+      "humidity": 59,
+      "windSpeed": 9.8,
+      "windDirection": 353,
+      "precipitation": 0.2,
+      "light": 0,
+      "leadTimeHours": 93
+    },
+    {
+      "unixTime": 1777158000,
+      "temperature": 17.7,
+      "humidity": 53,
+      "windSpeed": 1.2,
+      "windDirection": 36,
+      "precipitation": 2.5,
+      "light": 0,
+      "leadTimeHours": 94
+    },
+    {
+      "unixTime": 1777161600,
+      "temperature": 12.5,
+      "humidity": 52,
+      "windSpeed": 1.2,
+      "windDirection": 353,
+      "precipitation": 4.3,
+      "light": 0,
+      "leadTimeHours": 95
+    },
+    {
+      "unixTime": 1777165200,
+      "temperature": 18.5,
+      "humidity": 88,
+      "windSpeed": 7.3,
+      "windDirection": 298,
+      "precipitation": 3.9,
+      "light": 0,
+      "leadTimeHours": 96
+    },
+    {
+      "unixTime": 1777168800,
+      "temperature": 18.7,
+      "humidity": 92,
+      "windSpeed": 4.8,
+      "windDirection": 210,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 97
+    },
+    {
+      "unixTime": 1777172400,
+      "temperature": 18.9,
+      "humidity": 87,
+      "windSpeed": 3.1,
+      "windDirection": 289,
+      "precipitation": 4.7,
+      "light": 0,
+      "leadTimeHours": 98
+    },
+    {
+      "unixTime": 1777176000,
+      "temperature": 8.8,
+      "humidity": 69,
+      "windSpeed": 5.7,
+      "windDirection": 295,
+      "precipitation": 1.5,
+      "light": 0,
+      "leadTimeHours": 99
+    },
+    {
+      "unixTime": 1777179600,
+      "temperature": 12.8,
+      "humidity": 55,
+      "windSpeed": 1.4,
+      "windDirection": 172,
+      "precipitation": 0.7,
+      "light": 0,
+      "leadTimeHours": 100
+    },
+    {
+      "unixTime": 1777183200,
+      "temperature": 20,
+      "humidity": 50,
+      "windSpeed": 6.7,
+      "windDirection": 285,
+      "precipitation": 1.7,
+      "light": 0,
+      "leadTimeHours": 101
+    },
+    {
+      "unixTime": 1777186800,
+      "temperature": 16,
+      "humidity": 78,
+      "windSpeed": 1.7,
+      "windDirection": 79,
+      "precipitation": 0.3,
+      "light": 0,
+      "leadTimeHours": 102
+    },
+    {
+      "unixTime": 1777190400,
+      "temperature": 16.5,
+      "humidity": 87,
+      "windSpeed": 2.6,
+      "windDirection": 300,
+      "precipitation": 0.2,
+      "light": 0,
+      "leadTimeHours": 103
+    },
+    {
+      "unixTime": 1777194000,
+      "temperature": 14.5,
+      "humidity": 90,
+      "windSpeed": 6.5,
+      "windDirection": 167,
+      "precipitation": 3.2,
+      "light": 0,
+      "leadTimeHours": 104
+    },
+    {
+      "unixTime": 1777197600,
+      "temperature": 18.9,
+      "humidity": 95,
+      "windSpeed": 4.2,
+      "windDirection": 137,
+      "precipitation": 2.7,
+      "light": 0,
+      "leadTimeHours": 105
+    },
+    {
+      "unixTime": 1777201200,
+      "temperature": 14.6,
+      "humidity": 92,
+      "windSpeed": 1.1,
+      "windDirection": 243,
+      "precipitation": 4.3,
+      "light": 0,
+      "leadTimeHours": 106
+    },
+    {
+      "unixTime": 1777204800,
+      "temperature": 15.7,
+      "humidity": 50,
+      "windSpeed": 7.8,
+      "windDirection": 44,
+      "precipitation": 1.1,
+      "light": 0,
+      "leadTimeHours": 107
+    },
+    {
+      "unixTime": 1777208400,
+      "temperature": 11.6,
+      "humidity": 66,
+      "windSpeed": 6.1,
+      "windDirection": 257,
+      "precipitation": 3.4,
+      "light": 0,
+      "leadTimeHours": 108
+    },
+    {
+      "unixTime": 1777212000,
+      "temperature": 10.5,
+      "humidity": 64,
+      "windSpeed": 8.6,
+      "windDirection": 71,
+      "precipitation": 3.8,
+      "light": 0,
+      "leadTimeHours": 109
+    },
+    {
+      "unixTime": 1777215600,
+      "temperature": 21.4,
+      "humidity": 77,
+      "windSpeed": 2.8,
+      "windDirection": 102,
+      "precipitation": 4,
+      "light": 0,
+      "leadTimeHours": 110
+    },
+    {
+      "unixTime": 1777219200,
+      "temperature": 11.4,
+      "humidity": 59,
+      "windSpeed": 7.6,
+      "windDirection": 173,
+      "precipitation": 1.1,
+      "light": 0,
+      "leadTimeHours": 111
+    },
+    {
+      "unixTime": 1777222800,
+      "temperature": 16.1,
+      "humidity": 92,
+      "windSpeed": 8.8,
+      "windDirection": 176,
+      "precipitation": 2.6,
+      "light": 0,
+      "leadTimeHours": 112
+    },
+    {
+      "unixTime": 1777226400,
+      "temperature": 13.6,
+      "humidity": 72,
+      "windSpeed": 9.2,
+      "windDirection": 323,
+      "precipitation": 2.3,
+      "light": 0,
+      "leadTimeHours": 113
+    },
+    {
+      "unixTime": 1777230000,
+      "temperature": 11,
+      "humidity": 68,
+      "windSpeed": 2.1,
+      "windDirection": 157,
+      "precipitation": 0.1,
+      "light": 0,
+      "leadTimeHours": 114
+    },
+    {
+      "unixTime": 1777233600,
+      "temperature": 20.6,
+      "humidity": 70,
+      "windSpeed": 2.4,
+      "windDirection": 71,
+      "precipitation": 0.4,
+      "light": 0,
+      "leadTimeHours": 115
+    },
+    {
+      "unixTime": 1777237200,
+      "temperature": 10.1,
+      "humidity": 93,
+      "windSpeed": 6.6,
+      "windDirection": 279,
+      "precipitation": 2.8,
+      "light": 0,
+      "leadTimeHours": 116
+    },
+    {
+      "unixTime": 1777240800,
+      "temperature": 14.2,
+      "humidity": 74,
+      "windSpeed": 8.3,
+      "windDirection": 56,
+      "precipitation": 2.2,
+      "light": 0,
+      "leadTimeHours": 117
+    },
+    {
+      "unixTime": 1777244400,
+      "temperature": 14.9,
+      "humidity": 83,
+      "windSpeed": 4.1,
+      "windDirection": 294,
+      "precipitation": 0.5,
+      "light": 0,
+      "leadTimeHours": 118
+    },
+    {
+      "unixTime": 1777248000,
+      "temperature": 21.2,
+      "humidity": 94,
+      "windSpeed": 5.7,
+      "windDirection": 293,
+      "precipitation": 4.4,
+      "light": 0,
+      "leadTimeHours": 119
+    },
+    {
+      "unixTime": 1777251600,
+      "temperature": 8.9,
+      "humidity": 93,
+      "windSpeed": 6.9,
+      "windDirection": 84,
+      "precipitation": 4.7,
+      "light": 0,
+      "leadTimeHours": 120
+    },
+    {
+      "unixTime": 1777255200,
+      "temperature": 13.3,
+      "humidity": 68,
+      "windSpeed": 3.5,
+      "windDirection": 123,
+      "precipitation": 0.1,
+      "light": 0,
+      "leadTimeHours": 121
+    },
+    {
+      "unixTime": 1777258800,
+      "temperature": 12.4,
+      "humidity": 91,
+      "windSpeed": 9.6,
+      "windDirection": 186,
+      "precipitation": 4.1,
+      "light": 0,
+      "leadTimeHours": 122
+    },
+    {
+      "unixTime": 1777262400,
+      "temperature": 20.8,
+      "humidity": 59,
+      "windSpeed": 8.2,
+      "windDirection": 74,
+      "precipitation": 3.5,
+      "light": 0,
+      "leadTimeHours": 123
+    },
+    {
+      "unixTime": 1777266000,
+      "temperature": 18.1,
+      "humidity": 67,
+      "windSpeed": 8.4,
+      "windDirection": 255,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 124
+    },
+    {
+      "unixTime": 1777269600,
+      "temperature": 16.6,
+      "humidity": 83,
+      "windSpeed": 7.7,
+      "windDirection": 127,
+      "precipitation": 4.9,
+      "light": 0,
+      "leadTimeHours": 125
+    },
+    {
+      "unixTime": 1777273200,
+      "temperature": 9.6,
+      "humidity": 55,
+      "windSpeed": 3.2,
+      "windDirection": 291,
+      "precipitation": 0.4,
+      "light": 0,
+      "leadTimeHours": 126
+    },
+    {
+      "unixTime": 1777276800,
+      "temperature": 11.6,
+      "humidity": 87,
+      "windSpeed": 4,
+      "windDirection": 205,
+      "precipitation": 1.2,
+      "light": 0,
+      "leadTimeHours": 127
+    },
+    {
+      "unixTime": 1777280400,
+      "temperature": 21.4,
+      "humidity": 51,
+      "windSpeed": 7.4,
+      "windDirection": 101,
+      "precipitation": 1.9,
+      "light": 0,
+      "leadTimeHours": 128
+    },
+    {
+      "unixTime": 1777284000,
+      "temperature": 11.6,
+      "humidity": 86,
+      "windSpeed": 6.1,
+      "windDirection": 260,
+      "precipitation": 4.9,
+      "light": 0,
+      "leadTimeHours": 129
+    },
+    {
+      "unixTime": 1777287600,
+      "temperature": 19.5,
+      "humidity": 75,
+      "windSpeed": 1.8,
+      "windDirection": 270,
+      "precipitation": 1.5,
+      "light": 0,
+      "leadTimeHours": 130
+    },
+    {
+      "unixTime": 1777291200,
+      "temperature": 10.2,
+      "humidity": 81,
+      "windSpeed": 6.9,
+      "windDirection": 358,
+      "precipitation": 0.9,
+      "light": 0,
+      "leadTimeHours": 131
+    },
+    {
+      "unixTime": 1777294800,
+      "temperature": 22,
+      "humidity": 86,
+      "windSpeed": 2.2,
+      "windDirection": 183,
+      "precipitation": 3.9,
+      "light": 0,
+      "leadTimeHours": 132
+    },
+    {
+      "unixTime": 1777298400,
+      "temperature": 11.1,
+      "humidity": 56,
+      "windSpeed": 7.7,
+      "windDirection": 204,
+      "precipitation": 0.7,
+      "light": 0,
+      "leadTimeHours": 133
+    },
+    {
+      "unixTime": 1777302000,
+      "temperature": 10.8,
+      "humidity": 85,
+      "windSpeed": 4.2,
+      "windDirection": 112,
+      "precipitation": 4.4,
+      "light": 0,
+      "leadTimeHours": 134
+    },
+    {
+      "unixTime": 1777305600,
+      "temperature": 11.5,
+      "humidity": 93,
+      "windSpeed": 4.9,
+      "windDirection": 282,
+      "precipitation": 1.8,
+      "light": 0,
+      "leadTimeHours": 135
+    },
+    {
+      "unixTime": 1777309200,
+      "temperature": 8,
+      "humidity": 83,
+      "windSpeed": 5.1,
+      "windDirection": 338,
+      "precipitation": 2.3,
+      "light": 0,
+      "leadTimeHours": 136
+    },
+    {
+      "unixTime": 1777312800,
+      "temperature": 18.7,
+      "humidity": 88,
+      "windSpeed": 3.3,
+      "windDirection": 118,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 137
+    },
+    {
+      "unixTime": 1777316400,
+      "temperature": 8.1,
+      "humidity": 76,
+      "windSpeed": 5.6,
+      "windDirection": 20,
+      "precipitation": 3.5,
+      "light": 0,
+      "leadTimeHours": 138
+    },
+    {
+      "unixTime": 1777320000,
+      "temperature": 19.4,
+      "humidity": 56,
+      "windSpeed": 9.6,
+      "windDirection": 20,
+      "precipitation": 4.3,
+      "light": 0,
+      "leadTimeHours": 139
+    },
+    {
+      "unixTime": 1777323600,
+      "temperature": 19.7,
+      "humidity": 77,
+      "windSpeed": 4.4,
+      "windDirection": 143,
+      "precipitation": 3.2,
+      "light": 0,
+      "leadTimeHours": 140
+    },
+    {
+      "unixTime": 1777327200,
+      "temperature": 20.1,
+      "humidity": 89,
+      "windSpeed": 8.7,
+      "windDirection": 69,
+      "precipitation": 5,
+      "light": 0,
+      "leadTimeHours": 141
+    },
+    {
+      "unixTime": 1777330800,
+      "temperature": 14.1,
+      "humidity": 91,
+      "windSpeed": 1.7,
+      "windDirection": 261,
+      "precipitation": 2.4,
+      "light": 0,
+      "leadTimeHours": 142
+    },
+    {
+      "unixTime": 1777334400,
+      "temperature": 16.7,
+      "humidity": 61,
+      "windSpeed": 2.8,
+      "windDirection": 151,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 143
+    },
+    {
+      "unixTime": 1777338000,
+      "temperature": 8.2,
+      "humidity": 51,
+      "windSpeed": 8.8,
+      "windDirection": 59,
+      "precipitation": 4.9,
+      "light": 0,
+      "leadTimeHours": 144
+    },
+    {
+      "unixTime": 1777341600,
+      "temperature": 13.7,
+      "humidity": 66,
+      "windSpeed": 1.3,
+      "windDirection": 76,
+      "precipitation": 3,
+      "light": 0,
+      "leadTimeHours": 145
+    },
+    {
+      "unixTime": 1777345200,
+      "temperature": 15.5,
+      "humidity": 72,
+      "windSpeed": 6.8,
+      "windDirection": 141,
+      "precipitation": 2.7,
+      "light": 0,
+      "leadTimeHours": 146
+    },
+    {
+      "unixTime": 1777348800,
+      "temperature": 13.4,
+      "humidity": 52,
+      "windSpeed": 8.8,
+      "windDirection": 236,
+      "precipitation": 3.2,
+      "light": 0,
+      "leadTimeHours": 147
+    },
+    {
+      "unixTime": 1777352400,
+      "temperature": 19.8,
+      "humidity": 74,
+      "windSpeed": 7,
+      "windDirection": 182,
+      "precipitation": 2.8,
+      "light": 0,
+      "leadTimeHours": 148
+    },
+    {
+      "unixTime": 1777356000,
+      "temperature": 20.1,
+      "humidity": 77,
+      "windSpeed": 7.5,
+      "windDirection": 314,
+      "precipitation": 3.9,
+      "light": 0,
+      "leadTimeHours": 149
+    },
+    {
+      "unixTime": 1777359600,
+      "temperature": 13.1,
+      "humidity": 65,
+      "windSpeed": 3.5,
+      "windDirection": 209,
+      "precipitation": 1.1,
+      "light": 0,
+      "leadTimeHours": 150
+    },
+    {
+      "unixTime": 1777363200,
+      "temperature": 15.8,
+      "humidity": 88,
+      "windSpeed": 4,
+      "windDirection": 35,
+      "precipitation": 1.4,
+      "light": 0,
+      "leadTimeHours": 151
+    },
+    {
+      "unixTime": 1777366800,
+      "temperature": 18.4,
+      "humidity": 58,
+      "windSpeed": 3.6,
+      "windDirection": 10,
+      "precipitation": 2.7,
+      "light": 0,
+      "leadTimeHours": 152
+    },
+    {
+      "unixTime": 1777370400,
+      "temperature": 21.4,
+      "humidity": 78,
+      "windSpeed": 9.2,
+      "windDirection": 177,
+      "precipitation": 4.9,
+      "light": 0,
+      "leadTimeHours": 153
+    },
+    {
+      "unixTime": 1777374000,
+      "temperature": 19.7,
+      "humidity": 76,
+      "windSpeed": 9.5,
+      "windDirection": 302,
+      "precipitation": 4.6,
+      "light": 0,
+      "leadTimeHours": 154
+    },
+    {
+      "unixTime": 1777377600,
+      "temperature": 11.2,
+      "humidity": 83,
+      "windSpeed": 6.7,
+      "windDirection": 349,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 155
+    },
+    {
+      "unixTime": 1777381200,
+      "temperature": 21.9,
+      "humidity": 88,
+      "windSpeed": 6.5,
+      "windDirection": 282,
+      "precipitation": 2.1,
+      "light": 0,
+      "leadTimeHours": 156
+    },
+    {
+      "unixTime": 1777384800,
+      "temperature": 9.1,
+      "humidity": 59,
+      "windSpeed": 6.3,
+      "windDirection": 287,
+      "precipitation": 0.4,
+      "light": 0,
+      "leadTimeHours": 157
+    },
+    {
+      "unixTime": 1777388400,
+      "temperature": 16.5,
+      "humidity": 54,
+      "windSpeed": 2.8,
+      "windDirection": 343,
+      "precipitation": 4.3,
+      "light": 0,
+      "leadTimeHours": 158
+    },
+    {
+      "unixTime": 1777392000,
+      "temperature": 14.1,
+      "humidity": 52,
+      "windSpeed": 4.2,
+      "windDirection": 337,
+      "precipitation": 1.8,
+      "light": 0,
+      "leadTimeHours": 159
+    },
+    {
+      "unixTime": 1777395600,
+      "temperature": 21.4,
+      "humidity": 54,
+      "windSpeed": 5.7,
+      "windDirection": 92,
+      "precipitation": 4.5,
+      "light": 0,
+      "leadTimeHours": 160
+    },
+    {
+      "unixTime": 1777399200,
+      "temperature": 15,
+      "humidity": 86,
+      "windSpeed": 4.8,
+      "windDirection": 75,
+      "precipitation": 1.9,
+      "light": 0,
+      "leadTimeHours": 161
+    },
+    {
+      "unixTime": 1777402800,
+      "temperature": 9.9,
+      "humidity": 84,
+      "windSpeed": 8.6,
+      "windDirection": 149,
+      "precipitation": 0.2,
+      "light": 0,
+      "leadTimeHours": 162
+    },
+    {
+      "unixTime": 1777406400,
+      "temperature": 17.9,
+      "humidity": 88,
+      "windSpeed": 10,
+      "windDirection": 60,
+      "precipitation": 4.8,
+      "light": 0,
+      "leadTimeHours": 163
+    },
+    {
+      "unixTime": 1777410000,
+      "temperature": 15.2,
+      "humidity": 64,
+      "windSpeed": 9.9,
+      "windDirection": 184,
+      "precipitation": 3.3,
+      "light": 0,
+      "leadTimeHours": 164
+    },
+    {
+      "unixTime": 1777413600,
+      "temperature": 13.6,
+      "humidity": 92,
+      "windSpeed": 4,
+      "windDirection": 78,
+      "precipitation": 2.1,
+      "light": 0,
+      "leadTimeHours": 165
+    },
+    {
+      "unixTime": 1777417200,
+      "temperature": 21.7,
+      "humidity": 90,
+      "windSpeed": 4.3,
+      "windDirection": 216,
+      "precipitation": 1.8,
+      "light": 0,
+      "leadTimeHours": 166
+    },
+    {
+      "unixTime": 1777420800,
+      "temperature": 19.7,
+      "humidity": 74,
+      "windSpeed": 5.8,
+      "windDirection": 307,
+      "precipitation": 3.1,
+      "light": 0,
+      "leadTimeHours": 167
+    },
+    {
+      "unixTime": 1777424400,
+      "temperature": 18,
+      "humidity": 90,
+      "windSpeed": 2,
+      "windDirection": 59,
+      "precipitation": 1.9,
+      "light": 0,
+      "leadTimeHours": 168
+    }
+  ]
+}
