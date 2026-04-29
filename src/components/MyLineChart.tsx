@@ -10,6 +10,7 @@ import {
   YAxis,
 } from "recharts"
 import type { WeatherData } from "../types/weatherData"
+import { formatTime } from "../utils/dateFormat.ts"
 
 type MyLineChartProps = {
   data?: WeatherData[]
@@ -40,7 +41,7 @@ export default function MyLineChart({
           strokeWidth={2}
           name="Temperatur"
         />
-        {includeAxes && <XAxis dataKey="date" />}
+        {includeAxes && <XAxis dataKey="date" tickFormatter={formatTime} />}
         {includeAxes && (
           <YAxis
             width={50}

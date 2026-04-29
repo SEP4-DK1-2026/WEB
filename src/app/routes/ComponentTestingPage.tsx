@@ -41,8 +41,8 @@ export default function ComponentTestingPage() {
   return (
     <>
       <div className="grid grid-cols-1 gap-6 rounded-xl border border-blue-200 bg-white p-8 shadow-sm md:grid-cols-2">
-        <TemperatureLineChart data={last24HoursWeather ?? []} includeAxes={true} />
-        <TemperatureLineChart data={next24HoursWeather ?? []} includeAxes={true} />
+        <TemperatureLineChart data={last24HoursWeather ?? []} />
+        <TemperatureLineChart data={next24HoursWeather ?? []} includeYticks={false} />
       </div>
     </>
   )
