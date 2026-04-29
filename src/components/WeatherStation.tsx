@@ -121,12 +121,26 @@ const WeatherBox = ({ title, data }: WeatherBoxProps) => {
         </div>
 
         <div className="rounded-lg bg-white p-4 shadow-md">
-          <p className="text-sm font-semibold text-gray-600">Vindretning</p>
-          <p className="mt-2 text-3xl font-bold text-purple-500">
-            {formatWindDirection(data.windDirection)} ({data.windDirection}°)
-          </p>
-        </div>
+  <p className="text-sm font-semibold text-gray-600">
+    Vindretning
+  </p>
 
+  <div className="mt-2 flex items-center gap-3">
+    <p className="text-3xl font-bold text-purple-500">
+      {formatWindDirection(data.windDirection)}
+    </p>
+
+    <span
+      className="text-3xl transition-transform"
+      style={{
+        display: 'inline-block',
+        transform: `rotate(${data.windDirection}deg)`,
+      }}
+    >
+      ➜
+    </span>
+  </div>
+</div>
         <div className="rounded-lg bg-white p-4 shadow-md">
           <p className="text-sm font-semibold text-gray-600">Lys</p>
           <p className="mt-2 text-3xl font-bold text-yellow-500">
@@ -170,7 +184,7 @@ export default function WeatherStation() {
           Vejrudsigt
         </h1>
         <p className="text-gray-600">
-          Her ses nuværende og fremtidig vejrinformation
+          Her ses nuværende og fremtidig vejr
         </p>
       </div>
 
