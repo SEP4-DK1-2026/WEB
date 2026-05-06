@@ -1,11 +1,16 @@
 import { http, HttpResponse } from "msw"
 import { BASE_URL } from "../../features/fetch-weather-data/api/weatherApi"
 import {
-  currentWeatherMock,
-  historicalDataLast7Days,
-  predictionDataNext7Days,
+  getCurrentWeatherMock,
+  generateHistoricalData,
+  generateNextHoursPredictions,
+  generatePredictionData,
 } from "../../utils/weatherMockSeries"
 
+/**
+ * Parses a query parameter as a number.
+ * Handles both milliseconds and seconds timestamps.
+ */
 function parseQueryNumber(url: URL, key: string): number | undefined {
   const value = url.searchParams.get(key)
   if (value === null) {
@@ -16,6 +21,10 @@ function parseQueryNumber(url: URL, key: string): number | undefined {
   return Number.isFinite(parsed) ? parsed : undefined
 }
 
+/**
+ * Normalizes a timestamp to seconds.
+ * Handles both millisecond and second timestamps automatically.
+ */
 function normalizeUnixTimeToSeconds(value: number): number {
   return value > 1_000_000_000_000
     ? Math.floor(value / 1000)
@@ -23,40 +32,55 @@ function normalizeUnixTimeToSeconds(value: number): number {
 }
 
 export const handlers = [
-  http.get(`${BASE_URL}/current`, () => {
-    return HttpResponse.json(currentWeatherMock)
+  // Get latest/current weather data
+  http.get(`${BASE_URL}/getLatestWeather`, () => {
+    return HttpResponse.json(getCurrentWeatherMock())
   }),
+
+  // Get historical data within a date range
   http.get(`${BASE_URL}/historical`, ({ request }) => {
     const url = new URL(request.url)
     const startDate = parseQueryNumber(url, "startDate")
     const endDate = parseQueryNumber(url, "endDate")
 
     if (startDate === undefined || endDate === undefined) {
-      return HttpResponse.json(historicalDataLast7Days)
+      return HttpResponse.json([])
     }
 
     const startSeconds = normalizeUnixTimeToSeconds(startDate)
     const endSeconds = normalizeUnixTimeToSeconds(endDate)
 
-    const filtered = historicalDataLast7Days.filter(
-      (entry) => entry.unixTime >= startSeconds && entry.unixTime <= endSeconds,
-    )
-
-    return HttpResponse.json(filtered)
+    const historicalData = generateHistoricalData(startSeconds, endSeconds)
+    return HttpResponse.json(historicalData)
   }),
-  http.get(`${BASE_URL}/predict`, ({ request }) => {
+
+  // Get predictions for N hours from now
+  http.get(`${BASE_URL}/getPredictionsNextHours`, ({ request }) => {
     const url = new URL(request.url)
     const hoursFromNow = parseQueryNumber(url, "hoursFromNow")
 
     if (hoursFromNow === undefined) {
-      return HttpResponse.json(predictionDataNext7Days)
+      return HttpResponse.json([])
     }
 
-    const boundedHours = Math.max(
-      0,
-      Math.min(Math.floor(hoursFromNow), predictionDataNext7Days.length),
-    )
+    const predictions = generateNextHoursPredictions(hoursFromNow)
+    return HttpResponse.json(predictions)
+  }),
 
-    return HttpResponse.json(predictionDataNext7Days.slice(0, boundedHours))
+  // Get predictions within a date range
+  http.get(`${BASE_URL}/getPredictionsInRange`, ({ request }) => {
+    const url = new URL(request.url)
+    const startDate = parseQueryNumber(url, "startDate")
+    const endDate = parseQueryNumber(url, "endDate")
+
+    if (startDate === undefined || endDate === undefined) {
+      return HttpResponse.json([])
+    }
+
+    const startSeconds = normalizeUnixTimeToSeconds(startDate)
+    const endSeconds = normalizeUnixTimeToSeconds(endDate)
+
+    const predictions = generatePredictionData(startSeconds, endSeconds)
+    return HttpResponse.json(predictions)
   }),
 ]

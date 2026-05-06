@@ -40,6 +40,16 @@ export async function getPrediction(
   return data.map(toPredictionData)
 }
 
+/** Returns datapoint closest to timestamp 24 hours from now */
+export async function getPrediction24Hours(): Promise<PredictionData> {
+  const result = await fetch(`${BASE_URL}/getPredictionsNextHours?hoursFromNow=24`)
+  if (!result.ok) {
+    throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
+  }
+  const data: PredictionDataDto[] = await result.json()
+  return toPredictionData(data[23])
+}
+
 /** Takes unix timestamps in seconds */
 export async function getPredictionsInRange(
   startDate: number,
