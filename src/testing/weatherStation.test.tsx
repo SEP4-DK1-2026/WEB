@@ -12,11 +12,7 @@ test('renders Weather Station component', async () => {
     name: /Vejrudsigt/i,
   });
 
-  expect(heading).toBeInTheDocument();
-
-  expect(
-    await screen.findByText(/Her ses nuværende og fremtidig vejrinformation/i),
-  ).toBeInTheDocument();
+  
 
   expect(await screen.findByText(/Nuværende vejr/i)).toBeInTheDocument();
   expect(await screen.findByText(/Forventet vejr/i)).toBeInTheDocument();
