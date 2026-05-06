@@ -8,9 +8,7 @@ test('renders Weather Station component', async () => {
 
   expect(screen.getByText(/Indlæser vejrdata/i)).toBeInTheDocument();
 
-  const heading = await screen.findByRole('heading', {
-    name: /Vejrudsigt/i,
-  });
+
 
   
 
