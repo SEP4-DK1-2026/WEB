@@ -1,11 +1,25 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { BASE_URL } from '../features/fetch-weather-data/api/weatherApi';
+
+/* Weather icons */
+import Sun from '../assets/Sun.png';
+import Cloudy from '../assets/Cloudy.png';
+import Rain from '../assets/Rain.png';
+import HeavyRain from '../assets/Heavy rain.png';
+import HeavyCloudy from '../assets/Heavy cloudy.png';
+import SunAndRain from '../assets/Sun and rain.png';
+import Snow from '../assets/Snow.png';
+import Haze from '../assets/Haze.png';
 
 interface WeatherData {
+  unixTime: number;
   temperature: number;
-  rainfall: number;
+  humidity: number;
   windSpeed: number;
-  windDirection: string;
+  windDirection: number;
+  precipitation: number;
   light: number;
+  leadTimeHours?: number;
 }
 
 interface WeatherBoxProps {
@@ -13,104 +27,171 @@ interface WeatherBoxProps {
   data: WeatherData;
 }
 
-const WeatherBox: React.FC<WeatherBoxProps> = ({ title, data }) => {
+function formatWindDirection(degrees: number) {
+  const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+  return directions[Math.round(degrees / 45) % 8];
+}
+
+function formatDate(unixTime: number) {
+  return new Date(unixTime * 1000).toLocaleString('da-DK', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  });
+}
+
+function getWeatherIcon(data: WeatherData) {
+  if (data.temperature <= 0 && data.precipitation > 0) {
+    return Snow;
+  }
+
+  if (data.precipitation > 8) {
+    return HeavyRain;
+  }
+
+  if (data.precipitation > 2 && data.light > 15000) {
+    return SunAndRain;
+  }
+
+  if (data.precipitation > 1) {
+    return Rain;
+  }
+
+  if (data.humidity > 85 && data.light < 5000) {
+    return Haze;
+  }
+
+  if (data.light > 25000) {
+    return Sun;
+  }
+
+  if (data.light < 8000) {
+    return HeavyCloudy;
+  }
+
+  return Cloudy;
+}
+
+const WeatherBox = ({ title, data }: WeatherBoxProps) => {
+  const weatherIcon = getWeatherIcon(data);
+
   return (
-    <div className="rounded-lg border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
-      <h2 className="mb-6 text-2xl font-bold text-blue-900">{title}</h2>
+    <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            {formatDate(data.unixTime)}
+          </p>
+        </div>
+
+        <img
+          src={weatherIcon}
+          alt="Weather icon"
+          className="h-20 w-20 object-contain"
+        />
+      </div>
 
       <div className="grid grid-cols-2 gap-6">
         <div className="rounded-lg bg-white p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-600">Temperature</p>
-              <p className="mt-2 text-3xl font-bold text-orange-500">{data.temperature}°C</p>
-            </div>
-            <span className="text-4xl">🌡️</span>
-          </div>
+          <p className="text-sm font-semibold text-gray-600">Temperatur</p>
+          <p className="mt-2 text-3xl font-bold text-orange-500">
+            {data.temperature}°C
+          </p>
         </div>
 
         <div className="rounded-lg bg-white p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-600">Rainfall</p>
-              <p className="mt-2 text-3xl font-bold text-blue-500">{data.rainfall} mm</p>
-            </div>
-            <span className="text-4xl">🌧️</span>
-          </div>
+          <p className="text-sm font-semibold text-gray-600">Luftfugtighed</p>
+          <p className="mt-2 text-3xl font-bold text-blue-500">
+            {data.humidity}%
+          </p>
         </div>
 
         <div className="rounded-lg bg-white p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-600">Wind Speed</p>
-              <p className="mt-2 text-3xl font-bold text-cyan-500">{data.windSpeed} m/s</p>
-            </div>
-            <span className="text-4xl">💨</span>
-          </div>
+          <p className="text-sm font-semibold text-gray-600">Nedbør</p>
+          <p className="mt-2 text-3xl font-bold text-cyan-500">
+            {data.precipitation} mm
+          </p>
         </div>
 
         <div className="rounded-lg bg-white p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-600">Wind Direction</p>
-              <p className="mt-2 text-3xl font-bold text-indigo-500">{data.windDirection}</p>
-            </div>
-            <span className="text-4xl">🧭</span>
-          </div>
+          <p className="text-sm font-semibold text-gray-600">Vindhastighed</p>
+          <p className="mt-2 text-3xl font-bold text-indigo-500">
+            {data.windSpeed} m/s
+          </p>
         </div>
 
-        <div className="col-span-2 rounded-lg bg-white p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-gray-600">Light Intensity</p>
-              <div className="mt-2 flex items-center gap-3">
-                <p className="text-3xl font-bold text-yellow-500">{data.light}%</p>
-                <div className="h-3 w-32 overflow-hidden rounded-full bg-gray-200">
-                  <div
-                    className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 transition-all"
-                    style={{ width: `${data.light}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-            <span className="text-4xl">☀️</span>
-          </div>
+        <div className="rounded-lg bg-white p-4 shadow-md">
+  <p className="text-sm font-semibold text-gray-600">
+    Vindretning
+  </p>
+
+  <div className="mt-2 flex items-center gap-3">
+    <p className="text-3xl font-bold text-purple-500">
+      {formatWindDirection(data.windDirection)}
+    </p>
+
+    <span
+      className="text-3xl transition-transform"
+      style={{
+        display: 'inline-block',
+        transform: `rotate(${data.windDirection}deg)`,
+      }}
+    >
+      ➜
+    </span>
+  </div>
+</div>
+        <div className="rounded-lg bg-white p-4 shadow-md">
+          <p className="text-sm font-semibold text-gray-600">Lys</p>
+          <p className="mt-2 text-3xl font-bold text-yellow-500">
+            {data.light} lx
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-const WeatherStation: React.FC = () => {
-  const currentWeather: WeatherData = {
-    temperature: 22,
-    rainfall: 2.5,
-    windSpeed: 4.8,
-    windDirection: 'NW',
-    light: 75,
-  };
+export default function WeatherStation() {
+  const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null);
+  const [predictedWeather, setPredictedWeather] = useState<WeatherData | null>(null);
 
-  const predictedWeather: WeatherData = {
-    temperature: 19,
-    rainfall: 5.2,
-    windSpeed: 6.3,
-    windDirection: 'SW',
-    light: 45,
-  };
+  useEffect(() => {
+    async function loadWeather() {
+      const [currentResponse, predictionResponse] = await Promise.all([
+        fetch(`${BASE_URL}/current`),
+        fetch(`${BASE_URL}/predict?hoursFromNow=1`),
+      ]);
+
+      const currentData = await currentResponse.json();
+      const predictionData = await predictionResponse.json();
+
+      setCurrentWeather(currentData);
+      setPredictedWeather(predictionData[0] ?? null);
+    }
+
+    void loadWeather();
+  }, []);
+
+  if (!currentWeather || !predictedWeather) {
+    return <p className="text-gray-600">Indlæser vejrdata...</p>;
+  }
 
   return (
     <div>
       <div className="mb-8">
-        <h1 className="mb-2 text-4xl font-bold text-gray-800">Weather Station</h1>
-        <p className="text-gray-600">Real-time weather monitoring and forecast</p>
+        <h1 className="mb-2 text-4xl font-bold text-gray-800">
+          Vejrudsigt
+        </h1>
+        <p className="text-gray-600">
+          Her ses nuværende og fremtidig vejr
+        </p>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <WeatherBox title="Current Weather" data={currentWeather} />
-        <WeatherBox title="Predicted Weather" data={predictedWeather} />
+        <WeatherBox title="Nuværende vejr" data={currentWeather} />
+        <WeatherBox title="Forventet vejr" data={predictedWeather} />
       </div>
     </div>
   );
-};
-
-export default WeatherStation;
+}

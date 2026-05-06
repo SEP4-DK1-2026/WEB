@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
+
 
 // Workaround for typing mismatch after swapping to TypeScript
 const reactCompilerBabelOptions = {
@@ -14,7 +15,11 @@ export default defineConfig({
     react(),
     babel(reactCompilerBabelOptions),
     tailwindcss(),
-  ],
+    ],
+  test: {
+      environment: 'jsdom',
+      setupFiles: './src/testing/setupTests.ts', 
+    },
   server: {
     host: '0.0.0.0',
     port: 5173,

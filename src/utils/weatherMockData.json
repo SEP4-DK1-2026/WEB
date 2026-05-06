@@ -1,12 +1,12 @@
 {
   "currentWeather": {
     "unixTime": 1776819600,
-    "temperature": 16.8,
-    "humidity": 64,
+    "temperature": 10,
+    "humidity": 86,
     "windSpeed": 4.2,
     "windDirection": 235,
     "precipitation": 0,
-    "light": 18500
+    "light": 30000
   },
   "historicalDataLast7Days": [
     {
@@ -1530,7 +1530,7 @@
       "windSpeed": 5.5,
       "windDirection": 295,
       "precipitation": 4.1,
-      "light": 0,
+      "light": 6,
       "leadTimeHours": 1
     },
     {
