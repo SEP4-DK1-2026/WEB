@@ -1,6 +1,10 @@
-import { type PredictionData, type WeatherData } from "../../../types/weatherData"
+import {
+  type PredictionData,
+  type WeatherData,
+} from "../../../types/weatherData"
 
-export const BASE_URL = "sep4-web-microservice-cxb7cvhvdpgdedfs.swedencentral-01.azurewebsites.net/api"
+export const BASE_URL =
+  "https://sep4-web-microservice-cxb7cvhvdpgdedfs.swedencentral-01.azurewebsites.net/api"
 
 // API returns unix time, but we want to convert to Date for work in TypeScript
 type WeatherDataDto = Omit<WeatherData, "date"> & {
@@ -25,14 +29,16 @@ function toPredictionData(dto: PredictionDataDto): PredictionData {
   const { predictedTime, ...rest } = dto
   return {
     ...rest,
-    predictedDate: new Date(predictedTime * 1000)
+    predictedDate: new Date(predictedTime * 1000),
   }
 }
 
 export async function getPrediction(
   hoursFromNow: number,
 ): Promise<PredictionData[]> {
-  const result = await fetch(`${BASE_URL}/getPredictionsNextHours?hoursFromNow=${hoursFromNow}`)
+  const result = await fetch(
+    `${BASE_URL}/getPredictionsNextHours?hoursFromNow=${hoursFromNow}`,
+  )
   if (!result.ok) {
     throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
   }
@@ -42,24 +48,28 @@ export async function getPrediction(
 
 /** Returns datapoint closest to timestamp 24 hours from now */
 export async function getPrediction24Hours(): Promise<PredictionData> {
-  const result = await fetch(`${BASE_URL}/getPredictionsNextHours?hoursFromNow=24`)
+  const result = await fetch(
+    `${BASE_URL}/getPredictionsNextHours?hoursFromNow=24`,
+  )
   if (!result.ok) {
     throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
   }
   const data: PredictionDataDto[] = await result.json()
-  return toPredictionData(data[23])
+  return toPredictionData(data[24] ?? data[23])
 }
 
 /** Takes unix timestamps in seconds */
 export async function getPredictionsInRange(
-  startDate: number,
-  endDate: number,
+  startTime: number,
+  endTime: number,
 ): Promise<PredictionData[]> {
   const result = await fetch(
-    `${BASE_URL}/getPredictionsInRange?startDate=${startDate}&endDate=${endDate}`,
+    `${BASE_URL}/getPredictionsInRange?startTime=${startTime}&endTime=${endTime}`,
   )
   if (!result.ok) {
-    throw new Error(`Failed to fetch weather predictions in range: ${result.statusText}`)
+    throw new Error(
+      `Failed to fetch weather predictions in range: ${result.statusText}`,
+    )
   }
   const data: PredictionDataDto[] = await result.json()
   return data.map(toPredictionData)
@@ -67,7 +77,7 @@ export async function getPredictionsInRange(
 
 export async function getPredictionsInRangeUsingDates(
   startDate: Date,
-  endDate: Date
+  endDate: Date,
 ): Promise<PredictionData[]> {
   const startTimestamp = Math.floor(startDate.getTime() / 1000)
   const endTimestamp = Math.floor(endDate.getTime() / 1000)
@@ -77,12 +87,12 @@ export async function getPredictionsInRangeUsingDates(
 
 // Maybe add InRange to name
 /** Takes unix timestamps in seconds */
-export async function getHistoricalData(
-  startDate: number,
-  endDate: number,
+export async function getHistoricalDataInRange(
+  startTime: number,
+  endTime: number,
 ): Promise<WeatherData[]> {
   const result = await fetch(
-    `${BASE_URL}/historical?startDate=${startDate}&endDate=${endDate}`,
+    `${BASE_URL}/getWeatherInRange?startTime=${startTime}&endTime=${endTime}`,
   )
   if (!result.ok) {
     throw new Error(
@@ -93,29 +103,29 @@ export async function getHistoricalData(
   return data.map(toWeatherData)
 }
 
-export async function getHistoricalDataUsingDates(
+export async function getHistoricalDataInRangeUsingDates(
   startDate: Date,
-  endDate: Date
+  endDate: Date,
 ): Promise<WeatherData[]> {
   const startTimestamp = Math.floor(startDate.getTime() / 1000)
   const endTimestamp = Math.floor(endDate.getTime() / 1000)
 
-  return getHistoricalData(startTimestamp, endTimestamp)
+  return getHistoricalDataInRange(startTimestamp, endTimestamp)
 }
 
 // Helper function
 export async function getLast24Hours(): Promise<WeatherData[]> {
-  const endDate = Math.floor(Date.now() / 1000)
-  const startDate = endDate - 24 * 60 * 60
+  const endTimestamp = Math.floor(Date.now() / 1000)
+  const startTimestamp = endTimestamp - 24 * 60 * 60
 
-  return getHistoricalData(startDate, endDate)
+  return getHistoricalDataInRange(startTimestamp, endTimestamp)
 }
 
-export async function getCurrentWeather(): Promise<WeatherData> {
+export async function getLatestWeather(): Promise<WeatherData> {
   const result = await fetch(`${BASE_URL}/getLatestWeather`)
   if (!result.ok) {
     throw new Error(
-      `Failed to fetch current weather data: ${result.statusText}`,
+      `Failed to fetch latest weather data: ${result.statusText}`,
     )
   }
   const data: WeatherDataDto = await result.json()
