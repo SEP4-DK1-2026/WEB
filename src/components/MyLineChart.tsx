@@ -1,6 +1,16 @@
 import { RechartsDevtools } from "@recharts/devtools"
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts"
 import type { WeatherData } from "../types/weatherData"
+import { formatTime } from "../utils/dateFormat.ts"
 
 type MyLineChartProps = {
   data?: WeatherData[]
@@ -12,8 +22,8 @@ export default function MyLineChart({
   includeAxes = true,
 }: MyLineChartProps) {
   return (
+    <ResponsiveContainer width="100%" aspect={1.618} maxHeight={500}>
       <LineChart
-        style={{ width: "100%", aspectRatio: 1.618, maxWidth: 600 }}
         responsive
         data={data}
         margin={{
@@ -27,20 +37,21 @@ export default function MyLineChart({
         <Line
           type="monotone"
           dataKey="temperature"
-          stroke="purple"
+          stroke="red"
           strokeWidth={2}
-          name="Temperature"
+          name="Temperatur"
         />
-        {includeAxes && <XAxis dataKey="date" />}
+        {includeAxes && <XAxis dataKey="date" tickFormatter={formatTime} />}
         {includeAxes && (
           <YAxis
-            width={"auto"}
-            label={{ value: "Temperature", position: "insideLeft", angle: -90 }}
+            width={50}
+            //label={{ value: "Temperature", position: "insideLeft", angle: -90 }}
           />
         )}
         {includeAxes && <Legend align="right" />}
         <Tooltip />
         <RechartsDevtools />
       </LineChart>
+    </ResponsiveContainer>
   )
 }
