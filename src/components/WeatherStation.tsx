@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import {
-  getCurrentWeather,
+  getLatestWeather,
   getPrediction24Hours,
 } from "../features/fetch-weather-data/api/weatherApi"
 import type { PredictionData, WeatherData } from "../types/weatherData"
@@ -162,7 +162,7 @@ export default function WeatherStation() {
   useEffect(() => {
     async function loadWeather() {
       const [currentData, predictionData] = await Promise.all([
-        getCurrentWeather(),
+        getLatestWeather(),
         getPrediction24Hours(),
       ])
 
