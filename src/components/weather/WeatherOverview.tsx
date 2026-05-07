@@ -25,7 +25,11 @@ export default function WeatherOverview({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <section
+      data-testid="weather-overview"
+      aria-label="Oversigt over nuværende og forventet vejr"
+      className="grid grid-cols-1 gap-8 md:grid-cols-2"
+    >
       <WeatherCard
         title="Nuværende vejr"
         data={currentWeather}
@@ -37,6 +41,6 @@ export default function WeatherOverview({
         data={predictedWeather}
         displayDate={predictedWeather.predictedDate}
       />
-    </div>
+    </section>
   )
 }
