@@ -38,7 +38,6 @@ export const handlers = [
     const endTime = Number(url.searchParams.get("endTime"))
 
     if (!Number.isFinite(startTime) || !Number.isFinite(endTime)) {
-      const now = Math.floor(Date.now() / 1000)
       return HttpResponse.json(
         generateNextHoursPredictions(24),
       )
