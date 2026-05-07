@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
-import WeatherStation from '../components/WeatherStation';
+import WeatherStation from '../weather/WeatherStation';
 
 test('renders Weather Station component', async () => {
   render(<WeatherStation />);
