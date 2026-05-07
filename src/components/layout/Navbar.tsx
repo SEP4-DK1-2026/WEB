@@ -11,7 +11,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <span className="text-xl font-bold text-gray-800">
-          Weather Station
+          Vejrstation
         </span>
 
         <nav className="flex items-center gap-3">
