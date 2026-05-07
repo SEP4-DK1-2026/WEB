@@ -38,9 +38,10 @@ export function useWeatherData() {
         setPredictedWeather(predicted)
         setHistoricalData(historical)
         setPredictionData(predictions)
-      } catch {
-        setError("Kunne ikke hente vejrdata.")
-      } finally {
+      } catch (error) {
+    console.error(error)
+    setError("Kunne ikke hente vejrdata.")
+    } finally {
         setLoading(false)
       }
     }

@@ -11,15 +11,11 @@ const reactCompilerBabelOptions = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    babel(reactCompilerBabelOptions),
-    tailwindcss(),
-    ],
+  plugins: [react()],
   test: {
-      environment: 'jsdom',
-      setupFiles: './src/testing/setupTests.ts', 
-    },
+    environment: "jsdom",
+    setupFiles: "./src/testing/setupTests.ts",
+  },
   server: {
     host: '0.0.0.0',
     port: 5173,

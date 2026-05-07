@@ -22,10 +22,11 @@ export default function HomePage() {
       />
 
       <WeatherCharts
-        historicalData={weatherData.historicalData}
-        predictionData={weatherData.predictionData}
-        loading={weatherData.loading}
-      />
+  historicalData={weatherData.historicalData}
+  predictionData={weatherData.predictionData}
+  loading={weatherData.loading}
+  error={weatherData.error}
+/>
     </div>
   )
 }

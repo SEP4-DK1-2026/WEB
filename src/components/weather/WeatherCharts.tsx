@@ -6,6 +6,7 @@ type WeatherChartsProps = {
   historicalData: WeatherData[]
   predictionData: PredictionData[]
   loading: boolean
+  error: string | null
 }
 
 function predictionToWeatherData(data: PredictionData[]): WeatherData[] {
@@ -24,8 +25,9 @@ export default function WeatherCharts({
   historicalData,
   predictionData,
   loading,
+  error,
 }: WeatherChartsProps) {
-  if (loading) return null
+  if (loading || error) return null
 
   const predictionChartData = predictionToWeatherData(predictionData)
 
