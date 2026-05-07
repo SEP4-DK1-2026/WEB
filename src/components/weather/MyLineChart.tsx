@@ -9,8 +9,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
-import type { WeatherData } from "../types/weatherData"
-import { formatTime } from "../utils/dateFormat.ts"
+import type { WeatherData } from "../../types/weatherData"
+import { formatTime } from "../../utils/dateFormat"
 
 type MyLineChartProps = {
   data?: WeatherData[]

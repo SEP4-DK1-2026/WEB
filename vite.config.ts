@@ -1,25 +1,16 @@
 import { defineConfig } from 'vitest/config';
-import react, { reactCompilerPreset } from '@vitejs/plugin-react'
-import babel from '@rolldown/plugin-babel'
-import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from "@tailwindcss/vite"
 
 
-// Workaround for typing mismatch after swapping to TypeScript
-const reactCompilerBabelOptions = {
-  presets: [reactCompilerPreset()],
-} as Parameters<typeof babel>[0]
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    babel(reactCompilerBabelOptions),
-    tailwindcss(),
-    ],
+  plugins: [react(),tailwindcss()],
   test: {
-      environment: 'jsdom',
-      setupFiles: './src/testing/setupTests.ts', 
-    },
+    environment: "jsdom",
+    setupFiles: "./src/testing/setupTests.ts",
+  },
   server: {
     host: '0.0.0.0',
     port: 5173,

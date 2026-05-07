@@ -8,10 +8,12 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "check": "npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
+    "act": "^0.0.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.14.2",
@@ -20,6 +22,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
+    "@emnapi/core": "^1.7.1",
+    "@emnapi/runtime": "^1.7.1",
     "@eslint/js": "^9.39.4",
     "@recharts/devtools": "^0.0.11",
     "@rolldown/plugin-babel": "^0.2.0",
@@ -39,9 +43,7 @@
     "msw": "^2.13.6",
     "typescript": "^5.9.3",
     "vite": "^8.0.0",
-    "vitest": "^4.1.5",
-    "@emnapi/core": "^1.7.1",
-    "@emnapi/runtime": "^1.7.1"
+    "vitest": "^4.1.5"
   },
   "msw": {
     "workerDirectory": [
