@@ -24,20 +24,20 @@ export default function WeatherCard({
 
   return (
     <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
-          <p className="mt-2 text-sm text-gray-600">
-            {formatDate(displayDate)}
-          </p>
-        </div>
+      <div className="mb-8 flex items-start justify-between gap-6">
+  <div>
+    <h2 className="text-3xl font-bold text-blue-900">{title}</h2>
+    <p className="mt-3 text-base text-gray-600">
+      {formatDate(displayDate)}
+    </p>
+  </div>
 
-        <img
-          src={weatherIcon}
-          alt="Vejrikon"
-          className="h-20 w-20 object-contain"
-        />
-      </div>
+  <img
+    src={weatherIcon}
+    alt="Vejrikon"
+    className="h-24 w-24 object-contain"
+  />
+</div>
 
       <div className="grid grid-cols-2 gap-6">
         <div className="rounded-lg bg-white p-4 shadow-md">
