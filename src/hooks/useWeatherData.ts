@@ -4,7 +4,7 @@ import {
   getLatestWeather,
   getPrediction24Hours,
   getLast24Hours,
-  getPrediction,
+  getPredictionsInRangeUsingDates,
 } from "../features/fetch-weather-data/api/weatherApi"
 
 import type { PredictionData, WeatherData } from "../types/weatherData"
@@ -31,7 +31,7 @@ export function useWeatherData() {
             getLatestWeather(),
             getPrediction24Hours(),
             getLast24Hours(),
-            getPrediction(24),
+            getPredictionsInRangeUsingDates(new Date(Date.now() - 24 * 60 * 60 * 1000), new Date(Date.now() + 24 * 60 * 60 * 1000)),
           ])
 
         setCurrentWeather(current)
