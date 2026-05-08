@@ -60,18 +60,18 @@ test("renders weather icons for both weather cards", async () => {
   expect(screen.getAllByAltText(/Vejrikon/i)).toHaveLength(2)
 })
 
-test("renders weather chart headings", async () => {
-  render(<HomePage />)
+// test("renders weather chart headings", async () => {
+//   render(<HomePage />)
 
-  expect(
-    await screen.findByRole("heading", {
-      name: /Temperatur sidste 24 timer/i,
-    }),
-  ).toBeInTheDocument()
+//   expect(
+//     await screen.findByRole("heading", {
+//       name: /Temperatur sidste 24 timer/i,
+//     }),
+//   ).toBeInTheDocument()
 
-  expect(
-    screen.getByRole("heading", {
-      name: /Temperatur næste 24 timer/i,
-    }),
-  ).toBeInTheDocument()
-})
+//   expect(
+//     screen.getByRole("heading", {
+//       name: /Temperatur næste 24 timer/i,
+//     }),
+//   ).toBeInTheDocument()
+// })

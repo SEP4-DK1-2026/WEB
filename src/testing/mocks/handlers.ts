@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw"
 import {
   generateHistoricalData,
+  generatePredictionData,
   generateNextHoursPredictions,
   getCurrentWeatherMock,
 } from "../../utils/weatherMockSeries"
@@ -38,16 +39,9 @@ export const handlers = [
     const endTime = Number(url.searchParams.get("endTime"))
 
     if (!Number.isFinite(startTime) || !Number.isFinite(endTime)) {
-      return HttpResponse.json(
-        generateNextHoursPredictions(24),
-      )
+      return HttpResponse.json(generateNextHoursPredictions(24))
     }
 
-    const hoursFromNow = Math.max(
-      0,
-      Math.ceil((endTime - startTime) / 3600),
-    )
-
-    return HttpResponse.json(generateNextHoursPredictions(hoursFromNow))
+    return HttpResponse.json(generatePredictionData(startTime, endTime, 0))
   }),
 ]
