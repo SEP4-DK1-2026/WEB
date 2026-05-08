@@ -27,6 +27,47 @@ function seededRandom(seed: number): number {
   return x - Math.floor(x)
 }
 
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value))
+}
+
+function applyPredictionVariance(
+  weather: Omit<WeatherDtoMock, "time">,
+  timestamp: number,
+  predictionOffset: number,
+): Omit<WeatherDtoMock, "time"> {
+  const seedBase = timestamp / 3600 + predictionOffset * 7
+
+  return {
+    temperature: weather.temperature + (seededRandom(seedBase) - 0.5) * 4,
+    humidity: clamp(
+      weather.humidity + (seededRandom(seedBase + 1) - 0.5) * 12,
+      25,
+      100,
+    ),
+    windSpeed: clamp(
+      weather.windSpeed + (seededRandom(seedBase + 2) - 0.5) * 4,
+      0,
+      25,
+    ),
+    windDirection: clamp(
+      weather.windDirection + (seededRandom(seedBase + 3) - 0.5) * 40,
+      0,
+      360,
+    ),
+    precipitation: clamp(
+      weather.precipitation + (seededRandom(seedBase + 4) - 0.5) * 2,
+      0,
+      15,
+    ),
+    light: clamp(
+      weather.light + (seededRandom(seedBase + 5) - 0.5) * 20000,
+      0,
+      120000,
+    ),
+  }
+}
+
 /**
  * Generates a mock weather data point for a given timestamp.
  */
@@ -53,8 +94,13 @@ function generatePredictionDataPoint(
   predictionOffset: number,
 ): PredictionDtoMock {
   const { time: _time, ...weatherData } = generateWeatherDataPoint(timestamp)
+  const adjustedWeather = applyPredictionVariance(
+    weatherData,
+    timestamp,
+    predictionOffset,
+  )
   return {
-    ...weatherData,
+    ...adjustedWeather,
     predictedTime: timestamp,
     predictionOffset,
   }
