@@ -1,6 +1,4 @@
 import type { PredictionData, WeatherData } from "../../types/weatherData"
-import TemperatureLineChart from "./TemperatureLineChart"
-import MyLineChart from "./MyLineChart"
 import FrontPageLineChart from "./FrontPageChart"
 
 type WeatherChartsProps = {
@@ -10,18 +8,6 @@ type WeatherChartsProps = {
   error: string | null
 }
 
-// function predictionToWeatherData(data: PredictionData[]): WeatherData[] {
-//   return data.map((entry) => ({
-//     temperature: entry.temperature,
-//     humidity: entry.humidity,
-//     windSpeed: entry.windSpeed,
-//     windDirection: entry.windDirection,
-//     precipitation: entry.precipitation,
-//     light: entry.light,
-//     date: entry.predictedDate,
-//   }))
-// }
-
 export default function WeatherCharts({
   historicalData,
   predictionData,
@@ -29,9 +15,6 @@ export default function WeatherCharts({
   error,
 }: WeatherChartsProps) {
   if (loading || error) return null
-
-  // const predictionChartData = predictionToWeatherData(predictionData)
-  // const combinedData = [...historicalData, ...predictionChartData]
 
   return (
     <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">

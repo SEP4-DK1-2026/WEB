@@ -11,6 +11,10 @@ import {
 } from "recharts"
 import type { PredictionData, WeatherData } from "../../types/weatherData"
 import { formatTime, formatDate } from "../../utils/dateFormat"
+import {
+  formatDate as formatDateTime,
+  formatOneDecimal,
+} from "../../utils/weatherFormatting"
 
 type FrontPageLineChartProps = {
   predictionData: PredictionData[]
@@ -21,8 +25,8 @@ type FrontPageLineChartProps = {
 
 type ChartPoint = {
   date: Date
-  temperature: number
-  series: "historical" | "prediction"
+  historicalTemperature?: number
+  predictionTemperature?: number
 }
 
 export default function FrontPageLineChart({
@@ -40,21 +44,39 @@ export default function FrontPageLineChart({
     return startDate === endDate ? startDate : `${startDate} - ${endDate}`
   }
 
-  const historicalSeries: ChartPoint[] = weatherData.map((d) => ({
-    date: d.date,
-    temperature: d.temperature,
-    series: "historical",
-  }))
+  const pointsByTime = new Map<number, ChartPoint>()
 
-  const predictionSeries: ChartPoint[] = predictionData.map((d) => ({
-    date: d.predictedDate,
-    temperature: d.temperature,
-    series: "prediction",
-  }))
+  for (const entry of weatherData) {
+    const key = entry.date.getTime()
+    const existing = pointsByTime.get(key)
 
-  const combinedData = [...historicalSeries, ...predictionSeries].sort(
+    pointsByTime.set(key, {
+      date: entry.date,
+      historicalTemperature: entry.temperature,
+      predictionTemperature: existing?.predictionTemperature,
+    })
+  }
+
+  for (const entry of predictionData) {
+    const key = entry.predictedDate.getTime()
+    const existing = pointsByTime.get(key)
+
+    pointsByTime.set(key, {
+      date: entry.predictedDate,
+      historicalTemperature: existing?.historicalTemperature,
+      predictionTemperature: entry.temperature,
+    })
+  }
+
+  const combinedData = Array.from(pointsByTime.values()).sort(
     (a, b) => a.date.getTime() - b.date.getTime(),
   )
+
+  const predictionStartMs = predictionData[0]?.predictedDate.getTime()
+  const predictionEndMs =
+    predictionData[predictionData.length - 1]?.predictedDate.getTime()
+
+  const predictionTicks = predictionData.map((d) => d.predictedDate.getTime())
 
   return (
     <ResponsiveContainer width="100%" aspect={1.618} maxHeight={500}>
@@ -68,30 +90,30 @@ export default function FrontPageLineChart({
           left: 0,
         }}
       >
-        <CartesianGrid stroke="#aaa" strokeDasharray="5 5" />
+        <CartesianGrid stroke="#aaa" strokeOpacity={0.3} />
         <Line
           type="monotone"
-          dataKey={(d: ChartPoint) =>
-            d.series === "historical" ? d.temperature : null
-          }
-          connectNulls
+          dataKey="historicalTemperature"
           stroke="red"
           strokeWidth={2}
           name="Målt temperatur"
         />
         <Line
           type="monotone"
-          dataKey={(d: ChartPoint) =>
-            d.series === "prediction" ? d.temperature : null
-          }
-          connectNulls
+          dataKey="predictionTemperature"
           stroke="blue"
           strokeWidth={2}
           name="Forudsagt temperatur"
         />
+
         <XAxis
-          dataKey="date"
-          tickFormatter={formatTime}
+          dataKey={(d: ChartPoint) => d.date.getTime()}
+          type="number"
+          scale="time"
+          domain={[predictionStartMs, predictionEndMs]}
+          ticks={predictionTicks}
+          tickFormatter={(ms) => formatTime(new Date(ms))}
+          interval={3}
           label={{
             value: getDateRangeLabel(),
             position: "insideBottom",
@@ -105,7 +127,14 @@ export default function FrontPageLineChart({
           tickFormatter={includeYticks ? undefined : () => ""}
         />
         {includeLegend && <Legend align="right" />}
-        <Tooltip />
+        <Tooltip
+          labelFormatter={(label) => formatDateTime(new Date(label))}
+          formatter={(value, name) => [
+            `${formatOneDecimal(Number(value))} °C`,
+            name,
+          ]}
+        />
+
         <RechartsDevtools />
       </LineChart>
     </ResponsiveContainer>
