@@ -16,13 +16,19 @@ export default function WeatherCharts({
 }: WeatherChartsProps) {
   if (loading || error) return null
 
-  return (
-    <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
-      <h2 className="mb-4 text-2xl font-bold text-blue-900">
-        Temperatur sidste 24 timer
-      </h2>
+ return (
+  <section
+    aria-label="Temperaturgraf"
+    className="rounded-xl border border-blue-200 bg-white p-5 shadow-md"
+  >
+    <h2 className="mb-3 text-xl font-bold text-blue-900">
+      Temperatur sidste 24 timer og næste 24 timer
+    </h2>
 
-      <FrontPageLineChart predictionData={predictionData} weatherData={historicalData} />
-    </div>
+    <FrontPageLineChart
+      predictionData={predictionData}
+      weatherData={historicalData}
+    />
+  </section>
   )
 }
