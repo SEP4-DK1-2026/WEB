@@ -7,12 +7,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-5">
-      <section>
-        <h1 className="mb-1 text-3xl font-bold text-gray-800">Vejrudsigt</h1>
-        <p className="text-sm text-gray-600">
-          Her ses nuværende og fremtidig vejr
-        </p>
-      </section>
+     
 
       <WeatherOverview
         currentWeather={weatherData.currentWeather}

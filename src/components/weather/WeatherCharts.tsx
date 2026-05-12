@@ -30,5 +30,5 @@ export default function WeatherCharts({
       weatherData={historicalData}
     />
   </section>
-  )
+)
 }
