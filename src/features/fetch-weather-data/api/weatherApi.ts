@@ -33,7 +33,7 @@ function toPredictionData(dto: PredictionDataDto): PredictionData {
   }
 }
 
-export async function getPrediction(
+export async function getPredictions(
   hoursFromNow: number,
 ): Promise<PredictionData[]> {
   const result = await fetch(
@@ -47,15 +47,15 @@ export async function getPrediction(
 }
 
 /** Returns datapoint closest to timestamp 24 hours from now */
-export async function getPrediction24Hours(): Promise<PredictionData> {
+export async function getPredictionNext24Hours(): Promise<PredictionData> {
   const result = await fetch(
-    `${BASE_URL}/getPredictionsNextHours?hoursFromNow=25`,
+    `${BASE_URL}/getPredictionNext24Hours`,
   )
   if (!result.ok) {
     throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
   }
-  const data: PredictionDataDto[] = await result.json()
-  return toPredictionData(data[24] ??data[23])
+  const data: PredictionDataDto = await result.json()
+  return toPredictionData(data)
 }
 
 /** Takes unix timestamps in seconds */
@@ -124,9 +124,7 @@ export async function getLast24Hours(): Promise<WeatherData[]> {
 export async function getLatestWeather(): Promise<WeatherData> {
   const result = await fetch(`${BASE_URL}/getLatestWeather`)
   if (!result.ok) {
-    throw new Error(
-      `Failed to fetch latest weather data: ${result.statusText}`,
-    )
+    throw new Error(`Failed to fetch latest weather data: ${result.statusText}`)
   }
   const data: WeatherDataDto = await result.json()
   return toWeatherData(data)
