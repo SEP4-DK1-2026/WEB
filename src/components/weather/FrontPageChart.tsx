@@ -79,7 +79,7 @@ export default function FrontPageLineChart({
   const predictionTicks = predictionData.map((d) => d.predictedDate.getTime())
 
   return (
-    <ResponsiveContainer width="100%" aspect={1.618} maxHeight={500}>
+    <ResponsiveContainer width="100%" height={260}>
       <LineChart
         responsive
         data={combinedData}
