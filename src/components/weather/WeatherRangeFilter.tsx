@@ -1,29 +1,25 @@
-
-
 type WeatherRangeFilterProps = {
   startDate: string;
   endDate: string;
   maxDate: string;
   minDate?: string;
+  endDateMax?: string;
   onStartDateChange: (value: string) => void;
   onEndDateChange: (value: string) => void;
   onSubmit: () => void;
-  
 };
-
-
 
 export default function WeatherRangeFilter({
   startDate,
   endDate,
   minDate,
   maxDate,
+  endDateMax,
   onStartDateChange,
   onEndDateChange,
   onSubmit,
 }: WeatherRangeFilterProps) {
-
-  const isInvalidRange = startDate > endDate
+  const isInvalidRange = startDate > endDate;
   return (
     <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-sm">
       <h2 className="mb-4 text-2xl font-bold text-blue-900">Vælg periode</h2>
@@ -36,7 +32,6 @@ export default function WeatherRangeFilter({
             value={startDate}
             min={minDate}
             max={maxDate}
-            
             onChange={(event) => onStartDateChange(event.target.value)}
             className="rounded-lg border border-gray-300 px-3 py-2"
           />
@@ -47,8 +42,8 @@ export default function WeatherRangeFilter({
           <input
             type="date"
             value={endDate}
-            min={minDate}
-            max={maxDate}
+            min={startDate}
+            max={endDateMax ?? maxDate}
             onChange={(event) => onEndDateChange(event.target.value)}
             className="rounded-lg border border-gray-300 px-3 py-2"
           />
