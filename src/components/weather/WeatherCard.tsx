@@ -51,7 +51,7 @@ export default function WeatherCard({
   const weatherIcon = getWeatherIcon(data)
 
   return (
-    <article className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-5 shadow-md">
+    <article className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-3 shadow-md">
       <div className="mb-5 flex items-start justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
@@ -63,7 +63,7 @@ export default function WeatherCard({
         <img
           src={weatherIcon}
           alt="Vejrikon"
-          className="h-16 w-16 object-contain xl:h-20 xl:w-20"
+          className="h-12 w-12 object-contain xl:h-16 xl:w-16"
         />
       </div>
 

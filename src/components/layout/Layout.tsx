@@ -6,7 +6,7 @@ export default function Layout() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-6 py-6">
+      <main className="mx-auto max-w-7xl px-5 py-5">
         <Outlet />
       </main>
     </div>

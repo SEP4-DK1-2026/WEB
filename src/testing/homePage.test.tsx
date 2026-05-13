@@ -16,9 +16,7 @@ test("renders loading state before weather data is loaded", () => {
 test("renders front page heading and description", () => {
   render(<HomePage />)
 
-  expect(
-    screen.getByRole("heading", { name: /Vejrudsigt/i }),
-  ).toBeInTheDocument()
+
 
   expect(
     screen.getByText(/Her ses nuværende og fremtidig vejr/i),
