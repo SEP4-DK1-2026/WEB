@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 import {
   getLatestWeather,
-  getPrediction24Hours,
+  getPredictionNext24Hours,
   getLast24Hours,
   getPredictionsInRangeUsingDates,
 } from "../features/fetch-weather-data/api/weatherApi"
@@ -26,22 +26,26 @@ export function useWeatherData() {
         setLoading(true)
         setError(null)
 
-        const [current, predicted, historical, predictions] =
-          await Promise.all([
+        const [current, predicted, historical, predictions] = await Promise.all(
+          [
             getLatestWeather(),
-            getPrediction24Hours(),
+            getPredictionNext24Hours(),
             getLast24Hours(),
-            getPredictionsInRangeUsingDates(new Date(Date.now() - 24 * 60 * 60 * 1000), new Date(Date.now() + 24 * 60 * 60 * 1000)),
-          ])
+            getPredictionsInRangeUsingDates(
+              new Date(Date.now() - 24 * 60 * 60 * 1000),
+              new Date(Date.now() + 24 * 60 * 60 * 1000),
+            ),
+          ],
+        )
 
         setCurrentWeather(current)
         setPredictedWeather(predicted)
         setHistoricalData(historical)
         setPredictionData(predictions)
       } catch (error) {
-    console.error(error)
-    setError("Kunne ikke hente vejrdata.")
-    } finally {
+        console.error(error)
+        setError("Kunne ikke hente vejrdata.")
+      } finally {
         setLoading(false)
       }
     }
