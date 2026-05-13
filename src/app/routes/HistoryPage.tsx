@@ -32,7 +32,7 @@ const [endDate, setEndDate] = useState(toInputDate(today))
   return (
     <div className="space-y-8">
       <div>
-        <h1 className= "mb-2 text-4x1 font-bold text-gray-800">Historik</h1>
+        <h1 className= "mb-2 text-4xl font-bold text-gray-800">Historik</h1>
         <p className= "text-gray-600">
           Se historiske vejrdata for en given periode
         </p>
@@ -49,11 +49,11 @@ const [endDate, setEndDate] = useState(toInputDate(today))
       onSubmit={handleSubmit}
       />
 
-      {loading && <p>indlæser historiske date...</p>}
+      {loading && <p>indlæser historiske data...</p>}
       {error && <p className="text-red-600">{error}</p>}
 
-      <div className="rounded-xl border border-blue 200 bg-white p-6 shadow-lg">
-        <h2 className="mb-4 text 2x1 font-bold text-blue-900">
+      <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
+        <h2 className="mb-4 text-2xl font-bold text-blue-900">
           Historisk temperatur
         </h2>
 
