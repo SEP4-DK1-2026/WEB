@@ -32,6 +32,18 @@ export const handlers = [
     return HttpResponse.json(generateNextHoursPredictions(hoursFromNow))
   }),
 
+  http.get("*/getPredictionNext24Hours", () => {
+    const now = Math.floor(Date.now() / 1000)
+    const targetTimestamp = now + 24 * 60 * 60
+    const [prediction] = generatePredictionData(
+      targetTimestamp,
+      targetTimestamp,
+      24,
+    )
+
+    return HttpResponse.json(prediction)
+  }),
+
   http.get("*/getPredictionsInRange", ({ request }) => {
     const url = new URL(request.url)
 
