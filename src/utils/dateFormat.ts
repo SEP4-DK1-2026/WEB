@@ -16,3 +16,10 @@ export function formatDate(value: Date | string | number) {
     day: "2-digit",
   })
 }
+
+export function formatDateNoYear(value: Date | string | number) {
+  return toDate(value).toLocaleDateString("da-DK", {
+    day: "numeric",
+    month: "short",
+  })
+}

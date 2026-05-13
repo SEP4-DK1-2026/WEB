@@ -14,12 +14,13 @@ import {
 } from "recharts"
 import { RechartsDevtools } from "@recharts/devtools"
 import type { PredictionData } from "../../types/weatherData"
-import { formatTime } from "../../utils/dateFormat"
+import { formatDateNoYear } from "../../utils/dateFormat"
 import {
   formatWeatherTooltipLabel,
   formatWeatherTooltipValue,
   formatWeatherAxisTick,
 } from "../../utils/chartTooltip"
+import { getDailyTicks } from "../../utils/chartTicks"
 import { scaleTimeSeriesData } from "../../utils/scaleTimeSeries"
 
 type PredictionChartProps = {
@@ -29,11 +30,20 @@ type PredictionChartProps = {
 export default function PredictionChart({ data }: PredictionChartProps) {
   const chartHeight = 240
   const scaledData = scaleTimeSeriesData(data, (value) => value.predictedDate)
+  const dailyTicks = getDailyTicks(scaledData, (value) => value.predictedDate)
 
   const commonAxis = (
     <>
       <CartesianGrid stroke="#aaa" strokeOpacity={0.3} />
-      <XAxis dataKey="predictedDate" tickFormatter={formatTime} />
+      <XAxis
+        dataKey={(entry: PredictionData) => entry.predictedDate.getTime()}
+        type="number"
+        scale="time"
+        tickFormatter={formatDateNoYear}
+        ticks={dailyTicks}
+        interval="preserveStartEnd"
+        minTickGap={24}
+      />
     </>
   )
 

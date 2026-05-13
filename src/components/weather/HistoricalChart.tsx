@@ -14,12 +14,13 @@ import {
 } from "recharts"
 import { RechartsDevtools } from "@recharts/devtools"
 import type { WeatherData } from "../../types/weatherData"
-import { formatTime } from "../../utils/dateFormat"
+import { formatDateNoYear } from "../../utils/dateFormat"
 import {
   formatWeatherTooltipLabel,
   formatWeatherTooltipValue,
   formatWeatherAxisTick,
 } from "../../utils/chartTooltip"
+import { getDailyTicks } from "../../utils/chartTicks"
 import { scaleTimeSeriesData } from "../../utils/scaleTimeSeries"
 
 type HistoricalChartProps = {
@@ -29,11 +30,20 @@ type HistoricalChartProps = {
 export default function HistoricalChart({ data }: HistoricalChartProps) {
   const chartHeight = 240
   const scaledData = scaleTimeSeriesData(data, (value) => value.date)
+  const dailyTicks = getDailyTicks(scaledData, (value) => value.date)
 
   const commonAxis = (
     <>
       <CartesianGrid stroke="#aaa" strokeOpacity={0.3} />
-      <XAxis dataKey="date" tickFormatter={formatTime} />
+      <XAxis
+        dataKey={(entry: WeatherData) => entry.date.getTime()}
+        type="number"
+        scale="time"
+        tickFormatter={formatDateNoYear}
+        ticks={dailyTicks}
+        interval="preserveStartEnd"
+        minTickGap={24}
+      />
     </>
   )
 
