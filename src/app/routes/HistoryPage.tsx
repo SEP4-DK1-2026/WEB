@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import WeatherRangeFilter  from "../../components/weather/WeatherRangeFilter"
-import TemperatureLineChart from "../../components/weather/TemperatureLineChart"
 import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
+import HistoricalChart from '../../components/weather/HistoricalChart';
 
 function toInputDate(date: Date) {
   return date.toISOString().split("T")[0]
@@ -57,7 +57,8 @@ const [endDate, setEndDate] = useState(toInputDate(today))
           Historisk temperatur
         </h2>
 
-        <TemperatureLineChart data={data} />
+        <HistoricalChart data={data} />
+        
       </div>
     </div>
   )
