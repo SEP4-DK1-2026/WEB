@@ -1,33 +1,34 @@
-import { useState } from "react";
-import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter";
-import TemperatureLineChart from "../../components/weather/TemperatureLineChart";
-import { useWeatherRangeData } from "../../hooks/useWeatherRangeData";
+import { useState } from "react"
+import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter"
+import PredictionChart from "../../components/weather/PredictionChart"
+import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
 
 function toInputDate(date: Date) {
-  return date.toISOString().split("T")[0];
+  return date.toISOString().split("T")[0]
 }
 
 function addDays(date: Date, days: number) {
-  const copy = new Date(date);
-  copy.setDate(copy.getDate() + days);
-  return copy;
+  const copy = new Date(date)
+  copy.setDate(copy.getDate() + days)
+  return copy
 }
 
 export default function ForecastPage() {
-  const today = new Date();
+  const today = new Date()
 
-  const minPredictionDate = today;
-  const maxPredictionDate = addDays(today, 7);
+  const minPredictionDate = today
+  const maxPredictionDate = addDays(today, 7)
 
-  const tomorrow = addDays(today, 1);
+  const tomorrow = addDays(today, 1)
 
-  const [startDate, setStartDate] = useState(toInputDate(today));
-  const [endDate, setEndDate] = useState(toInputDate(tomorrow));
+  const [startDate, setStartDate] = useState(toInputDate(today))
+  const [endDate, setEndDate] = useState(toInputDate(tomorrow))
 
-  const { data, loading, error, loadRange } = useWeatherRangeData("prediction");
+  const { predictionData, loading, error, loadRange } =
+    useWeatherRangeData("prediction")
 
   function handleSubmit() {
-    void loadRange(new Date(startDate), new Date(endDate));
+    void loadRange(new Date(startDate), new Date(endDate))
   }
 
   return (
@@ -57,8 +58,8 @@ export default function ForecastPage() {
           Forudsagt temperatur
         </h2>
 
-        <TemperatureLineChart data={data} />
+        <PredictionChart data={predictionData} />
       </div>
     </div>
-  );
+  )
 }

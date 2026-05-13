@@ -9,6 +9,7 @@ type RangeMode = "historical" | "prediction"
 
 export function useWeatherRangeData(mode: RangeMode) {
   const [data, setData] = useState<WeatherData[]>([])
+  const [predictionData, setPredictionData] = useState<PredictionData[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -24,6 +25,7 @@ export function useWeatherRangeData(mode: RangeMode) {
         )
 
         setData(result)
+        setPredictionData([])
         return
       }
 
@@ -31,6 +33,8 @@ export function useWeatherRangeData(mode: RangeMode) {
         startDate,
         endDate,
       )
+
+      setPredictionData(predictions)
 
       const mappedPredictionData: WeatherData[] = predictions.map(
         (entry: PredictionData) => ({
@@ -54,6 +58,7 @@ export function useWeatherRangeData(mode: RangeMode) {
 
   return {
     data,
+    predictionData,
     loading,
     error,
     loadRange,

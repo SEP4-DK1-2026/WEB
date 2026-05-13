@@ -13,7 +13,7 @@ import {
   YAxis,
 } from "recharts"
 import { RechartsDevtools } from "@recharts/devtools"
-import type { WeatherData } from "../../types/weatherData"
+import type { PredictionData } from "../../types/weatherData"
 import { formatDate, formatTime } from "../../utils/dateFormat"
 import {
   formatWeatherTooltipLabel,
@@ -21,13 +21,13 @@ import {
 } from "../../utils/chartTooltip"
 import { scaleTimeSeriesData } from "../../utils/scaleTimeSeries"
 
-type HistoricalChartProps = {
-  data: WeatherData[]
+type PredictionChartProps = {
+  data: PredictionData[]
 }
 
 function getDateRangeLabel(
-  values: WeatherData[],
-  getDate: (value: WeatherData) => Date,
+  values: PredictionData[],
+  getDate: (value: PredictionData) => Date,
 ) {
   if (!values || values.length === 0) return "Date"
 
@@ -45,16 +45,16 @@ function getDateRangeLabel(
   return startDate === endDate ? startDate : `${startDate} - ${endDate}`
 }
 
-export default function HistoricalChart({ data }: HistoricalChartProps) {
+export default function PredictionChart({ data }: PredictionChartProps) {
   const chartHeight = 240
-  const dateRangeLabel = getDateRangeLabel(data, (value) => value.date)
-  const scaledData = scaleTimeSeriesData(data, (value) => value.date)
+  const dateRangeLabel = getDateRangeLabel(data, (value) => value.predictedDate)
+  const scaledData = scaleTimeSeriesData(data, (value) => value.predictedDate)
 
   const common = (
     <>
       <CartesianGrid stroke="#aaa" strokeOpacity={0.3} />
       <XAxis
-        dataKey="date"
+        dataKey="predictedDate"
         tickFormatter={formatTime}
         label={{
           value: dateRangeLabel,
