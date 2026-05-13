@@ -14,10 +14,11 @@ import {
 } from "recharts"
 import { RechartsDevtools } from "@recharts/devtools"
 import type { WeatherData } from "../../types/weatherData"
-import { formatDate, formatTime } from "../../utils/dateFormat"
+import { formatTime } from "../../utils/dateFormat"
 import {
   formatWeatherTooltipLabel,
   formatWeatherTooltipValue,
+  formatWeatherAxisTick,
 } from "../../utils/chartTooltip"
 import { scaleTimeSeriesData } from "../../utils/scaleTimeSeries"
 
@@ -25,54 +26,27 @@ type HistoricalChartProps = {
   data: WeatherData[]
 }
 
-function getDateRangeLabel(
-  values: WeatherData[],
-  getDate: (value: WeatherData) => Date,
-) {
-  if (!values || values.length === 0) return "Date"
-
-  let minDate = getDate(values[0])
-  let maxDate = minDate
-
-  for (const value of values) {
-    const date = getDate(value)
-    if (date.getTime() < minDate.getTime()) minDate = date
-    if (date.getTime() > maxDate.getTime()) maxDate = date
-  }
-
-  const startDate = formatDate(minDate)
-  const endDate = formatDate(maxDate)
-  return startDate === endDate ? startDate : `${startDate} - ${endDate}`
-}
-
 export default function HistoricalChart({ data }: HistoricalChartProps) {
   const chartHeight = 240
-  const dateRangeLabel = getDateRangeLabel(data, (value) => value.date)
   const scaledData = scaleTimeSeriesData(data, (value) => value.date)
 
-  const common = (
+  const commonAxis = (
     <>
       <CartesianGrid stroke="#aaa" strokeOpacity={0.3} />
-      <XAxis
-        dataKey="date"
-        tickFormatter={formatTime}
-        label={{
-          value: dateRangeLabel,
-          position: "insideBottom",
-          offset: -5,
-        }}
-      />
-      <YAxis stroke="var(--color-text-3)" />
-      <Tooltip
-        cursor={{ stroke: "var(--color-border-2)" }}
-        contentStyle={{
-          backgroundColor: "var(--color-surface-base)",
-          borderColor: "var(--color-border-2)",
-        }}
-        labelFormatter={formatWeatherTooltipLabel}
-        formatter={formatWeatherTooltipValue}
-      />
+      <XAxis dataKey="date" tickFormatter={formatTime} />
     </>
+  )
+
+  const sharedTooltip = (
+    <Tooltip
+      cursor={{ stroke: "var(--color-border-2)" }}
+      contentStyle={{
+        backgroundColor: "var(--color-surface-base)",
+        borderColor: "var(--color-border-2)",
+      }}
+      labelFormatter={formatWeatherTooltipLabel}
+      formatter={formatWeatherTooltipValue}
+    />
   )
 
   return (
@@ -88,7 +62,14 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             bottom: 0,
           }}
         >
-          {common}
+          {commonAxis}
+          <YAxis
+            stroke="var(--color-text-3)"
+            tickFormatter={(value) =>
+              formatWeatherAxisTick(value, "temperature")
+            }
+          />
+          {sharedTooltip}
           <Line
             type="monotone"
             dataKey="temperature"
@@ -113,7 +94,12 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             bottom: 0,
           }}
         >
-          {common}
+          {commonAxis}
+          <YAxis
+            stroke="var(--color-text-3)"
+            tickFormatter={(value) => formatWeatherAxisTick(value, "humidity")}
+          />
+          {sharedTooltip}
           <Area
             type="monotone"
             dataKey="humidity"
@@ -138,17 +124,21 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             bottom: 0,
           }}
         >
-          {common}
+          {commonAxis}
+          <YAxis
+            stroke="var(--color-text-3)"
+            tickFormatter={(value) =>
+              formatWeatherAxisTick(value, "precipitation")
+            }
+          />
+          {sharedTooltip}
           <Bar
             dataKey="precipitation"
             fill="skyblue"
             activeBar={{ fill: "pink", stroke: "blue" }}
             radius={[5, 5, 0, 0]}
           />
-          <Brush
-            stroke="grey"
-            fill="lightblue"
-          />
+          <Brush stroke="grey" fill="lightblue" />
           <RechartsDevtools />
         </BarChart>
       </ResponsiveContainer>

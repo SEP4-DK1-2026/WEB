@@ -53,5 +53,19 @@ export function formatWeatherTooltipValue(value: unknown, name: unknown) {
     return [String(value ?? ""), key]
   }
 
-  return [`${config.format(numericValue)} ${config.unit}`, config.label]
+  return [`${config.format(numericValue)}${config.unit}`, config.label]
+}
+
+export function formatWeatherAxisTick(
+  value: unknown,
+  key: keyof typeof tooltipConfigByKey,
+) {
+  const config = tooltipConfigByKey[key]
+  const numericValue = typeof value === "number" ? value : Number(value)
+
+  if (Number.isNaN(numericValue)) {
+    return String(value ?? "")
+  }
+
+  return `${config.format(numericValue)}${config.unit}`
 }
