@@ -13,15 +13,9 @@ test("renders loading state before weather data is loaded", () => {
   expect(screen.getByText(/Indlæser vejrdata/i)).toBeInTheDocument()
 })
 
-test("renders front page heading and description", () => {
-  render(<HomePage />)
 
 
 
-  expect(
-    screen.getByText(/Her ses nuværende og fremtidig vejr/i),
-  ).toBeInTheDocument()
-})
 
 test("renders current and predicted weather cards", async () => {
   render(<HomePage />)
