@@ -21,6 +21,7 @@ function toWeatherData(dto: WeatherDataDto): WeatherData {
   const { time, ...rest } = dto
   return {
     ...rest,
+    humidity: Math.min(100, rest.humidity),
     date: new Date(time * 1000),
   }
 }
@@ -29,6 +30,8 @@ function toPredictionData(dto: PredictionDataDto): PredictionData {
   const { predictedTime, ...rest } = dto
   return {
     ...rest,
+    humidity: Math.min(100, rest.humidity),
+    precipitation: Math.max(0, rest.precipitation),
     predictedDate: new Date(predictedTime * 1000),
   }
 }
@@ -48,9 +51,7 @@ export async function getPredictions(
 
 /** Returns datapoint closest to timestamp 24 hours from now */
 export async function getPredictionNext24Hours(): Promise<PredictionData> {
-  const result = await fetch(
-    `${BASE_URL}/getPredictionNext24Hours`,
-  )
+  const result = await fetch(`${BASE_URL}/getPredictionNext24Hours`)
   if (!result.ok) {
     throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
   }

@@ -1,33 +1,55 @@
-import { useState } from "react";
-import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter";
-import TemperatureLineChart from "../../components/weather/TemperatureLineChart";
-import { useWeatherRangeData } from "../../hooks/useWeatherRangeData";
+import { useEffect, useMemo, useState } from "react"
+import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter"
+import PredictionChart from "../../components/weather/PredictionChart"
+import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
+import { formatDateLong } from "../../utils/dateFormat"
 
 function toInputDate(date: Date) {
-  return date.toISOString().split("T")[0];
+  return date.toISOString().split("T")[0]
 }
 
 function addDays(date: Date, days: number) {
-  const copy = new Date(date);
-  copy.setDate(copy.getDate() + days);
-  return copy;
+  const copy = new Date(date)
+  copy.setDate(copy.getDate() + days)
+  return copy
 }
 
 export default function ForecastPage() {
-  const today = new Date();
+  const {
+    initialStartDate,
+    initialEndDate,
+    minPredictionDate,
+    maxPredictionDate,
+  } = useMemo(() => {
+    const today = new Date()
+    const maxDate = addDays(today, 7)
 
-  const minPredictionDate = today;
-  const maxPredictionDate = addDays(today, 7);
+    return {
+      initialStartDate: today,
+      initialEndDate: maxDate,
+      minPredictionDate: today,
+      maxPredictionDate: maxDate,
+    }
+  }, [])
 
-  const tomorrow = addDays(today, 1);
+  const [startDate, setStartDate] = useState(() =>
+    toInputDate(initialStartDate),
+  )
+  const [endDate, setEndDate] = useState(() => toInputDate(initialEndDate))
 
-  const [startDate, setStartDate] = useState(toInputDate(today));
-  const [endDate, setEndDate] = useState(toInputDate(tomorrow));
+  const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
+    new Date(endDate),
+  )}`
 
-  const { data, loading, error, loadRange } = useWeatherRangeData("prediction");
+  const { predictionData, loading, error, loadRange } =
+    useWeatherRangeData("prediction")
+
+  useEffect(() => {
+    void loadRange(initialStartDate, initialEndDate)
+  }, [loadRange, initialStartDate, initialEndDate])
 
   function handleSubmit() {
-    void loadRange(new Date(startDate), new Date(endDate));
+    void loadRange(new Date(startDate), new Date(endDate))
   }
 
   return (
@@ -54,11 +76,11 @@ export default function ForecastPage() {
 
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-2xl font-bold text-blue-900">
-          Forudsagt temperatur
+          {selectedRangeLabel}
         </h2>
 
-        <TemperatureLineChart data={data} />
+        <PredictionChart data={predictionData} />
       </div>
     </div>
-  );
+  )
 }

@@ -22,7 +22,7 @@ export default function WeatherCharts({
     className="rounded-xl border border-blue-200 bg-white p-5 shadow-md"
   >
     <h2 className="mb-3 text-xl font-bold text-blue-900">
-      Temperatur sidste 24 timer og næste 24 timer
+      Prognose for de sidste og næste 24 timer
     </h2>
 
     <FrontPageLineChart

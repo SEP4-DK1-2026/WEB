@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter"
-import TemperatureLineChart from "../../components/weather/TemperatureLineChart"
 import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
+import HistoricalChart from "../../components/weather/HistoricalChart"
+import { formatDateLong } from "../../utils/dateFormat"
 
 function toInputDate(date: Date) {
   return date.toISOString().split("T")[0]
@@ -21,34 +22,51 @@ function getHistoricalMaxEndDate(startDate: string) {
 }
 
 export default function HistoryPage() {
-  const today = new Date()
+  const { initialStartDate, initialEndDate, maxHistoryDate } = useMemo(() => {
+    const today = new Date()
 
-  const defaultStartDate = addDays(today, -7)
+    return {
+      initialStartDate: addDays(today, -7),
+      initialEndDate: today,
+      maxHistoryDate: today,
+    }
+  }, [])
 
-  const [startDate, setStartDate] = useState(toInputDate(defaultStartDate))
-  const [endDate, setEndDate] = useState(toInputDate(today))
+  const [startDate, setStartDate] = useState(() =>
+    toInputDate(initialStartDate),
+  )
+  const [endDate, setEndDate] = useState(() => toInputDate(initialEndDate))
+  const endDateMax = getHistoricalMaxEndDate(startDate)
 
-  const { data, loading, error, loadRange } =
-    useWeatherRangeData("historical")
+  const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
+    new Date(endDate),
+  )}`
 
-  const maxEndDate = getHistoricalMaxEndDate(startDate)
+  const { data, loading, error, loadRange } = useWeatherRangeData("historical")
+
+  useEffect(() => {
+    void loadRange(initialStartDate, initialEndDate)
+  }, [loadRange, initialStartDate, initialEndDate])
 
   function handleStartDateChange(value: string) {
     setStartDate(value)
+    setEndDate((previous) => {
+      if (!previous) {
+        return value
+      }
 
-    const newMaxEndDate = getHistoricalMaxEndDate(value)
+      const maxAllowed = getHistoricalMaxEndDate(value)
 
-    if (endDate > newMaxEndDate) {
-      setEndDate(newMaxEndDate)
-    }
+      if (previous > maxAllowed) {
+        return maxAllowed
+      }
 
-    if (endDate < value) {
-      setEndDate(value)
-    }
-  }
+      if (previous < value) {
+        return value
+      }
 
-  function handleEndDateChange(value: string) {
-    setEndDate(value)
+      return previous
+    })
   }
 
   function handleSubmit() {
@@ -60,29 +78,29 @@ export default function HistoryPage() {
       <div>
         <h1 className="mb-2 text-4xl font-bold text-gray-800">Historik</h1>
         <p className="text-gray-600">
-          Se historiske vejrdata for en valgt periode.
+          Se historiske vejrdata for en given periode
         </p>
       </div>
 
       <WeatherRangeFilter
         startDate={startDate}
         endDate={endDate}
-        maxDate={toInputDate(today)}
-        endDateMax={maxEndDate}
+        maxDate={toInputDate(maxHistoryDate)}
+        endDateMax={endDateMax}
         onStartDateChange={handleStartDateChange}
-        onEndDateChange={handleEndDateChange}
+        onEndDateChange={setEndDate}
         onSubmit={handleSubmit}
       />
 
-      {loading && <p>Indlæser historiske data...</p>}
+      {loading && <p>indlæser historiske data...</p>}
       {error && <p className="text-red-600">{error}</p>}
 
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-2xl font-bold text-blue-900">
-          Historisk temperatur
+          {selectedRangeLabel}
         </h2>
 
-        <TemperatureLineChart data={data} />
+        <HistoricalChart data={data} />
       </div>
     </div>
   )
