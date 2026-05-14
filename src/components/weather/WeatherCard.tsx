@@ -23,7 +23,7 @@ export default function WeatherCard({
   const weatherIcon = getWeatherIcon(data)
 
   return (
-    <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
+    <div className="rounded-xl border border-blue-200 bg-linear-to-br from-blue-50 to-blue-100 p-8 shadow-lg">
       <div className="mb-8 flex items-start justify-between gap-6">
   <div>
     <h2 className="text-3xl font-bold text-blue-900">{title}</h2>
