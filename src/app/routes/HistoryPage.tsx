@@ -14,6 +14,13 @@ function addDays(date: Date, days: number) {
   return copy
 }
 
+function getHistoricalMaxEndDate(startDate: string) {
+  const today = new Date()
+  const maxFromStart = addDays(new Date(startDate), 28)
+
+  return toInputDate(maxFromStart > today ? today : maxFromStart)
+}
+
 export default function HistoryPage() {
   const { initialStartDate, initialEndDate, minHistoryDate, maxHistoryDate } =
     useMemo(() => {
