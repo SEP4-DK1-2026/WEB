@@ -22,22 +22,21 @@ function getHistoricalMaxEndDate(startDate: string) {
 }
 
 export default function HistoryPage() {
-  const { initialStartDate, initialEndDate, minHistoryDate, maxHistoryDate } =
-    useMemo(() => {
-      const today = new Date()
+  const { initialStartDate, initialEndDate, maxHistoryDate } = useMemo(() => {
+    const today = new Date()
 
-      return {
-        initialStartDate: addDays(today, -7),
-        initialEndDate: today,
-        minHistoryDate: addDays(today, -24),
-        maxHistoryDate: today,
-      }
-    }, [])
+    return {
+      initialStartDate: addDays(today, -7),
+      initialEndDate: today,
+      maxHistoryDate: today,
+    }
+  }, [])
 
   const [startDate, setStartDate] = useState(() =>
     toInputDate(initialStartDate),
   )
   const [endDate, setEndDate] = useState(() => toInputDate(initialEndDate))
+  const endDateMax = getHistoricalMaxEndDate(startDate)
 
   const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
     new Date(endDate),
@@ -48,6 +47,27 @@ export default function HistoryPage() {
   useEffect(() => {
     void loadRange(initialStartDate, initialEndDate)
   }, [loadRange, initialStartDate, initialEndDate])
+
+  function handleStartDateChange(value: string) {
+    setStartDate(value)
+    setEndDate((previous) => {
+      if (!previous) {
+        return value
+      }
+
+      const maxAllowed = getHistoricalMaxEndDate(value)
+
+      if (previous > maxAllowed) {
+        return maxAllowed
+      }
+
+      if (previous < value) {
+        return value
+      }
+
+      return previous
+    })
+  }
 
   function handleSubmit() {
     void loadRange(new Date(startDate), new Date(endDate))
@@ -65,9 +85,9 @@ export default function HistoryPage() {
       <WeatherRangeFilter
         startDate={startDate}
         endDate={endDate}
-        minDate={toInputDate(minHistoryDate)}
         maxDate={toInputDate(maxHistoryDate)}
-        onStartDateChange={setStartDate}
+        endDateMax={endDateMax}
+        onStartDateChange={handleStartDateChange}
         onEndDateChange={setEndDate}
         onSubmit={handleSubmit}
       />
