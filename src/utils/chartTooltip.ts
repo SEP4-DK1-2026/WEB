@@ -1,5 +1,6 @@
 import {
   formatDate as formatDateTime,
+  formatWindDirection,
   formatOneDecimal,
   formatWholeNumber,
 } from "./weatherFormatting"
@@ -28,9 +29,30 @@ const tooltipConfigByKey: Record<string, TooltipConfig> = {
   precipitation: {
     label: "Nedbør",
     format: formatOneDecimal,
-    unit: "mm",
+    unit: " mm",
+  },
+  windSpeed: {
+    label: "Vindhastighed",
+    format: formatOneDecimal,
+    unit: " m/s",
+  },
+  windDirection: {
+    label: "Vindretning",
+    format: formatWindDirection,
+    unit: "",
+  },
+  light: {
+    label: "Lys",
+    format: formatWholeNumber,
+    unit: " lux",
   },
 }
+
+export type WeatherTooltipKey = keyof typeof tooltipConfigByKey
+
+export const weatherTooltipKeys = Object.keys(
+  tooltipConfigByKey,
+) as WeatherTooltipKey[]
 
 export function formatWeatherTooltipLabel(value: unknown) {
   if (

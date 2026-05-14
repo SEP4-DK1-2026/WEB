@@ -1,15 +1,11 @@
 import {
   formatWeatherTooltipLabel,
   formatWeatherTooltipValue,
+  type WeatherTooltipKey,
+  weatherTooltipKeys,
 } from "../../utils/chartTooltip"
 
-type WeatherTooltipDatum = {
-  temperature?: number
-  humidity?: number
-  precipitation?: number
-}
-
-const tooltipKeys = ["temperature", "humidity", "precipitation"] as const
+type WeatherTooltipDatum = Partial<Record<WeatherTooltipKey, number>>
 
 type SharedTooltipProps = {
   active?: boolean
@@ -43,9 +39,17 @@ export default function SharedWeatherTooltip({
         {formatWeatherTooltipLabel(label)}
       </div>
       <div className="space-y-1">
-        {tooltipKeys.map((key) => {
+        {weatherTooltipKeys.map((key) => {
+          const value = dataPoint[key]
+          if (
+            value == null ||
+            (typeof value === "number" && Number.isNaN(value))
+          ) {
+            return null
+          }
+
           const [formattedValue, metricLabel] = formatWeatherTooltipValue(
-            dataPoint[key],
+            value,
             key,
           )
 
