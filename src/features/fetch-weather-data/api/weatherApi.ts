@@ -29,6 +29,7 @@ function toPredictionData(dto: PredictionDataDto): PredictionData {
   const { predictedTime, ...rest } = dto
   return {
     ...rest,
+    precipitation: Math.max(0, rest.precipitation),
     predictedDate: new Date(predictedTime * 1000),
   }
 }

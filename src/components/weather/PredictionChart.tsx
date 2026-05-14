@@ -172,7 +172,9 @@ export default function PredictionChart({ data }: PredictionChartProps) {
             wrapperStyle={{ paddingBottom: 8 }}
           />
           <Bar
-            dataKey="precipitation"
+            dataKey={(entry: PredictionData) =>
+              entry.precipitation >= 0.1 ? entry.precipitation : null
+            }
             name="Nedbør"
             fill="skyblue"
             activeBar={{ fill: "pink", stroke: "blue" }}
