@@ -4,6 +4,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -39,6 +40,7 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
         ticks={dailyTicks}
         interval="preserveStartEnd"
         minTickGap={24}
+        tickMargin={10}
       />
     </>
   )
@@ -67,9 +69,20 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             cursor={{ stroke: "#bfdbfe" }}
             content={<SharedWeatherTooltip />}
           />
+          <Legend
+            verticalAlign="top"
+            align="right"
+            formatter={(value) => (
+              <span className="text-sm font-semibold text-slate-700">
+                {value}
+              </span>
+            )}
+            wrapperStyle={{ paddingBottom: 8 }}
+          />
           <Line
             type="monotone"
             dataKey="temperature"
+            name="Temperatur"
             stroke="red"
             fill="red"
             activeDot={{
@@ -101,9 +114,20 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             cursor={false}
             wrapperStyle={{ display: "none" }}
           />
+          <Legend
+            verticalAlign="top"
+            align="right"
+            formatter={(value) => (
+              <span className="text-sm font-semibold text-slate-700">
+                {value}
+              </span>
+            )}
+            wrapperStyle={{ paddingBottom: 8 }}
+          />
           <Area
             type="monotone"
             dataKey="humidity"
+            name="Luftfugtighed"
             stroke="green"
             fill="green"
             activeDot={{
@@ -137,8 +161,19 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             cursor={false}
             wrapperStyle={{ display: "none" }}
           />
+          <Legend
+            verticalAlign="top"
+            align="right"
+            formatter={(value) => (
+              <span className="text-sm font-semibold text-slate-700">
+                {value}
+              </span>
+            )}
+            wrapperStyle={{ paddingBottom: 8 }}
+          />
           <Bar
             dataKey="precipitation"
+            name="Nedbør"
             fill="skyblue"
             activeBar={{ fill: "pink", stroke: "blue" }}
             radius={[5, 5, 0, 0]}
