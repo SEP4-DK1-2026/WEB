@@ -2,6 +2,7 @@ import { useState } from "react"
 import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter"
 import PredictionChart from "../../components/weather/PredictionChart"
 import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
+import { formatDateLong } from "../../utils/dateFormat"
 
 function toInputDate(date: Date) {
   return date.toISOString().split("T")[0]
@@ -23,6 +24,10 @@ export default function ForecastPage() {
 
   const [startDate, setStartDate] = useState(toInputDate(today))
   const [endDate, setEndDate] = useState(toInputDate(tomorrow))
+
+  const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
+    new Date(endDate),
+  )}`
 
   const { predictionData, loading, error, loadRange } =
     useWeatherRangeData("prediction")
@@ -55,7 +60,7 @@ export default function ForecastPage() {
 
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-2xl font-bold text-blue-900">
-          Forudsagt temperatur
+          {selectedRangeLabel}
         </h2>
 
         <PredictionChart data={predictionData} />

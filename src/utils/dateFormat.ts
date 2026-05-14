@@ -17,6 +17,14 @@ export function formatDate(value: Date | string | number) {
   })
 }
 
+export function formatDateLong(value: Date | string | number) {
+  return toDate(value).toLocaleDateString("da-DK", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
 export function formatDateNoYear(value: Date | string | number) {
   return toDate(value).toLocaleDateString("da-DK", {
     day: "numeric",

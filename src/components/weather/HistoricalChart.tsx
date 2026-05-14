@@ -15,13 +15,10 @@ import {
 import { RechartsDevtools } from "@recharts/devtools"
 import type { WeatherData } from "../../types/weatherData"
 import { formatDateNoYear } from "../../utils/dateFormat"
-import {
-  formatWeatherTooltipLabel,
-  formatWeatherTooltipValue,
-  formatWeatherAxisTick,
-} from "../../utils/chartTooltip"
+import { formatWeatherAxisTick } from "../../utils/chartTooltip"
 import { getDailyTicks } from "../../utils/chartTicks"
 import { scaleTimeSeriesData } from "../../utils/scaleTimeSeries"
+import SharedWeatherTooltip from "./SharedWeatherTooltip"
 
 type HistoricalChartProps = {
   data: WeatherData[]
@@ -47,18 +44,6 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
     </>
   )
 
-  const sharedTooltip = (
-    <Tooltip
-      cursor={{ stroke: "var(--color-border-2)" }}
-      contentStyle={{
-        backgroundColor: "var(--color-surface-base)",
-        borderColor: "var(--color-border-2)",
-      }}
-      labelFormatter={formatWeatherTooltipLabel}
-      formatter={formatWeatherTooltipValue}
-    />
-  )
-
   return (
     <div className="space-y-6">
       <ResponsiveContainer width="100%" height={chartHeight}>
@@ -74,12 +59,15 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
         >
           {commonAxis}
           <YAxis
-            stroke="var(--color-text-3)"
+            stroke="#64748b"
             tickFormatter={(value) =>
               formatWeatherAxisTick(value, "temperature")
             }
           />
-          {sharedTooltip}
+          <Tooltip
+            cursor={{ stroke: "#bfdbfe" }}
+            content={<SharedWeatherTooltip />}
+          />
           <Line
             type="monotone"
             dataKey="temperature"
@@ -106,10 +94,14 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
         >
           {commonAxis}
           <YAxis
-            stroke="var(--color-text-3)"
+            stroke="#64748b"
             tickFormatter={(value) => formatWeatherAxisTick(value, "humidity")}
           />
-          {sharedTooltip}
+          <Tooltip
+            content={<SharedWeatherTooltip />}
+            cursor={false}
+            wrapperStyle={{ display: "none" }}
+          />
           <Area
             type="monotone"
             dataKey="humidity"
@@ -136,12 +128,16 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
         >
           {commonAxis}
           <YAxis
-            stroke="var(--color-text-3)"
+            stroke="#64748b"
             tickFormatter={(value) =>
               formatWeatherAxisTick(value, "precipitation")
             }
           />
-          {sharedTooltip}
+          <Tooltip
+            content={<SharedWeatherTooltip />}
+            cursor={false}
+            wrapperStyle={{ display: "none" }}
+          />
           <Bar
             dataKey="precipitation"
             fill="skyblue"
