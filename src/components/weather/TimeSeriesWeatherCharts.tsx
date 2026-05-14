@@ -173,6 +173,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             tickFormatter={(value) =>
               formatWeatherAxisTickWhole(value, "precipitation")
             }
+            allowDecimals={false}
             tickMargin={5}
           />
           <YAxis
