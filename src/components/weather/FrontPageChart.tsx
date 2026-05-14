@@ -326,7 +326,7 @@ export default function FrontPageLineChart({
     : () => ""
 
   return (
-    <ResponsiveContainer width="100%" height={260}>
+    <ResponsiveContainer width="100%" height={360}>
       <LineChart
         data={combinedData}
         margin={{
