@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter"
 import PredictionChart from "../../components/weather/PredictionChart"
 import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
@@ -15,15 +15,27 @@ function addDays(date: Date, days: number) {
 }
 
 export default function ForecastPage() {
-  const today = new Date()
+  const {
+    initialStartDate,
+    initialEndDate,
+    minPredictionDate,
+    maxPredictionDate,
+  } = useMemo(() => {
+    const today = new Date()
+    const maxDate = addDays(today, 7)
 
-  const minPredictionDate = today
-  const maxPredictionDate = addDays(today, 7)
+    return {
+      initialStartDate: today,
+      initialEndDate: maxDate,
+      minPredictionDate: today,
+      maxPredictionDate: maxDate,
+    }
+  }, [])
 
-  const tomorrow = addDays(today, 1)
-
-  const [startDate, setStartDate] = useState(toInputDate(today))
-  const [endDate, setEndDate] = useState(toInputDate(tomorrow))
+  const [startDate, setStartDate] = useState(() =>
+    toInputDate(initialStartDate),
+  )
+  const [endDate, setEndDate] = useState(() => toInputDate(initialEndDate))
 
   const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
     new Date(endDate),
@@ -31,6 +43,10 @@ export default function ForecastPage() {
 
   const { predictionData, loading, error, loadRange } =
     useWeatherRangeData("prediction")
+
+  useEffect(() => {
+    void loadRange(initialStartDate, initialEndDate)
+  }, [loadRange, initialStartDate, initialEndDate])
 
   function handleSubmit() {
     void loadRange(new Date(startDate), new Date(endDate))

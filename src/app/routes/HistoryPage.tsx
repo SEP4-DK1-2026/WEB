@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import WeatherRangeFilter from "../../components/weather/WeatherRangeFilter"
 import { useWeatherRangeData } from "../../hooks/useWeatherRangeData"
 import HistoricalChart from "../../components/weather/HistoricalChart"
@@ -15,19 +15,32 @@ function addDays(date: Date, days: number) {
 }
 
 export default function HistoryPage() {
-  const today = new Date()
+  const { initialStartDate, initialEndDate, minHistoryDate, maxHistoryDate } =
+    useMemo(() => {
+      const today = new Date()
 
-  const minHistoryDate = addDays(today, -24)
-  const maxHistoryDate = today
+      return {
+        initialStartDate: addDays(today, -7),
+        initialEndDate: today,
+        minHistoryDate: addDays(today, -24),
+        maxHistoryDate: today,
+      }
+    }, [])
 
-  const [startDate, setStartDate] = useState(toInputDate(minHistoryDate))
-  const [endDate, setEndDate] = useState(toInputDate(today))
+  const [startDate, setStartDate] = useState(() =>
+    toInputDate(initialStartDate),
+  )
+  const [endDate, setEndDate] = useState(() => toInputDate(initialEndDate))
 
   const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
     new Date(endDate),
   )}`
 
   const { data, loading, error, loadRange } = useWeatherRangeData("historical")
+
+  useEffect(() => {
+    void loadRange(initialStartDate, initialEndDate)
+  }, [loadRange, initialStartDate, initialEndDate])
 
   function handleSubmit() {
     void loadRange(new Date(startDate), new Date(endDate))

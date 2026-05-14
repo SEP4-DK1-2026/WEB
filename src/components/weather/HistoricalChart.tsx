@@ -3,7 +3,6 @@ import {
   AreaChart,
   Bar,
   BarChart,
-  Brush,
   CartesianGrid,
   Line,
   LineChart,
@@ -144,7 +143,6 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
             activeBar={{ fill: "pink", stroke: "blue" }}
             radius={[5, 5, 0, 0]}
           />
-          <Brush stroke="grey" fill="lightblue" />
           <RechartsDevtools />
         </BarChart>
       </ResponsiveContainer>

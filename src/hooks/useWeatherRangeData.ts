@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import {
   getHistoricalDataInRangeUsingDates,
   getPredictionsInRangeUsingDates,
@@ -13,48 +13,51 @@ export function useWeatherRangeData(mode: RangeMode) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  async function loadRange(startDate: Date, endDate: Date) {
-    try {
-      setLoading(true)
-      setError(null)
+  const loadRange = useCallback(
+    async (startDate: Date, endDate: Date) => {
+      try {
+        setLoading(true)
+        setError(null)
 
-      if (mode === "historical") {
-        const result = await getHistoricalDataInRangeUsingDates(
+        if (mode === "historical") {
+          const result = await getHistoricalDataInRangeUsingDates(
+            startDate,
+            endDate,
+          )
+
+          setData(result)
+          setPredictionData([])
+          return
+        }
+
+        const predictions = await getPredictionsInRangeUsingDates(
           startDate,
           endDate,
         )
 
-        setData(result)
-        setPredictionData([])
-        return
+        setPredictionData(predictions)
+
+        const mappedPredictionData: WeatherData[] = predictions.map(
+          (entry: PredictionData) => ({
+            temperature: entry.temperature,
+            humidity: entry.humidity,
+            windSpeed: entry.windSpeed,
+            windDirection: entry.windDirection,
+            precipitation: entry.precipitation,
+            light: entry.light,
+            date: entry.predictedDate,
+          }),
+        )
+
+        setData(mappedPredictionData)
+      } catch {
+        setError("Kunne ikke hente vejrdata for den valgte periode.")
+      } finally {
+        setLoading(false)
       }
-
-      const predictions = await getPredictionsInRangeUsingDates(
-        startDate,
-        endDate,
-      )
-
-      setPredictionData(predictions)
-
-      const mappedPredictionData: WeatherData[] = predictions.map(
-        (entry: PredictionData) => ({
-          temperature: entry.temperature,
-          humidity: entry.humidity,
-          windSpeed: entry.windSpeed,
-          windDirection: entry.windDirection,
-          precipitation: entry.precipitation,
-          light: entry.light,
-          date: entry.predictedDate,
-        }),
-      )
-
-      setData(mappedPredictionData)
-    } catch {
-      setError("Kunne ikke hente vejrdata for den valgte periode.")
-    } finally {
-      setLoading(false)
-    }
-  }
+    },
+    [mode],
+  )
 
   return {
     data,
