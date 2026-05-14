@@ -91,3 +91,17 @@ export function formatWeatherAxisTick(
 
   return `${config.format(numericValue)}${config.unit}`
 }
+
+export function formatWeatherAxisTickWhole(
+  value: unknown,
+  key: keyof typeof tooltipConfigByKey,
+) {
+  const config = tooltipConfigByKey[key]
+  const numericValue = typeof value === "number" ? value : Number(value)
+
+  if (Number.isNaN(numericValue)) {
+    return String(value ?? "")
+  }
+
+  return `${formatWholeNumber(numericValue)}${config.unit}`
+}
