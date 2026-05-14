@@ -2,8 +2,8 @@ import {
   Area,
   AreaChart,
   Bar,
-  BarChart,
   CartesianGrid,
+  ComposedChart,
   Legend,
   Line,
   LineChart,
@@ -26,6 +26,7 @@ type WeatherSeriesDatum = {
   temperature: number
   humidity: number
   precipitation: number
+  windSpeed: number
 }
 
 type TimeSeriesWeatherChartsProps<T extends WeatherSeriesDatum> = {
@@ -44,7 +45,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
 
   const commonAxis = (
     <>
-      <CartesianGrid stroke="#aaa" strokeOpacity={0.3} />
+      <CartesianGrid stroke="#aaa" strokeOpacity={0.2} />
       <XAxis
         dataKey={(entry: T) => getDate(entry).getTime()}
         type="number"
@@ -65,8 +66,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           data={scaledData}
           syncId="anyId"
           margin={{
-            top: 10,
-            right: 30,
+            top: 0,
+            right: 60,
             left: 0,
             bottom: 0,
           }}
@@ -77,6 +78,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             tickFormatter={(value) =>
               formatWeatherAxisTickWhole(value, "temperature")
             }
+            tickMargin={5}
           />
           <Tooltip
             cursor={{ stroke: "#bfdbfe" }}
@@ -97,7 +99,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             dataKey="temperature"
             name="Temperatur"
             stroke="red"
-            fill="red"
+            strokeWidth={2}
+            dot={false}
             activeDot={{
               stroke: "black",
             }}
@@ -111,8 +114,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           data={scaledData}
           syncId="anyId"
           margin={{
-            top: 10,
-            right: 30,
+            top: 0,
+            right: 60,
             left: 0,
             bottom: 0,
           }}
@@ -121,6 +124,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           <YAxis
             stroke="#64748b"
             tickFormatter={(value) => formatWeatherAxisTick(value, "humidity")}
+            tickMargin={5}
           />
           <Tooltip
             content={<SharedWeatherTooltip />}
@@ -152,22 +156,33 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
       </ResponsiveContainer>
 
       <ResponsiveContainer width="100%" height={chartHeight}>
-        <BarChart
+        <ComposedChart
           data={scaledData}
           syncId="anyId"
           margin={{
-            top: 10,
-            right: 30,
+            top: 0,
+            right: 0,
             left: 0,
             bottom: 0,
           }}
         >
           {commonAxis}
           <YAxis
+            yAxisId="precipitation"
             stroke="#64748b"
             tickFormatter={(value) =>
               formatWeatherAxisTickWhole(value, "precipitation")
             }
+            tickMargin={5}
+          />
+          <YAxis
+            yAxisId="windSpeed"
+            orientation="right"
+            stroke="#64748b"
+            tickFormatter={(value) =>
+              formatWeatherAxisTickWhole(value, "windSpeed")
+            }
+            tickMargin={5}
           />
           <Tooltip
             content={<SharedWeatherTooltip />}
@@ -182,7 +197,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
                 {value}
               </span>
             )}
-            wrapperStyle={{ paddingBottom: 8 }}
+            wrapperStyle={{ paddingBottom: 8, paddingRight: 60 }}
           />
           <Bar
             dataKey={(entry: T) =>
@@ -190,11 +205,22 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             }
             name="Nedbør"
             fill="skyblue"
-            activeBar={{ fill: "pink", stroke: "blue" }}
+            activeBar={{ fill: "lightgrey", stroke: "skyblue" }}
             radius={[5, 5, 0, 0]}
+            yAxisId="precipitation"
+          />
+          <Line
+            type="monotone"
+            dataKey="windSpeed"
+            name="Vindhastighed"
+            stroke="#0f766e"
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ stroke: "black" }}
+            yAxisId="windSpeed"
           />
           <RechartsDevtools />
-        </BarChart>
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
   )
