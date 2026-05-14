@@ -3,14 +3,14 @@ function toDate(value: Date | string | number) {
 }
 
 export function formatTime(value: Date | string | number) {
-  return toDate(value).toLocaleTimeString([], {
+  return toDate(value).toLocaleTimeString("da-DK", {
     hour: "2-digit",
     minute: "2-digit",
   })
 }
 
 export function formatDate(value: Date | string | number) {
-  return toDate(value).toLocaleDateString([], {
+  return toDate(value).toLocaleDateString("da-DK", {
     year: "numeric",
     month: "short",
     day: "2-digit",
