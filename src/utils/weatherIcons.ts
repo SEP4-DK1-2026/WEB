@@ -1,5 +1,7 @@
 import Sun from "../assets/weather-icons/animated/day.svg"
-import Cloudy from "../assets/weather-icons/animated/cloudy-day-2.svg"
+import Night from "../assets/weather-icons/animated/night.svg"
+import CloudyDay from "../assets/weather-icons/animated/cloudy-day-2.svg"
+import CloudyNight from "../assets/weather-icons/animated/cloudy-night-2.svg"
 import Rain from "../assets/weather-icons/animated/rainy-4.svg"
 import HeavyRain from "../assets/weather-icons/animated/rainy-6.svg"
 import HeavyCloudy from "../assets/weather-icons/animated/cloudy.svg"
@@ -14,13 +16,26 @@ type WeatherIconData = {
 }
 
 export function getWeatherIcon(data: WeatherIconData) {
-  if (data.temperature <= 0 && data.precipitation > 0) return Snow
-  if (data.precipitation > 8) return HeavyRain
-  if (data.precipitation > 2 && data.light > 15000) return SunAndRain
-  if (data.precipitation > 1) return Rain
-  if (data.humidity > 85 && data.light < 5000) return HeavyCloudy
-  if (data.light > 25000) return Sun
-  if (data.light < 8000) return HeavyCloudy
+  const isNight = data.light < 100
+  const isFreezing = data.temperature <= 0
+  const isHeavyRain = data.precipitation > 8
+  const isRain = data.precipitation > 1
+  const isSunnyShower = data.precipitation > 2 && data.light > 15000
+  const isHumid = data.humidity > 85
+  const isDimDay = data.light < 8000
+  const isBrightDay = data.light > 25000
 
-  return Cloudy
+  if (isFreezing && data.precipitation > 0) return Snow
+  if (isHeavyRain) return HeavyRain
+
+  if (isRain) {
+    if (!isNight && isSunnyShower) return SunAndRain
+    return Rain
+  }
+
+  if (isNight) return isHumid ? CloudyNight : Night
+  if (isHumid || isDimDay) return HeavyCloudy
+  if (isBrightDay) return Sun
+
+  return CloudyDay
 }
