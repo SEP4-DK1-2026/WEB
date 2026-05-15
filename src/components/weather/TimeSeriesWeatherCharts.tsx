@@ -167,6 +167,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           syncId="anyId"
           onMouseEnter={() => setActiveChart("precipitationWind")}
           onMouseLeave={() => setActiveChart(null)}
+          barGap={0}
+          barCategoryGap={0}
           margin={{
             top: 0,
             right: 0,
@@ -215,7 +217,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             name="Nedbør"
             fill="skyblue"
             activeBar={{ fill: "lightgrey", stroke: "skyblue" }}
-            radius={[5, 5, 0, 0]}
+            radius={[1, 1, 0, 0]}
             yAxisId="precipitation"
           />
           <Line

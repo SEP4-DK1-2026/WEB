@@ -16,7 +16,7 @@ type WeatherIconData = {
 }
 
 export function getWeatherIcon(data: WeatherIconData) {
-  const isNight = data.light < 100
+  const isNight = 0 < data.light && data.light < 100 // 0 indicates no data, default to day
   const isFreezing = data.temperature <= 0
   const isHeavyRain = data.precipitation > 8
   const isRain = data.precipitation > 1
