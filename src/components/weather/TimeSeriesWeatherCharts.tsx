@@ -12,7 +12,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
-import { RechartsDevtools } from "@recharts/devtools"
 import { formatDateNoYear } from "../../utils/dateFormat"
 import {
   formatWeatherAxisTick,
@@ -105,7 +104,6 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
               stroke: "black",
             }}
           />
-          <RechartsDevtools />
         </LineChart>
       </ResponsiveContainer>
 
@@ -151,7 +149,6 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
               stroke: "black",
             }}
           />
-          <RechartsDevtools />
         </AreaChart>
       </ResponsiveContainer>
 
@@ -220,7 +217,6 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             activeDot={{ stroke: "black" }}
             yAxisId="windSpeed"
           />
-          <RechartsDevtools />
         </ComposedChart>
       </ResponsiveContainer>
     </div>

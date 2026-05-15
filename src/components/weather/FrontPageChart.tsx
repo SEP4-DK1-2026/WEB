@@ -1,4 +1,3 @@
-import { RechartsDevtools } from "@recharts/devtools"
 import {
   CartesianGrid,
   Legend,
@@ -390,7 +389,6 @@ export default function FrontPageLineChart({
             wrapperStyle={{ paddingBottom: 8 }}
           />
         )}
-        <RechartsDevtools />
       </LineChart>
     </ResponsiveContainer>
   )
