@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import type { PredictionData, WeatherData } from "../../types/weatherData"
 import { getWeatherIcon } from "../../utils/weatherIcons"
 import {
@@ -49,6 +50,11 @@ export default function WeatherCard({
   displayDate,
 }: WeatherCardProps) {
   const weatherIcon = getWeatherIcon(data)
+  const [iconLoaded, setIconLoaded] = useState(false)
+
+  useEffect(() => {
+    setIconLoaded(false)
+  }, [weatherIcon])
 
   return (
     <article className="rounded-xl border border-blue-200 bg-linear-to-br from-blue-50 to-blue-100 p-3 shadow-md">
@@ -63,7 +69,11 @@ export default function WeatherCard({
         <img
           src={weatherIcon}
           alt="Vejrikon"
-          className="h-12 w-12 object-contain xl:h-16 xl:w-16"
+          className={`h-12 w-12 object-contain transition-opacity duration-300 xl:h-16 xl:w-16 ${
+            iconLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIconLoaded(true)}
+          onError={() => setIconLoaded(true)}
         />
       </div>
 
