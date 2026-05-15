@@ -1,3 +1,4 @@
+import { useState } from "react"
 import {
   Area,
   AreaChart,
@@ -12,7 +13,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
-import { RechartsDevtools } from "@recharts/devtools"
 import { formatDateNoYear } from "../../utils/dateFormat"
 import {
   formatWeatherAxisTick,
@@ -40,6 +40,9 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
   getDate,
   chartHeight = 240,
 }: TimeSeriesWeatherChartsProps<T>) {
+  const [activeChart, setActiveChart] = useState<
+    "temperature" | "humidity" | "precipitationWind" | null
+  >(null)
   const scaledData = scaleTimeSeriesData(data, getDate)
   const dailyTicks = getDailyTicks(scaledData, getDate)
 
@@ -65,6 +68,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
         <LineChart
           data={scaledData}
           syncId="anyId"
+          onMouseEnter={() => setActiveChart("temperature")}
+          onMouseLeave={() => setActiveChart(null)}
           margin={{
             top: 0,
             right: 60,
@@ -83,6 +88,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           <Tooltip
             cursor={{ stroke: "#bfdbfe" }}
             content={<SharedWeatherTooltip />}
+            active={activeChart === "temperature"}
           />
           <Legend
             verticalAlign="top"
@@ -105,7 +111,6 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
               stroke: "black",
             }}
           />
-          <RechartsDevtools />
         </LineChart>
       </ResponsiveContainer>
 
@@ -113,6 +118,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
         <AreaChart
           data={scaledData}
           syncId="anyId"
+          onMouseEnter={() => setActiveChart("humidity")}
+          onMouseLeave={() => setActiveChart(null)}
           margin={{
             top: 0,
             right: 60,
@@ -129,7 +136,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           <Tooltip
             content={<SharedWeatherTooltip />}
             cursor={false}
-            wrapperStyle={{ display: "none" }}
+            active={activeChart === "humidity"}
           />
           <Legend
             verticalAlign="top"
@@ -151,7 +158,6 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
               stroke: "black",
             }}
           />
-          <RechartsDevtools />
         </AreaChart>
       </ResponsiveContainer>
 
@@ -159,6 +165,8 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
         <ComposedChart
           data={scaledData}
           syncId="anyId"
+          onMouseEnter={() => setActiveChart("precipitationWind")}
+          onMouseLeave={() => setActiveChart(null)}
           margin={{
             top: 0,
             right: 0,
@@ -188,7 +196,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           <Tooltip
             content={<SharedWeatherTooltip />}
             cursor={false}
-            wrapperStyle={{ display: "none" }}
+            active={activeChart === "precipitationWind"}
           />
           <Legend
             verticalAlign="top"
@@ -220,7 +228,6 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             activeDot={{ stroke: "black" }}
             yAxisId="windSpeed"
           />
-          <RechartsDevtools />
         </ComposedChart>
       </ResponsiveContainer>
     </div>
