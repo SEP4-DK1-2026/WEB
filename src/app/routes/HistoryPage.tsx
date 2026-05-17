@@ -35,12 +35,14 @@ export default function HistoryPage() {
   const [startDate, setStartDate] = useState(() =>
     toInputDate(initialStartDate),
   )
+
   const [endDate, setEndDate] = useState(() => toInputDate(initialEndDate))
+
   const endDateMax = getHistoricalMaxEndDate(startDate)
 
-  const selectedRangeLabel = `${formatDateLong(new Date(startDate))} - ${formatDateLong(
-    new Date(endDate),
-  )}`
+  const selectedRangeLabel = `${formatDateLong(
+    new Date(startDate),
+  )} - ${formatDateLong(new Date(endDate))}`
 
   const { data, loading, error, loadRange } = useWeatherRangeData("historical")
 
@@ -49,24 +51,37 @@ export default function HistoryPage() {
   }, [loadRange, initialStartDate, initialEndDate])
 
   function handleStartDateChange(value: string) {
+    const maxAllowedEndDate = getHistoricalMaxEndDate(value)
+
     setStartDate(value)
-    setEndDate((previous) => {
-      if (!previous) {
+
+    setEndDate((previousEndDate) => {
+      if (previousEndDate < value) {
         return value
       }
 
-      const maxAllowed = getHistoricalMaxEndDate(value)
-
-      if (previous > maxAllowed) {
-        return maxAllowed
+      if (previousEndDate > maxAllowedEndDate) {
+        return maxAllowedEndDate
       }
 
-      if (previous < value) {
-        return value
-      }
-
-      return previous
+      return previousEndDate
     })
+  }
+
+  function handleEndDateChange(value: string) {
+    const maxAllowedEndDate = getHistoricalMaxEndDate(startDate)
+
+    if (value < startDate) {
+      setEndDate(startDate)
+      return
+    }
+
+    if (value > maxAllowedEndDate) {
+      setEndDate(maxAllowedEndDate)
+      return
+    }
+
+    setEndDate(value)
   }
 
   function handleSubmit() {
@@ -88,11 +103,11 @@ export default function HistoryPage() {
         maxDate={toInputDate(maxHistoryDate)}
         endDateMax={endDateMax}
         onStartDateChange={handleStartDateChange}
-        onEndDateChange={setEndDate}
+        onEndDateChange={handleEndDateChange}
         onSubmit={handleSubmit}
       />
 
-      {loading && <p>indlæser historiske data...</p>}
+      {loading && <p>Indlæser historiske data...</p>}
       {error && <p className="text-red-600">{error}</p>}
 
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">

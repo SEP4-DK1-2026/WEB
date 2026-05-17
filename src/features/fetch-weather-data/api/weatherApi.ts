@@ -11,6 +11,8 @@ type WeatherDataDto = Omit<WeatherData, "date"> & {
   time: number // unix time in seconds
 }
 
+type WeatherModel ="DMI" | "VIA"
+
 type PredictionDataDto = Omit<PredictionData, "predictedDate"> & {
   predictedTime: number // unix time in seconds
 }
@@ -38,23 +40,32 @@ function toPredictionData(dto: PredictionDataDto): PredictionData {
 
 export async function getPredictions(
   hoursFromNow: number,
+  modelName: WeatherModel = "DMI",
 ): Promise<PredictionData[]> {
   const result = await fetch(
-    `${BASE_URL}/getPredictionsNextHours?hoursFromNow=${hoursFromNow}`,
+    `${BASE_URL}/getPredictionsNextHours?hoursFromNow=${hoursFromNow}&modelName=${modelName}`,
   )
+
   if (!result.ok) {
     throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
   }
+
   const data: PredictionDataDto[] = await result.json()
   return data.map(toPredictionData)
 }
 
 /** Returns datapoint closest to timestamp 24 hours from now */
-export async function getPredictionNext24Hours(): Promise<PredictionData> {
-  const result = await fetch(`${BASE_URL}/getPredictionNext24Hours`)
+export async function getPredictionNext24Hours(
+  modelName: WeatherModel = "DMI",
+): Promise<PredictionData> {
+  const result = await fetch(
+    `${BASE_URL}/getPredictionNext24Hours?modelName=${modelName}`,
+  )
+
   if (!result.ok) {
     throw new Error(`Failed to fetch weather prediction: ${result.statusText}`)
   }
+
   const data: PredictionDataDto = await result.json()
   return toPredictionData(data)
 }
@@ -63,15 +74,18 @@ export async function getPredictionNext24Hours(): Promise<PredictionData> {
 export async function getPredictionsInRange(
   startTime: number,
   endTime: number,
+  modelName: WeatherModel = "DMI",
 ): Promise<PredictionData[]> {
   const result = await fetch(
-    `${BASE_URL}/getPredictionsInRange?startTime=${startTime}&endTime=${endTime}`,
+    `${BASE_URL}/getPredictionsInRange?startTime=${startTime}&endTime=${endTime}&modelName=${modelName}`,
   )
+
   if (!result.ok) {
     throw new Error(
       `Failed to fetch weather predictions in range: ${result.statusText}`,
     )
   }
+
   const data: PredictionDataDto[] = await result.json()
   return data.map(toPredictionData)
 }
@@ -79,11 +93,12 @@ export async function getPredictionsInRange(
 export async function getPredictionsInRangeUsingDates(
   startDate: Date,
   endDate: Date,
+  modelName: WeatherModel = "DMI",
 ): Promise<PredictionData[]> {
   const startTimestamp = Math.floor(startDate.getTime() / 1000)
   const endTimestamp = Math.floor(endDate.getTime() / 1000)
 
-  return getPredictionsInRange(startTimestamp, endTimestamp)
+  return getPredictionsInRange(startTimestamp, endTimestamp, modelName)
 }
 
 // Maybe add InRange to name

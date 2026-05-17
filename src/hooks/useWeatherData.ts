@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useWeatherModel } from "../context/WeatherModelContext"
 
 import {
   getLatestWeather,
@@ -19,6 +20,7 @@ export function useWeatherData() {
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const { modelName } = useWeatherModel()
 
   useEffect(() => {
     async function loadWeather() {
@@ -26,17 +28,17 @@ export function useWeatherData() {
         setLoading(true)
         setError(null)
 
-        const [current, predicted, historical, predictions] = await Promise.all(
-          [
-            getLatestWeather(),
-            getPredictionNext24Hours(),
-            getLast24Hours(),
-            getPredictionsInRangeUsingDates(
-              new Date(Date.now() - 24 * 60 * 60 * 1000),
-              new Date(Date.now() + 24 * 60 * 60 * 1000),
-            ),
-          ],
-        )
+        const [current, predicted, historical, predictions] = await Promise.all([
+  getLatestWeather(),
+  getPredictionNext24Hours(modelName),
+  getLast24Hours(),
+  getPredictionsInRangeUsingDates(
+    new Date(Date.now() - 24 * 60 * 60 * 1000),
+    new Date(Date.now() + 24 * 60 * 60 * 1000),
+    modelName,
+  ),
+],
+)
 
         setCurrentWeather(current)
         setPredictedWeather(predicted)
@@ -51,7 +53,7 @@ export function useWeatherData() {
     }
 
     void loadWeather()
-  }, [])
+  }, [modelName])
 
   return {
     currentWeather,
