@@ -4,6 +4,7 @@ import {
   getPredictionsInRangeUsingDates,
 } from "../features/fetch-weather-data/api/weatherApi"
 import type { PredictionData, WeatherData } from "../types/weatherData"
+import { useWeatherModel } from "../context/WeatherModelContext"
 
 type RangeMode = "historical" | "prediction"
 
@@ -12,6 +13,7 @@ export function useWeatherRangeData(mode: RangeMode) {
   const [predictionData, setPredictionData] = useState<PredictionData[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const { modelName } = useWeatherModel()
 
   const loadRange = useCallback(
     async (startDate: Date, endDate: Date) => {
@@ -33,6 +35,7 @@ export function useWeatherRangeData(mode: RangeMode) {
         const predictions = await getPredictionsInRangeUsingDates(
           startDate,
           endDate,
+          modelName,
         )
 
         setPredictionData(predictions)
@@ -56,7 +59,7 @@ export function useWeatherRangeData(mode: RangeMode) {
         setLoading(false)
       }
     },
-    [mode],
+    [mode, modelName],
   )
 
   return {

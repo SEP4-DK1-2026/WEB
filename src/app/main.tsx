@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { WeatherModelProvider} from "../context/WeatherModelContext"
 
 async function startApp() {
   if (import.meta.env.DEV) {
@@ -13,9 +14,11 @@ async function startApp() {
   }
 
   createRoot(document.getElementById('root') as HTMLElement).render(
+    <WeatherModelProvider>
     <StrictMode>
       <App />
     </StrictMode>
+    </WeatherModelProvider>
   );
 }
 

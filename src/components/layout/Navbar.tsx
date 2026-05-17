@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom"
+import { useWeatherModel } from "../context/WeatherModelContext"
 
 export default function Navbar() {
+  const { modelName, setModelName } = useWeatherModel()
+
   const baseClass =
     "rounded-lg px-4 py-2 text-sm font-medium transition-colors"
 
@@ -42,6 +45,17 @@ export default function Navbar() {
           >
             Historik
           </NavLink>
+
+          <select
+            value={modelName}
+            onChange={(event) =>
+              setModelName(event.target.value as "DMI" | "VIA")
+            }
+            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700"
+          >
+            <option value="DMI">DMI</option>
+            <option value="VIA">VIA</option>
+          </select>
         </nav>
       </div>
     </header>
