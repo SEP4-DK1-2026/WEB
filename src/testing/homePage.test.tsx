@@ -2,23 +2,29 @@ import { afterEach, expect, test } from "vitest"
 import { cleanup, render, screen, within } from "@testing-library/react"
 import "@testing-library/jest-dom/vitest"
 import HomePage from "../app/routes/HomePage"
+import { WeatherModelProvider } from "../context/WeatherModelContext"
 
 afterEach(() => {
   cleanup()
+  localStorage.clear()
 })
 
+function renderHomePage() {
+  return render(
+    <WeatherModelProvider>
+      <HomePage />
+    </WeatherModelProvider>,
+  )
+}
+
 test("renders loading state before weather data is loaded", () => {
-  render(<HomePage />)
+  renderHomePage()
 
   expect(screen.getByText(/Indlæser vejrdata/i)).toBeInTheDocument()
 })
 
-
-
-
-
 test("renders current and predicted weather cards", async () => {
-  render(<HomePage />)
+  renderHomePage()
 
   expect(
     await screen.findByRole("heading", { name: /Nuværende vejr/i }),
@@ -30,7 +36,7 @@ test("renders current and predicted weather cards", async () => {
 })
 
 test("renders weather metric labels for both weather cards", async () => {
-  render(<HomePage />)
+  renderHomePage()
 
   await screen.findByRole("heading", { name: /Nuværende vejr/i })
 
@@ -45,25 +51,9 @@ test("renders weather metric labels for both weather cards", async () => {
 })
 
 test("renders weather icons for both weather cards", async () => {
-  render(<HomePage />)
+  renderHomePage()
 
   await screen.findByRole("heading", { name: /Nuværende vejr/i })
 
   expect(screen.getAllByAltText(/Vejrikon/i)).toHaveLength(2)
 })
-
-// test("renders weather chart headings", async () => {
-//   render(<HomePage />)
-
-//   expect(
-//     await screen.findByRole("heading", {
-//       name: /Temperatur sidste 24 timer/i,
-//     }),
-//   ).toBeInTheDocument()
-
-//   expect(
-//     screen.getByRole("heading", {
-//       name: /Temperatur næste 24 timer/i,
-//     }),
-//   ).toBeInTheDocument()
-// })
