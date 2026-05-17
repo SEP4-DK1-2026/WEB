@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { useWeatherModel } from "../context/WeatherModelContext"
+import { useWeatherModel } from "../../context/WeatherModelContext"
 
 export default function Navbar() {
   const { modelName, setModelName } = useWeatherModel()

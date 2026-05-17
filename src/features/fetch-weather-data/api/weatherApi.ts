@@ -4,7 +4,7 @@ import {
 } from "../../../types/weatherData"
 
 export const BASE_URL =
-  "https://sep4-web-microservice-cxb7cvhvdpgdedfs.swedencentral-01.azurewebsites.net/api"
+  "http://localhost:7071/api"
 
 // API returns unix time, but we want to convert to Date for work in TypeScript
 type WeatherDataDto = Omit<WeatherData, "date"> & {
