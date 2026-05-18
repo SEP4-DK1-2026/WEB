@@ -1,9 +1,11 @@
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import weatherIcon from "../../assets/weather-icons/animated/rainy-1.svg"
 import { useWeatherModel } from "../../context/WeatherModelContext"
 
 export default function Navbar() {
   const { modelName, setModelName } = useWeatherModel()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const baseClass = "rounded-lg px-4 py-2 text-sm font-medium transition-colors"
 
@@ -14,14 +16,21 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2">
         <div className="flex items-center gap-2">
-          <img src={weatherIcon} alt="Animated weather icon" className="h-10 w-10" />
+          <img
+            src={weatherIcon}
+            alt="Animated weather icon"
+            className="h-10 w-10"
+          />
           <span className="text-xl font-bold">
             <span className="bg-linear-to-r from-sky-600 via-blue-600 to-amber-500 bg-clip-text text-transparent">
-              VIAs Meteorologiske Institut
+              <span className="hidden sm:inline">
+                VIAs Meteorologiske Institut
+              </span>
+              <span className="sm:hidden">VMI</span>
             </span>
           </span>
         </div>
-        <nav className="flex items-center gap-3">
+        <nav className="hidden items-center gap-3 md:flex">
           <NavLink
             to="/"
             end
@@ -73,6 +82,84 @@ export default function Navbar() {
             </span>
           </div>
         </nav>
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-gray-700 shadow-sm transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-200 md:hidden"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-nav"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        >
+          <span className="sr-only">Toggle navigation</span>
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="4" y1="6" x2="20" y2="6" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="20" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div
+        id="mobile-nav"
+        className={`${isMobileMenuOpen ? "block" : "hidden"} border-t border-gray-200 bg-white/95 px-3 py-3 shadow-sm md:hidden`}
+      >
+        <div className="flex flex-col gap-2">
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `${baseClass} ${isActive ? activeClass : inactiveClass}`
+            }
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Hjem
+          </NavLink>
+
+          <NavLink
+            to="/forecast"
+            className={({ isActive }) =>
+              `${baseClass} ${isActive ? activeClass : inactiveClass}`
+            }
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Vejrudsigt
+          </NavLink>
+
+          <NavLink
+            to="/history"
+            className={({ isActive }) =>
+              `${baseClass} ${isActive ? activeClass : inactiveClass}`
+            }
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Historik
+          </NavLink>
+
+          <div className="relative">
+            <div className="flex items-stretch">
+              <span className="flex-1 rounded-l-lg border border-blue-200 bg-blue-50 px-3 py-2 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
+                Machine Learning Model til vejrforudsigelser
+              </span>
+              <select
+                value={modelName}
+                onChange={(event) =>
+                  setModelName(event.target.value as "DMI" | "VIA")
+                }
+                className="-ml-px shrink-0 rounded-r-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+              >
+                <option value="DMI">DMI</option>
+                <option value="VIA">VIA</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   )
