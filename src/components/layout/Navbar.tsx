@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import weatherIcon from "../../assets/weather-icons/animated/rainy-1.svg"
 import { useWeatherModel } from "../../context/WeatherModelContext"
 
@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img
             src={weatherIcon}
             alt="Animated weather icon"
@@ -29,7 +29,7 @@ export default function Navbar() {
               <span className="sm:hidden">VMI</span>
             </span>
           </span>
-        </div>
+        </Link>
         <nav className="hidden items-center gap-3 md:flex">
           <NavLink
             to="/"

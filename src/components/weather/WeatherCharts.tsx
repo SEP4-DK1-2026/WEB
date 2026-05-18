@@ -16,19 +16,19 @@ export default function WeatherCharts({
 }: WeatherChartsProps) {
   if (loading || error) return null
 
- return (
-  <section
-    aria-label="Temperaturgraf"
-    className="rounded-xl border border-blue-200 bg-white p-5 shadow-md"
-  >
-    <h2 className="mb-3 text-xl font-bold text-blue-900">
-      Prognose for de sidste og næste 24 timer
-    </h2>
+  return (
+    <section
+      aria-label="Temperaturgraf"
+      className="rounded-xl border border-blue-200 bg-white px-3 py-4 shadow-md sm:px-5 sm:py-5"
+    >
+      <h2 className="mb-3 text-sm font-bold text-blue-900 sm:text-xl">
+        Prognose for de sidste og næste 24 timer
+      </h2>
 
-    <FrontPageLineChart
-      predictionData={predictionData}
-      weatherData={historicalData}
-    />
-  </section>
-)
+      <FrontPageLineChart
+        predictionData={predictionData}
+        weatherData={historicalData}
+      />
+    </section>
+  )
 }
