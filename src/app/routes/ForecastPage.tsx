@@ -54,13 +54,6 @@ export default function ForecastPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="mb-2 text-4xl font-bold text-gray-800">Vejrudsigt</h1>
-        <p className="text-gray-600">
-          Se forudsagt vejrdata for en valgt periode.
-        </p>
-      </div>
-
       <WeatherRangeFilter
         startDate={startDate}
         endDate={endDate}
@@ -71,12 +64,11 @@ export default function ForecastPage() {
         onSubmit={handleSubmit}
       />
 
-      {loading && <p>Indlæser forudsigelser...</p>}
       {error && <p className="text-red-600">{error}</p>}
 
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-2xl font-bold text-blue-900">
-          {selectedRangeLabel}
+          {loading ? "Indlæser vejrudsigt..." : `Vejrudsigt for ${selectedRangeLabel}`}
         </h2>
 
         <PredictionChart data={predictionData} />

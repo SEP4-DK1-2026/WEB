@@ -90,13 +90,6 @@ export default function HistoryPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="mb-2 text-4xl font-bold text-gray-800">Historik</h1>
-        <p className="text-gray-600">
-          Se historiske vejrdata for en given periode
-        </p>
-      </div>
-
       <WeatherRangeFilter
         startDate={startDate}
         endDate={endDate}
@@ -107,12 +100,11 @@ export default function HistoryPage() {
         onSubmit={handleSubmit}
       />
 
-      {loading && <p>Indlæser historiske data...</p>}
       {error && <p className="text-red-600">{error}</p>}
 
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
         <h2 className="mb-4 text-2xl font-bold text-blue-900">
-          {selectedRangeLabel}
+          {loading ? "Indlæser historiske data..." : `Historisk vejrdata for ${selectedRangeLabel}`}
         </h2>
 
         <HistoricalChart data={data} />
