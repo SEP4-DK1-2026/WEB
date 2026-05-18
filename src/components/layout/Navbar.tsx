@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import weatherIcon from "../../assets/weather-icons/animated/rainy-1.svg"
+import menuIcon from "../../assets/menu-icon.svg"
 import { useWeatherModel } from "../../context/WeatherModelContext"
 
 export default function Navbar() {
@@ -75,7 +76,7 @@ export default function Navbar() {
                 <option value="VIA">VIA</option>
               </select>
             </div>
-            <span className="pointer-events-none absolute right-0 top-full mt-2 w-56 rounded-md border border-gray-200 bg-white px-3 py-2 text-[11px] leading-4 text-gray-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+            <span className="pointer-events-none absolute right-0 top-full mt-2 w-56 rounded-md border border-gray-200 bg-white px-3 py-2 text-[11px] leading-4 text-gray-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100 hidden md:block">
               Vælg hvilken machine learning model der bruges til
               vejrforudsigelser; en der er trænet på DMI's data eller en der er
               trænet på vores egen data.
@@ -90,20 +91,7 @@ export default function Navbar() {
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
           <span className="sr-only">Toggle navigation</span>
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            className="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="4" y1="6" x2="20" y2="6" />
-            <line x1="4" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="20" y2="18" />
-          </svg>
+          <img src={menuIcon} alt="" className="h-4 w-4" aria-hidden="true" />
         </button>
       </div>
       <div
