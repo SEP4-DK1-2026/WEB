@@ -44,6 +44,16 @@ export const handlers = [
     return HttpResponse.json(prediction)
   }),
 
+  http.get("*/getPredictionsLastAndNext24Hours", () => {
+    const now = Math.floor(Date.now() / 1000)
+    const startTimestamp = now - 24 * 60 * 60
+    const endTimestamp = now + 24 * 60 * 60
+
+    return HttpResponse.json(
+      generatePredictionData(startTimestamp, endTimestamp, 0),
+    )
+  }),
+
   http.get("*/getPredictionsInRange", ({ request }) => {
     const url = new URL(request.url)
 
