@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom"
+import Footer from "./Footer"
 import Navbar from "./Navbar"
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
+    <div className="flex min-h-screen flex-col bg-linear-to-b from-gray-50 to-blue-50">
       <Navbar />
 
-      <main className="mx-auto max-w-7xl px-5 py-5">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-5 py-5">
         <Outlet />
       </main>
+      <Footer />
     </div>
   )
 }
