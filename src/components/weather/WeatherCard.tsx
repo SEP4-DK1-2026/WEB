@@ -14,6 +14,7 @@ type WeatherCardProps = {
   title: string
   data: WeatherMetricData
   displayDate: Date
+  tooltipText?: string
 }
 
 type MetricItemProps = {
@@ -48,6 +49,7 @@ export default function WeatherCard({
   title,
   data,
   displayDate,
+  tooltipText,
 }: WeatherCardProps) {
   const weatherIcon = getWeatherIcon(data)
   const [iconLoaded, setIconLoaded] = useState(false)
@@ -60,7 +62,14 @@ export default function WeatherCard({
     <article className="rounded-xl border border-blue-200 bg-linear-to-br from-blue-50 to-blue-100 p-3 shadow-md">
       <div className="mb-5 flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
+          <div className="relative inline-flex items-center group">
+            <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
+            {tooltipText ? (
+              <span className="pointer-events-none absolute left-full top-1/2 ml-2 w-56 -translate-y-1/2 rounded-md border border-gray-200 bg-white px-3 py-2 text-[11px] leading-4 text-gray-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+                {tooltipText}
+              </span>
+            ) : null}
+          </div>
           <p className="mt-2 text-sm text-gray-600">
             {formatDate(displayDate)}
           </p>

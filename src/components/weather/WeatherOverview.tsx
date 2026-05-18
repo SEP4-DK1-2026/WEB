@@ -17,11 +17,7 @@ export default function WeatherOverview({
     return (
       <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-md">
         <div className="flex items-center gap-3">
-          <img
-            src={loadingSvg}
-            alt="Indlæser"
-            className="h-10 w-10"
-          />
+          <img src={loadingSvg} alt="Indlæser" className="h-10 w-10" />
           <p className="text-sm font-semibold text-blue-900">
             Indlæser vejrdata...
           </p>
@@ -47,31 +43,30 @@ export default function WeatherOverview({
         <p className="text-sm font-semibold text-blue-900">
           Ingen vejrdata fundet.
         </p>
-        <p className="mt-2 text-sm text-gray-600">
-          Prøv igen om et øjeblik.
-        </p>
+        <p className="mt-2 text-sm text-gray-600">Prøv igen om et øjeblik.</p>
       </div>
     )
   }
 
- return (
-  <section
-    data-testid="weather-overview"
-    aria-label="Oversigt over nuværende og forventet vejr"
-    className="fade-in grid grid-cols-1 gap-8 xl:grid-cols-2"
-  >
-    <WeatherCard
-      title="Nuværende vejr"
-      data={currentWeather}
-      displayDate={currentWeather.date}
-    />
+  return (
+    <section
+      data-testid="weather-overview"
+      aria-label="Oversigt over nuværende og forventet vejr"
+      className="fade-in grid grid-cols-1 gap-8 xl:grid-cols-2"
+    >
+      <WeatherCard
+        title="Nuværende vejr"
+        data={currentWeather}
+        displayDate={currentWeather.date}
+        tooltipText="Det sidste nye fra vores egen vejrstation, lige her i Horsens!"
+      />
 
-    <WeatherCard
-      title="Forventet vejr"
-      data={predictedWeather}
-      displayDate={predictedWeather.predictedDate}
-    />
-  </section>
-
+      <WeatherCard
+        title="Forventet vejr"
+        data={predictedWeather}
+        displayDate={predictedWeather.predictedDate}
+        tooltipText="Vores machine learning eksperters bedste bud på, hvordan vejret bliver om cirka 24 timer!"
+      />
+    </section>
   )
 }
