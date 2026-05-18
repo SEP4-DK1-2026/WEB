@@ -11,7 +11,7 @@ type WeatherDataDto = Omit<WeatherData, "date"> & {
   time: number // unix time in seconds
 }
 
-type WeatherModel ="DMI" | "VIA"
+type WeatherModel = "DMI" | "VIA"
 
 type PredictionDataDto = Omit<PredictionData, "predictedDate"> & {
   predictedTime: number // unix time in seconds
@@ -99,6 +99,23 @@ export async function getPredictionsInRangeUsingDates(
   const endTimestamp = Math.floor(endDate.getTime() / 1000)
 
   return getPredictionsInRange(startTimestamp, endTimestamp, modelName)
+}
+
+export async function getPredictionsLastAndNext24Hours(
+  modelName: WeatherModel = "DMI",
+): Promise<PredictionData[]> {
+  const result = await fetch(
+    `${BASE_URL}/getPredictionsLastAndNext24Hours?modelName=${modelName}`,
+  )
+
+  if (!result.ok) {
+    throw new Error(
+      `Failed to fetch predictions for last and next 24 hours: ${result.statusText}`,
+    )
+  }
+
+  const data: PredictionDataDto[] = await result.json()
+  return data.map(toPredictionData)
 }
 
 // Maybe add InRange to name
