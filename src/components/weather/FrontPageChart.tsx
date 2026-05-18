@@ -355,11 +355,11 @@ export default function FrontPageLineChart({
     ? (value: number) => formatWeatherAxisTickWhole(value, "temperature")
     : () => ""
   const chartMargin = isSmallScreen
-    ? { top: 0, right: 24, left: 0, bottom: 0 }
+    ? { top: 0, right: 16, left: 0, bottom: 0 }
     : { top: 0, right: 60, left: 0, bottom: 0 }
   const yAxisTickSize = isSmallScreen ? 10 : 12
-  const yAxisWidth = isSmallScreen ? 42 : 60
-  const yAxisTickMargin = isSmallScreen ? 3 : 5
+  const yAxisWidth = isSmallScreen ? 36 : 60
+  const yAxisTickMargin = isSmallScreen ? 2 : 5
 
   return (
     <ResponsiveContainer width="100%" height={360}>
