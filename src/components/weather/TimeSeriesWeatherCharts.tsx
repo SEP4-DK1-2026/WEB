@@ -132,6 +132,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             stroke="#64748b"
             tickFormatter={(value) => formatWeatherAxisTick(value, "humidity")}
             tickMargin={5}
+            domain={[0, 100]}
           />
           <Tooltip
             content={<SharedWeatherTooltip />}
