@@ -245,7 +245,13 @@ export default function FrontPageLineChart({
   const [isSmallScreen, setIsSmallScreen] = useState(false)
 
   useEffect(() => {
-    if (typeof window === "undefined") return
+    if (
+      typeof window === "undefined" ||
+      typeof window.matchMedia !== "function"
+    ) {
+      setIsSmallScreen(false)
+      return
+    }
 
     const mediaQuery = window.matchMedia(SMALL_SCREEN_QUERY)
     const handleChange = (event: MediaQueryListEvent) =>
