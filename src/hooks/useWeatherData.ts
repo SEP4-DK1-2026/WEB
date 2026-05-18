@@ -5,7 +5,7 @@ import {
   getLatestWeather,
   getPredictionNext24Hours,
   getLast24Hours,
-  getPredictionsInRangeUsingDates,
+  getPredictionsLastAndNext24Hours,
 } from "../features/fetch-weather-data/api/weatherApi"
 
 import type { PredictionData, WeatherData } from "../types/weatherData"
@@ -28,17 +28,14 @@ export function useWeatherData() {
         setLoading(true)
         setError(null)
 
-        const [current, predicted, historical, predictions] = await Promise.all([
-  getLatestWeather(),
-  getPredictionNext24Hours(modelName),
-  getLast24Hours(),
-  getPredictionsInRangeUsingDates(
-    new Date(Date.now() - 24 * 60 * 60 * 1000),
-    new Date(Date.now() + 24 * 60 * 60 * 1000),
-    modelName,
-  ),
-],
-)
+        const [current, predicted, historical, predictions] = await Promise.all(
+          [
+            getLatestWeather(),
+            getPredictionNext24Hours(modelName),
+            getLast24Hours(),
+            getPredictionsLastAndNext24Hours(modelName),
+          ],
+        )
 
         setCurrentWeather(current)
         setPredictedWeather(predicted)

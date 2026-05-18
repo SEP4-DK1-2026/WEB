@@ -34,6 +34,7 @@ type FrontPagePoint = {
   windSpeed?: number
   windDirection?: number
   light?: number
+  predictionOffset?: number
   actualTemperature?: number
   predictedTemperature?: number
   prediction?: WeatherTooltipDatum
@@ -113,6 +114,7 @@ function pickTooltipDatum(source: {
   windSpeed?: number
   windDirection?: number
   light?: number
+  predictionOffset?: number
 }): WeatherTooltipDatum {
   return {
     temperature: source.temperature,
@@ -121,6 +123,7 @@ function pickTooltipDatum(source: {
     windSpeed: source.windSpeed,
     windDirection: source.windDirection,
     light: source.light,
+    predictionOffset: source.predictionOffset,
   }
 }
 
@@ -309,6 +312,7 @@ export default function FrontPageLineChart({
       windSpeed: existing?.windSpeed ?? entry.windSpeed,
       windDirection: existing?.windDirection ?? entry.windDirection,
       light: existing?.light ?? entry.light,
+      predictionOffset: existing?.predictionOffset ?? entry.predictionOffset,
       actualTemperature: existing?.actualTemperature,
       predictedTemperature: entry.temperature,
       prediction: existing?.prediction,

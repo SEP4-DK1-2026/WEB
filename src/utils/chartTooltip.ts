@@ -46,6 +46,11 @@ const tooltipConfigByKey: Record<string, TooltipConfig> = {
     format: formatWholeNumber,
     unit: " lux",
   },
+  predictionOffset: {
+    label: "Forudsigelsesoffset",
+    format: formatWholeNumber,
+    unit: " t",
+  },
 }
 
 export type WeatherTooltipKey = keyof typeof tooltipConfigByKey
