@@ -7,7 +7,7 @@ export default function Layout() {
     <div className="flex min-h-screen flex-col bg-linear-to-b from-gray-50 to-blue-50">
       <Navbar />
 
-      <main className="mx-auto w-full max-w-7xl flex-1 px-5 py-5">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-3 py-4 sm:px-5 sm:py-5">
         <Outlet />
       </main>
       <Footer />

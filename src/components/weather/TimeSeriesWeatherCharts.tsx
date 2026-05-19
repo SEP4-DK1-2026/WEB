@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   Area,
   AreaChart,
@@ -35,6 +35,8 @@ type TimeSeriesWeatherChartsProps<T extends WeatherSeriesDatum> = {
   chartHeight?: number
 }
 
+const SMALL_SCREEN_QUERY = "(max-width: 640px)"
+
 export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
   data,
   getDate,
@@ -43,8 +45,46 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
   const [activeChart, setActiveChart] = useState<
     "temperature" | "humidity" | "precipitationWind" | null
   >(null)
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+  useEffect(() => {
+    if (
+      typeof window === "undefined" ||
+      typeof window.matchMedia !== "function"
+    ) {
+      setIsSmallScreen(false)
+      return
+    }
+
+    const mediaQuery = window.matchMedia(SMALL_SCREEN_QUERY)
+    const handleChange = (event: MediaQueryListEvent) =>
+      setIsSmallScreen(event.matches)
+
+    setIsSmallScreen(mediaQuery.matches)
+
+    if (!mediaQuery.addEventListener) return
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
   const scaledData = scaleTimeSeriesData(data, getDate)
   const dailyTicks = getDailyTicks(scaledData, getDate)
+
+  const yAxisTickSize = isSmallScreen ? 10 : 12
+  const yAxisWidth = isSmallScreen ? 36 : 60
+  const yAxisTickMargin = isSmallScreen ? 2 : 5
+  const xAxisTick = isSmallScreen
+    ? { fill: "#64748b", fontSize: 12 }
+    : undefined
+  const chartMargin = {
+    top: 0,
+    right: yAxisWidth,
+    left: 0,
+    bottom: 0,
+  }
+  const composedLegendPadding = isSmallScreen
+    ? { paddingBottom: 8, paddingRight: yAxisWidth }
+    : { paddingBottom: 8, paddingRight: 60 }
 
   const commonAxis = (
     <>
@@ -57,33 +97,31 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
         ticks={dailyTicks}
         interval="preserveStartEnd"
         minTickGap={24}
+        tick={xAxisTick}
         tickMargin={10}
       />
     </>
   )
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <ResponsiveContainer width="100%" height={chartHeight}>
         <LineChart
           data={scaledData}
           syncId="anyId"
           onMouseEnter={() => setActiveChart("temperature")}
           onMouseLeave={() => setActiveChart(null)}
-          margin={{
-            top: 0,
-            right: 60,
-            left: 0,
-            bottom: 0,
-          }}
+          margin={chartMargin}
         >
           {commonAxis}
           <YAxis
             stroke="#64748b"
+            tick={{ fill: "#64748b", fontSize: yAxisTickSize }}
+            width={yAxisWidth}
             tickFormatter={(value) =>
               formatWeatherAxisTickWhole(value, "temperature")
             }
-            tickMargin={5}
+            tickMargin={yAxisTickMargin}
           />
           <Tooltip
             cursor={{ stroke: "#bfdbfe" }}
@@ -94,7 +132,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             verticalAlign="top"
             align="right"
             formatter={(value) => (
-              <span className="text-sm font-semibold text-slate-700">
+              <span className="text-xs sm:text-sm font-semibold text-slate-700">
                 {value}
               </span>
             )}
@@ -120,18 +158,15 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           syncId="anyId"
           onMouseEnter={() => setActiveChart("humidity")}
           onMouseLeave={() => setActiveChart(null)}
-          margin={{
-            top: 0,
-            right: 60,
-            left: 0,
-            bottom: 0,
-          }}
+          margin={chartMargin}
         >
           {commonAxis}
           <YAxis
             stroke="#64748b"
+            tick={{ fill: "#64748b", fontSize: yAxisTickSize }}
+            width={yAxisWidth}
             tickFormatter={(value) => formatWeatherAxisTick(value, "humidity")}
-            tickMargin={5}
+            tickMargin={yAxisTickMargin}
             domain={[0, 100]}
           />
           <Tooltip
@@ -143,7 +178,7 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             verticalAlign="top"
             align="right"
             formatter={(value) => (
-              <span className="text-sm font-semibold text-slate-700">
+              <span className="text-xs sm:text-sm font-semibold text-slate-700">
                 {value}
               </span>
             )}
@@ -181,20 +216,24 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
           <YAxis
             yAxisId="precipitation"
             stroke="#64748b"
+            tick={{ fill: "#64748b", fontSize: yAxisTickSize }}
+            width={yAxisWidth}
             tickFormatter={(value) =>
               formatWeatherAxisTickWhole(value, "precipitation")
             }
             allowDecimals={false}
-            tickMargin={5}
+            tickMargin={yAxisTickMargin}
           />
           <YAxis
             yAxisId="windSpeed"
             orientation="right"
             stroke="#64748b"
+            tick={{ fill: "#64748b", fontSize: yAxisTickSize }}
+            width={yAxisWidth}
             tickFormatter={(value) =>
               formatWeatherAxisTickWhole(value, "windSpeed")
             }
-            tickMargin={5}
+            tickMargin={yAxisTickMargin}
           />
           <Tooltip
             content={<SharedWeatherTooltip />}
@@ -205,11 +244,11 @@ export default function TimeSeriesWeatherCharts<T extends WeatherSeriesDatum>({
             verticalAlign="top"
             align="right"
             formatter={(value) => (
-              <span className="text-sm font-semibold text-slate-700">
+              <span className="text-xs sm:text-sm font-semibold text-slate-700">
                 {value}
               </span>
             )}
-            wrapperStyle={{ paddingBottom: 8, paddingRight: 60 }}
+            wrapperStyle={composedLegendPadding}
           />
           <Bar
             dataKey={(entry: T) =>

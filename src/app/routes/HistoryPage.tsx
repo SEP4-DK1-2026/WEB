@@ -89,7 +89,7 @@ export default function HistoryPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <WeatherRangeFilter
         startDate={startDate}
         endDate={endDate}
@@ -102,9 +102,18 @@ export default function HistoryPage() {
 
       {error && <p className="text-red-600">{error}</p>}
 
-      <div className="rounded-xl border border-blue-200 bg-white p-6 shadow-lg">
-        <h2 className="mb-4 text-2xl font-bold text-blue-900">
-          {loading ? "Indlæser historiske data..." : `Historisk vejrdata for ${selectedRangeLabel}`}
+      <div className="rounded-xl border border-blue-200 bg-white px-3 py-4 shadow-lg sm:p-6">
+        <h2 className="mb-4 text-md sm:text-2xl font-bold text-blue-900">
+          {loading ? (
+            "Indlæser historiske data..."
+          ) : (
+            <>
+              <span>Historisk vejrdata for</span>
+              <span className="block sm:ml-2 sm:inline">
+                {selectedRangeLabel}
+              </span>
+            </>
+          )}
         </h2>
 
         <HistoricalChart data={data} />

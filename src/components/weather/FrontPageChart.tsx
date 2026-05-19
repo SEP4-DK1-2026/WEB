@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
+import { useEffect, useState } from "react"
 import type { PredictionData, WeatherData } from "../../types/weatherData"
 import { formatDateNoYear, formatTime } from "../../utils/dateFormat"
 import {
@@ -43,6 +44,8 @@ type FrontPagePoint = {
 const MS_PER_HOUR = 60 * 60 * 1000
 const RANGE_MS = 24 * MS_PER_HOUR
 const TICK_INTERVAL_HOURS = 6
+const SMALL_TICK_INTERVAL_HOURS = 12
+const SMALL_SCREEN_QUERY = "(max-width: 640px)"
 const AXIS_LABEL_COLOR = "#64748b"
 const PREDICTION_MATCH_TOLERANCE_MS = 60 * 60 * 1000
 const predictionTooltipKeys = weatherTooltipKeys.filter(
@@ -59,14 +62,18 @@ type AxisTickProps = {
   }
 }
 
-function getTimeTicks(startMs: number, endMs: number) {
+function getTimeTicks(
+  startMs: number,
+  endMs: number,
+  intervalHours: number = TICK_INTERVAL_HOURS,
+) {
   if (!Number.isFinite(startMs) || !Number.isFinite(endMs)) return []
 
-  const intervalMs = TICK_INTERVAL_HOURS * MS_PER_HOUR
+  const intervalMs = intervalHours * MS_PER_HOUR
   const start = new Date(startMs)
 
   start.setMinutes(0, 0, 0)
-  const remainder = start.getHours() % TICK_INTERVAL_HOURS
+  const remainder = start.getHours() % intervalHours
   start.setHours(start.getHours() - remainder)
 
   const ticks: number[] = []
@@ -235,6 +242,29 @@ export default function FrontPageLineChart({
   includeLegend = true,
   includeYticks = true,
 }: FrontPageLineChartProps) {
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+  useEffect(() => {
+    if (
+      typeof window === "undefined" ||
+      typeof window.matchMedia !== "function"
+    ) {
+      setIsSmallScreen(false)
+      return
+    }
+
+    const mediaQuery = window.matchMedia(SMALL_SCREEN_QUERY)
+    const handleChange = (event: MediaQueryListEvent) =>
+      setIsSmallScreen(event.matches)
+
+    setIsSmallScreen(mediaQuery.matches)
+
+    if (!mediaQuery.addEventListener) return
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
+
   const latestHistoricalMs = weatherData.reduce((latest, entry) => {
     const time = entry.date.getTime()
     return time > latest ? time : latest
@@ -323,22 +353,23 @@ export default function FrontPageLineChart({
     (a, b) => a.date.getTime() - b.date.getTime(),
   )
 
-  const timeTicks = getTimeTicks(rangeStartMs, rangeEndMs)
+  const tickIntervalHours = isSmallScreen
+    ? SMALL_TICK_INTERVAL_HOURS
+    : TICK_INTERVAL_HOURS
+  const timeTicks = getTimeTicks(rangeStartMs, rangeEndMs, tickIntervalHours)
   const yAxisFormatter = includeYticks
     ? (value: number) => formatWeatherAxisTickWhole(value, "temperature")
     : () => ""
+  const chartMargin = isSmallScreen
+    ? { top: 0, right: 16, left: 0, bottom: 0 }
+    : { top: 0, right: 60, left: 0, bottom: 0 }
+  const yAxisTickSize = isSmallScreen ? 10 : 12
+  const yAxisWidth = isSmallScreen ? 36 : 60
+  const yAxisTickMargin = isSmallScreen ? 2 : 5
 
   return (
     <ResponsiveContainer width="100%" height={360}>
-      <LineChart
-        data={combinedData}
-        margin={{
-          top: 0,
-          right: 60,
-          left: 0,
-          bottom: 0,
-        }}
-      >
+      <LineChart data={combinedData} margin={chartMargin}>
         <CartesianGrid stroke="#aaa" strokeOpacity={0.2} />
         <Line
           type="monotone"
@@ -374,8 +405,10 @@ export default function FrontPageLineChart({
         <YAxis
           stroke={AXIS_LABEL_COLOR}
           tickLine={includeYticks}
+          tick={{ fill: AXIS_LABEL_COLOR, fontSize: yAxisTickSize }}
+          width={yAxisWidth}
           tickFormatter={yAxisFormatter}
-          tickMargin={5}
+          tickMargin={yAxisTickMargin}
         />
         <Tooltip
           cursor={{ stroke: "#bfdbfe" }}
@@ -386,7 +419,7 @@ export default function FrontPageLineChart({
             verticalAlign="top"
             align="right"
             formatter={(value) => (
-              <span className="text-sm font-semibold text-slate-700">
+              <span className="text-xs sm:text-sm font-semibold text-slate-700">
                 {value}
               </span>
             )}
