@@ -10,6 +10,16 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "./src/testing/setupTests.ts",
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html"],
+      exclude: [
+        "src/assets/**",
+        "src/types/**",
+        "src/testing/**",
+        "**/*.d.ts",
+      ],
+    },
   },
   server: {
     host: '0.0.0.0',
