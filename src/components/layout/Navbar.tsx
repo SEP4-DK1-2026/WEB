@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import weatherIcon from "../../assets/weather-icons/animated/rainy-1.svg"
 import menuIcon from "../../assets/menu-icon.svg"
+import locationIcon from "../../assets/location-icon.svg"
 import { useWeatherModel } from "../../context/WeatherModelContext"
 
 export default function Navbar() {
@@ -16,21 +17,25 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-2">
-        <Link to="/" className="flex items-center gap-2">
-          <img
-            src={weatherIcon}
-            alt="Animated weather icon"
-            className="h-10 w-10"
-          />
-          <span className="text-xl font-bold">
-            <span className="bg-linear-to-r from-sky-600 via-blue-600 to-amber-500 bg-clip-text text-transparent">
+        <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src={weatherIcon}
+              alt="Animated weather icon"
+              className="h-10 w-10"
+            />
+            <span className="text-xl font-bold text-blue-900">
               <span className="hidden sm:inline">
                 VIAs Meteorologiske Institut
               </span>
               <span className="sm:hidden">VMI</span>
             </span>
+          </Link>
+          <span className="flex items-center gap-1 text-xl font-semibold text-blue-800">
+            <img src={locationIcon} alt="Location" className="h-5 w-5" />
+            <span>Horsens</span>
           </span>
-        </Link>
+        </div>
         <nav className="hidden items-center gap-3 md:flex">
           <NavLink
             to="/"
