@@ -65,7 +65,7 @@ export default function WeatherCard({
           <div className="relative inline-flex items-center group">
             <h2 className="text-2xl font-bold text-blue-900">{title}</h2>
             {tooltipText ? (
-              <span className="pointer-events-none absolute left-full top-1/2 ml-2 w-56 -translate-y-1/2 rounded-md border border-gray-200 bg-white px-3 py-2 text-[11px] leading-4 text-gray-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+              <span className="pointer-events-none absolute left-full top-1/2 ml-2 hidden w-56 -translate-y-1/2 rounded-md border border-gray-200 bg-white px-3 py-2 text-[11px] leading-4 text-gray-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100 sm:block">
                 {tooltipText}
               </span>
             ) : null}
