@@ -1,6 +1,9 @@
 name: Build and push image to ACR
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       image_name:
