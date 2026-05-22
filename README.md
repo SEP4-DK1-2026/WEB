@@ -10,3 +10,7 @@ Using 'Bulletproof React' as a baseline. See [project-structure.md](/project-str
 ## Docker configuration
 
 Using a compose based devcontainer and app container. See [README.Docker.md](/README.Docker.md)
+
+## Test coverage
+
+See [test coverage](https://sep4-dk1-2026.github.io/WEB/)

@@ -39,7 +39,7 @@ function toPredictionData(dto: PredictionDataDto): PredictionData {
 }
 
 export async function getPredictions(
-  hoursFromNow: number,
+  hoursFromNow: number = 168, // default to 7 days
   modelName: WeatherModel = "DMI",
 ): Promise<PredictionData[]> {
   const result = await fetch(
@@ -76,18 +76,16 @@ export async function getPredictionsInRange(
   endTime: number,
   modelName: WeatherModel = "DMI",
 ): Promise<PredictionData[]> {
-  const result = await fetch(
-    `${BASE_URL}/getPredictionsInRange?startTime=${startTime}&endTime=${endTime}&modelName=${modelName}`,
-  )
+  const predictions = await getPredictions(168, modelName)
+  const startMs = startTime * 1000
+  const endMs = endTime * 1000
+  const minMs = Math.min(startMs, endMs)
+  const maxMs = Math.max(startMs, endMs)
 
-  if (!result.ok) {
-    throw new Error(
-      `Failed to fetch weather predictions in range: ${result.statusText}`,
-    )
-  }
-
-  const data: PredictionDataDto[] = await result.json()
-  return data.map(toPredictionData)
+  return predictions.filter((prediction) => {
+    const predictedMs = prediction.predictedDate.getTime()
+    return predictedMs >= minMs && predictedMs <= maxMs
+  })
 }
 
 export async function getPredictionsInRangeUsingDates(
@@ -118,7 +116,6 @@ export async function getPredictionsLastAndNext24Hours(
   return data.map(toPredictionData)
 }
 
-// Maybe add InRange to name
 /** Takes unix timestamps in seconds */
 export async function getHistoricalDataInRange(
   startTime: number,
