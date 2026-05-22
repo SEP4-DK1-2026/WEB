@@ -27,7 +27,9 @@ export const handlers = [
 
   http.get("*/getPredictionsNextHours", ({ request }) => {
     const url = new URL(request.url)
-    const hoursFromNow = Number(url.searchParams.get("hoursFromNow") ?? 24)
+    const hoursParam = url.searchParams.get("hoursFromNow")
+    const parsedHours = hoursParam === null ? 168 : Number(hoursParam)
+    const hoursFromNow = Number.isFinite(parsedHours) ? parsedHours : 168
 
     return HttpResponse.json(generateNextHoursPredictions(hoursFromNow))
   }),
@@ -52,18 +54,5 @@ export const handlers = [
     return HttpResponse.json(
       generatePredictionData(startTimestamp, endTimestamp, 0),
     )
-  }),
-
-  http.get("*/getPredictionsInRange", ({ request }) => {
-    const url = new URL(request.url)
-
-    const startTime = Number(url.searchParams.get("startTime"))
-    const endTime = Number(url.searchParams.get("endTime"))
-
-    if (!Number.isFinite(startTime) || !Number.isFinite(endTime)) {
-      return HttpResponse.json(generateNextHoursPredictions(24))
-    }
-
-    return HttpResponse.json(generatePredictionData(startTime, endTime, 0))
   }),
 ]
